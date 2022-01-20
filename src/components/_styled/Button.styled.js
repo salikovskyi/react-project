@@ -13,6 +13,7 @@ const Button = styled.button`
     font-size: 14px;
     line-height: 17px;
     letter-spacing: 0.04em;
-    background: #FC842D;
+    background-color: #FC842D;
+    color: #FFFFFF;
 `
 export default Button;

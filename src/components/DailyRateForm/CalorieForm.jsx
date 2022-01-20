@@ -2,9 +2,34 @@ import css from "./CalorieForm.module.css";
 import * as Yup from "yup";
 import { useDispatch, useSelector } from "react-redux";
 import { Field, Form, Formik } from "formik";
-imprt 
+import Button from '../_styled/Button.styled'
 
 export default function CalorieForm() {
+    const validationSchema = Yup.object().shape({
+        height: Yup.number()
+        .min(100, 'Minimum value 100см')
+        .max(250, 'Maximum value 250см')
+        .required("Necessarily"),
+        age: Yup.number()
+        .min(18, 'Minimum value 18')
+        .max(100, 'Maximum value 100')
+        .required("Necessarily"),
+        weight: Yup.number()
+        .min(20, 'Minimum value 20')
+        .max(500, 'Maximum value 500')
+        .required("Necessarily"),
+        desiredWeight: Yup.number()
+        .min(20, 'Minimum value 20')
+        .max(500, 'Maximum value 500')
+        .required("Necessarily")
+        .when('weight', (weight, shema) => {
+            return shema.test({
+                test:
+            })
+        },
+        bloodType: Yup.number()
+        .required("Necessarily")
+    })
   return (
     <div className={css.form_section}>
       <Formik>
@@ -45,7 +70,7 @@ export default function CalorieForm() {
               </label>
             </div>
           </div>
-          
+          <Button>Похудеть</Button>
         </Form>
       </Formik>
     </div>
