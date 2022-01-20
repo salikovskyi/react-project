@@ -1,9 +1,15 @@
 import { Loader } from "./components/Loader";
 import ContainerStyled from "./components/_styled/Container.styled";
+import { useDispatch, useSelector } from "react-redux";
+import { refreshUser, registerUser } from "./redux/auth/authOperations";
+import { useEffect } from "react";
+
+import CalorieForm from './components/DailyRateForm'
 function App() {
   return (
     <ContainerStyled>
-      <h1>App</h1>
+      <h1>app</h1>
+      <CalorieForm/>
     </ContainerStyled>
   );
 }
