@@ -42,7 +42,7 @@ const authSlice = createSlice({
     [loginUser.fulfilled]: (state, { payload }) => {
       SlimmomAPI.setToken(payload.accessToken);
       state.token = payload.accessToken;
-      state.sid = payload.id;
+      state.sid = payload.sid;
       state.isLoading = false;
       state.isLoggedIn = true;
       state.user.email = payload.user.email;
