@@ -5,6 +5,10 @@ class SlimmomAPI {
     baseURL: "https://slimmom-backend.goit.global",
   });
 
+  static refreshUser(sid) {
+    return this.axiosInstance.post("/auth/refresh", { sid: sid.toString() });
+  }
+
   static setToken(token) {
     this.axiosInstance.defaults.headers.common.Authorization = token;
   }
@@ -13,6 +17,9 @@ class SlimmomAPI {
     this.axiosInstance.defaults.headers.common.Authorization = null;
   }
 
+  static getUserInfo() {
+    return this.axiosInstance.get("/user");
+  }
   static registerUser(data) {
     return this.axiosInstance.post("/auth/register", data);
   }
