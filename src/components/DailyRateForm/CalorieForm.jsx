@@ -21,12 +21,11 @@ export default function CalorieForm() {
         desiredWeight: Yup.number()
         .min(20, 'Minimum value 20')
         .max(500, 'Maximum value 500')
-        .required("Necessarily")
-        .when('weight', (weight, shema) => {
-            return shema.test({
-                test:
-            })
-        },
+        .required("Necessarily"),
+        // .when('weight', (weight, shema) => {
+        //     return shema.test({
+        //     })
+        // },
         bloodType: Yup.number()
         .required("Necessarily")
     })
