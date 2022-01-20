@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 const Button = styled.button`
-    display: flex;
     box-shadow: 0px 4px 10px rgba(252, 132, 45, 0.5);
     padding: 13px 13px;
     width: 176px;
