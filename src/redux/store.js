@@ -1,6 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import {
   persistStore,
+  persistReducer,
   FLUSH,
   REHYDRATE,
   PAUSE,
@@ -21,7 +22,7 @@ const authPersistConfig = {
 
 const store = configureStore({
   reducer: {
-    auth: persistStore(authPersistConfig, authReducer),
+    auth: persistReducer(authPersistConfig, authReducer),
     userData: null,
   },
   middleware: (getDefaultMiddleware) =>

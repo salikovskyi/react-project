@@ -6,7 +6,7 @@ class SlimmomAPI {
   });
 
   static refreshUser(sid) {
-    return this.axiosInstance.post("/auth/refresh", sid);
+    return this.axiosInstance.post("/auth/refresh", { sid: sid.toString() });
   }
 
   static setToken(token) {
