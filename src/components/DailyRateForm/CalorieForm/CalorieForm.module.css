@@ -4,3 +4,36 @@
     border: 0;
     border-bottom: 1px solid rgba(224, 224, 224, 1);
   }
+
+  .form_radioField {
+      color: orange;
+      background-color: orange;
+  }
+
+  .form_radioLabel {
+    color: #9b9faa;
+  }
+
+  input[type="radio"]:checked + label:after {
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: 17%;
+    left: 14%;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #fc842d;
+  }
+
+  input[type="radio"] {
+    display: none !important;
+  }
+
+  input[type="radio"] + label {
+  display: inline-block;
+  cursor: pointer;
+  position: relative;
+  padding-left: 28px;
+  margin-right: 15px;
+}
