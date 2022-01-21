@@ -4,10 +4,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { refreshUser, registerUser } from "./redux/auth/authOperations";
 import { useEffect } from "react";
 import FooterInfo from "./components/FooterInfo";
+import CalculatorPage from "./pages/Calculator/Calculator";
 
-import CalorieForm from "./components/DailyRateForm/CalorieForm";
 function App() {
-  return <FooterInfo />;
+  return (
+    <div>
+      <CalculatorPage/>
+    </div>
+  );
 }
 
 export default App;
