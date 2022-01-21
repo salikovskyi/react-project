@@ -2,7 +2,6 @@ import { createSlice } from "@reduxjs/toolkit";
 import {
   dailyRateInfo,
   userDaily,
-  searchProduct,
   addEatenProduct,
   removeEatenProduct,
   dayInfo,
@@ -27,6 +26,7 @@ const initialState = {
     userId: "",
     id: "",
   },
+  notAllowedProducts: [],
   isLoading: false,
   error: null,
 };
