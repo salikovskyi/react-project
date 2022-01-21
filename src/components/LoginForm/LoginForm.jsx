@@ -1,68 +1,7 @@
-// import { useFormik} from "formik";
-// import { useDispatch } from "react-redux";
-// import { loginUser } from "../../redux/auth/authOperations";
-// import * as Yup from "yup";
-
-// const validationSchema = Yup.object().shape({
-//     email: Yup.string()
-//       .email(`* E-mail адрес введен неверно!`)
-//       .min(5, "* Минимум 5 символов")
-//       .required("*Поле обязательно!"),
-//     password: Yup.string()
-//       .required("* Поле обязательно!")
-//       .min(3, "* Минимум 3 символа")
-//       .max(20, "* Максимум 20 символов"),
-//   });
-
-// function LoginForm() {
-//     const dispatch = useDispatch();
-//     const state = useFormik({
-//       initialValues: {
-//         username: "",
-//         email: "",
-//         password: "",
-//       },
-//       onSubmit: (values) => {
-//         console.log(values);
-//         dispatch(loginUser(values));
-//       },
-//     });
-//     return (
-//       <form onSubmit={state.handleSubmit}>
-        
-//         <label>
-//           <input
-//             id="email"
-//             name="email"
-//             type="text"
-//             onChange={state.handleChange}
-//             value={state.values.email}
-//           />
-//           Логин*
-//         </label>
-//         <label>
-//           <input
-//             id="password"
-//             name="password"
-//             type="text"
-//             onChange={state.handleChange}
-//             value={state.values.password}
-//           />
-//           Пароль*
-//         </label>
-//         <button>Вход</button>
-  
-//         <button>Регистрация</button>
-  
-//       </form>
-//     );
-//   }
-//   export default LoginForm;
 
 import React, { useMemo } from "react";
 import { useDispatch } from "react-redux";
 import { loginUser } from "../../redux/auth/authOperations";
-///////////////////////////////Formik, YUP /////////////////////////////////////////////////
 import { Form, Formik, useField } from "formik";
 import * as Yup from "yup";
 import css from "./LoginForm.module.css";
