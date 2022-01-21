@@ -4,13 +4,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { refreshUser, registerUser } from "./redux/auth/authOperations";
 import { useEffect } from "react";
 
-import CalorieForm from './components/DailyRateForm/CalorieForm'
+import CalorieForm from "./components/DailyRateForm/CalorieForm";
 function App() {
   return (
-    <ContainerStyled>
+    <div>
       <h1>app</h1>
-      <CalorieForm/>
-    </ContainerStyled>
+      <CalorieForm />
+    </div>
   );
 }
 
