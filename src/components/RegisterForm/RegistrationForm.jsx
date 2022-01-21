@@ -1,7 +1,7 @@
-import { Form, Formik } from "formik";
+import { Form, Formik} from "formik";
 import { useDispatch } from "react-redux";
-import { register } from "../../redux/auth/auth-operation";
-import { FormControl } from "../loginForm/LoginForm";
+import { registerUser } from "../../redux/auth/authOperations";
+import { FormControl } from "../LoginForm/LoginForm";
 import * as Yup from "yup";
 import { Link } from "react-router-dom";
 import css from "./RegistrationForm.module.css";
@@ -24,7 +24,7 @@ const validationSchema = Yup.object().shape({
 
 const RegistrationForm = () => {
   const dispatch = useDispatch();
-  const onRegister = (state) => dispatch(register(state));
+  const onRegister = (state) => dispatch(registerUser(state));
 
   const handleSubmit = (values) => {
     onRegister(values);
