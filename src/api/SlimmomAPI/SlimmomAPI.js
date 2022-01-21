@@ -31,6 +31,30 @@ class SlimmomAPI {
   static logoutUser() {
     return this.axiosInstance.post("/auth/logout");
   }
+
+  static getDailyRateInfo(request) {
+    return this.axiosInstance.post("/daily-rate", request);
+  }
+
+  static postGetUserDaily(id, request) {
+    return this.axiosInstance.post(`/daily-rate/${id}`, request);
+  }
+
+  static getProduct(search) {
+    return this.axiosInstance.get("/product", { params: { search } });
+  }
+
+  static postEatenProduct(product) {
+    return this.axiosInstance.post("/day", product);
+  }
+
+  static deleteEatenProduct(product) {
+    return this.axiosInstance.delete("/day", product);
+  }
+
+  static getDayInfo(date) {
+    return this.axiosInstance.post("/day/info", date);
+  }
 }
 
 export default SlimmomAPI;
