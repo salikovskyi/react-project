@@ -11,8 +11,9 @@ const Container = styled.div`
   }
 
   @media screen and (min-width: 1280px) {
-    width: 1280px;
+    min-width: ${props => props.width ? props.width + "px" : "1280px"};
     padding: 0 115px;
+    /* display: ${props => props.flex ? props.flex : 'block'}; */
   }
 `;
 

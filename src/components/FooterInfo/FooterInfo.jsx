@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import styles from "./FooterInfo.module.css";
+import ContainerStyled from "../_styled/Container.styled";
 // import {
 //   products,
 //   dayKcal,
@@ -21,6 +22,7 @@ export default function FooterInfo() {
 
   return (
     <section className={styles.mainSection}>
+      <ContainerStyled width={535}>
       <div className={styles.section}>
         <div className={styles.daySection}>
           {/* <span className={styles.title}>Сводка за {date ? newDate : ""}</span> */}
@@ -54,6 +56,7 @@ export default function FooterInfo() {
           <p className={styles.productList}> products</p>
         </div>
       </div>
+      </ContainerStyled>
     </section>
   );
 }

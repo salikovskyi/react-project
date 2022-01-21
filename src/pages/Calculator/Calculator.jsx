@@ -5,10 +5,10 @@ import ContainerStyled from "../../components/_styled/Container.styled";
 export default function CalculatorPage() {
   return (
     <div className={css.calc_page}>
-      <ContainerStyled>
+      {/* <ContainerStyled flex={'flex'}> */}
         <CalorieForm />
         <FooterInfo />
-      </ContainerStyled>
+      {/* </ContainerStyled> */}
     </div>
   );
 }

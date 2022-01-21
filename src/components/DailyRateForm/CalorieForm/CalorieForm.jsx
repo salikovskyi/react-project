@@ -3,6 +3,8 @@ import * as Yup from "yup";
 import { useDispatch, useSelector } from "react-redux";
 import { Field, Form, Formik } from "formik";
 import Button from "../../_styled/Button.styled";
+import ContainerStyled from '../../_styled/Container.styled'
+
 
 const validationSchema = Yup.object().shape({
   height: Yup.number()
@@ -34,6 +36,7 @@ const validationSchema = Yup.object().shape({
 export default function CalorieForm() {
   return (
     <div className={css.form_section}>
+      <ContainerStyled width={745}>
       <Formik
         validationSchema={validationSchema}
         initialValues={{
@@ -44,7 +47,7 @@ export default function CalorieForm() {
           bloodType: "",
         }}
       >
-        <Form>
+        <Form className={css.form}>
           <h2 className={css.form_title}>
             Просчитай свою суточную норму калорий прямо сейчас
           </h2>
@@ -104,6 +107,7 @@ export default function CalorieForm() {
           <Button type="submit">Похудеть</Button>
         </Form>
       </Formik>
+      </ContainerStyled>
     </div>
   );
 }
