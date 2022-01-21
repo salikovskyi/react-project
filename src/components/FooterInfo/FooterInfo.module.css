@@ -10,11 +10,6 @@
     margin-right: auto;
     width: 320px;
   }
-
-  /* .image {
-    display: none;
-  } */
-
   .product {
     margin-top: 40px;
   }
@@ -62,6 +57,11 @@
 }
 
 @media screen and (min-width: 768px) {
+  .mainSection {
+    background-color: #f0f1f3;
+    background-repeat: no-repeat;
+    background-position: right;
+  }
   .section {
     display: flex;
     padding-top: 91px;
@@ -96,10 +96,6 @@
 }
 
 @media screen and (min-width: 1280px) {
-  .mainSection {
-    width: 535px;
-    /* background-image: url(../../assets/images/desctop/Layer-42\ 1.png); */
-  }
   .section {
     display: block;
     padding-top: 292px;
@@ -115,5 +111,36 @@
 
   .product {
     margin-top: 60px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .mainSection {
+    background-image: url(../../assets/images/tablet/tabletleafletsBottom1x.png);
+  }
+}
+@media screen and (min-width: 768px) and (min-device-pixel-ratio: 2),
+  screen and (min-width: 768px) and (-webkit-min-device-pixel-ratio: 2),
+  screen and (min-width: 768px) and (min-resolution: 192dpi),
+  screen and (min-width: 768px) and (min-resolution: 2dppx) {
+  .mainSection {
+    background-image: url(../../assets/images/tablet/tabletleafletsBottom2x.png)
+      50% 50%;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .mainSection {
+    width: 535px;
+    background-image: url(../../assets/images/desctop/Layerdesktop1x.png);
+  }
+}
+@media screen and (min-width: 1280px) and (min-device-pixel-ratio: 2),
+  screen and (min-width: 1280px) and (-webkit-min-device-pixel-ratio: 2),
+  screen and (min-width: 1280px) and (min-resolution: 192dpi),
+  screen and (min-width: 1280px) and (min-resolution: 2dppx) {
+  .mainSection {
+    width: 535px;
+    background-image: url(../../assets/images/desctop/Layerdesktop2x.png) 50%
+      50%;
   }
 }
