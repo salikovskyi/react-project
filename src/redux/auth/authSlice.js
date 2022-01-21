@@ -78,7 +78,7 @@ const authSlice = createSlice({
     },
     [registerUser.fulfilled]: (state, { payload }) => {
       console.log(
-        'reg'
+       'reg'
       );
       state.isLoading = false;
       state.sid = payload.id;
