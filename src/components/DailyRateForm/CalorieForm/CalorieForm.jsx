@@ -83,25 +83,25 @@ export default function CalorieForm() {
             </label>
             <p className={css.form_subtitle}>Группа крови *</p>
             <div className={css.form_radio}>
-              <Field id="first" type="radio" value="1" name="bloodBtn" />
+              <Field id="first" type="radio" value="1" name="bloodBtn" className={css.form_radioField}/>
               <label htmlFor="first" className={css.form_radioLabel}>
                 1
               </label>
-              <Field id="second" type="radio" value="2" name="bloodBtn" />
+              <Field id="second" type="radio" value="2" name="bloodBtn" className={css.form_radioField}/>
               <label htmlFor="second" className={css.form_radioLabel}>
                 2
               </label>
-              <Field id="third" type="radio" value="3" name="bloodBtn" />
+              <Field id="third" type="radio" value="3" name="bloodBtn" className={css.form_radioField}/>
               <label htmlFor="third" className={css.form_radioLabel}>
                 3
               </label>
-              <Field id="fourth" type="radio" value="4" name="bloodBtn" />
+              <Field id="fourth" type="radio" value="4" name="bloodBtn"  className={css.form_radioField}/>
               <label htmlFor="fourth" className={css.form_radioLabel}>
                 4
               </label>
             </div>
           </div>
-          <Button>Похудеть</Button>
+          <Button type="submit">Похудеть</Button>
         </Form>
       </Formik>
     </div>
