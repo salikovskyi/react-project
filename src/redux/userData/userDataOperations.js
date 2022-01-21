@@ -25,18 +25,6 @@ export const userDaily = createAsyncThunk(
   }
 );
 
-export const searchProduct = createAsyncThunk(
-  "userData/searchProduct",
-  async (search, { rejectWithValue }) => {
-    try {
-      const product = await SlimmomAPI.getProduct(search);
-      return product;
-    } catch ({ message }) {
-      return rejectWithValue(message);
-    }
-  }
-);
-
 export const addEatenProduct = createAsyncThunk(
   "userData/addGetEatenProduct",
   async (product, { rejectWithValue }) => {
