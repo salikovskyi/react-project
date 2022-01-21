@@ -3,12 +3,9 @@ import ContainerStyled from "./components/_styled/Container.styled";
 import { useDispatch, useSelector } from "react-redux";
 import { refreshUser, registerUser } from "./redux/auth/authOperations";
 import { useEffect } from "react";
+import FooterInfo from "./components/FooterInfo";
 function App() {
-  return (
-    <ContainerStyled>
-      <h1>App</h1>
-    </ContainerStyled>
-  );
+  return <FooterInfo />;
 }
 
 export default App;

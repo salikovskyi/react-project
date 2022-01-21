@@ -1,0 +1,119 @@
+@media screen and (min-width: 320px) {
+  .mainSection {
+    background-color: #f0f1f3;
+  }
+  .section {
+    padding-top: 40px;
+    padding-bottom: 84px;
+    max-height: 433px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 320px;
+  }
+
+  /* .image {
+    display: none;
+  } */
+
+  .product {
+    margin-top: 40px;
+  }
+
+  .kcalList {
+    font-family: Verdana;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 2.21;
+    letter-spacing: 0.04em;
+    color: #9b9faa;
+
+    margin-top: 20px;
+  }
+
+  .productList {
+    overflow-y: scroll;
+    height: 112px;
+    font-family: Verdana;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 1.21;
+    letter-spacing: 0.04em;
+    color: #9b9faa;
+
+    margin-top: 20px;
+  }
+
+  .title {
+    font-family: Verdana;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 1.21;
+    letter-spacing: 0.04em;
+    color: #212121;
+  }
+}
+
+.kcalItem {
+  display: flex;
+  justify-content: space-between;
+}
+
+@media screen and (min-width: 768px) {
+  .section {
+    display: flex;
+    padding-top: 91px;
+    padding-bottom: 91px;
+    max-height: 350px;
+    width: 768px;
+    padding-left: 87px;
+    padding-right: 39px;
+  }
+  /* .image {
+    display: block;
+    position: absolute;
+    transform: rotate(90deg);
+    bottom: -250px;
+    right: 250px;
+  } */
+  .daySection {
+    width: 50%;
+    margin-right: 60px;
+  }
+
+  .product {
+    width: 50%;
+    margin-top: 0px;
+  }
+  .productList {
+    margin-top: 22px;
+  }
+  .kcalList {
+    margin-top: 22px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .mainSection {
+    width: 535px;
+    /* background-image: url(../../assets/images/desctop/Layer-42\ 1.png); */
+  }
+  .section {
+    display: block;
+    padding-top: 292px;
+    padding-bottom: 162px;
+    max-height: 850px;
+  }
+
+  /* .image {
+    position: absolute;
+    top: -112px;
+    transform: rotate(0deg);
+  } */
+
+  .product {
+    margin-top: 60px;
+  }
+}
