@@ -16,7 +16,7 @@ export default function FooterInfo() {
   console.log(str.replace(/^(\d+)-(\d+)-(\d+)$/, `$3.$2.$1`));
   return (
     <section className={styles.mainSection}>
-      <ContainerStyled width={535}>
+      {/* <ContainerStyled width={535}> */}
       <div className={styles.section}>
         <div className={styles.daySection}>
           <span className={styles.title}>Сводка за {date ? date : ""}</span>
@@ -48,7 +48,7 @@ export default function FooterInfo() {
           <p className={styles.productList}> {products.join(", ")}ggggggggg</p>
         </div>
       </div>
-      </ContainerStyled>
+      {/* </ContainerStyled> */}
     </section>
   );
 }
