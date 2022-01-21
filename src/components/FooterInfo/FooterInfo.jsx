@@ -5,6 +5,7 @@ import {
   daySummary,
   notAllowedProducts,
 } from "../../redux/userData/userDataSelectors.js";
+import ContainerStyled from '../../components/_styled/Container.styled'
 
 export default function FooterInfo() {
   const summary = useSelector(daySummary);
