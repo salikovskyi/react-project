@@ -6,14 +6,10 @@ import { useEffect } from "react";
 import RegistrationForm from "./components/RegistrationForm/RegistrationForm";
 import CalorieForm from './components/DailyRateForm/CalorieForm'
 import LoginForm from "./components/LoginForm/LoginForm";
+import CalculatorPage from "./pages/Calculator/Calculator";
 function App() {
   return (
-    <ContainerStyled>
-      <h1>app</h1>
-      <CalorieForm/>
-      <RegistrationForm/>
-      <LoginForm/>
-    </ContainerStyled>
+      <CalculatorPage/>
   );
 }
 
