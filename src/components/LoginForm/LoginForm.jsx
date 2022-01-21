@@ -62,7 +62,7 @@ const LoginForm = () => {
         onSubmit={(values) => handleSubmit(values)}
       >
         <Form>
-          <FormControl label="Логин *" name="email" type="email" />
+          <FormControl label="Почта *" name="email" type="email" />
           <FormControl label="Пароль *" type="password" name="password" />
           <div className={css.btn_container}>
             <button type="submit" className={css.form_btn}>
