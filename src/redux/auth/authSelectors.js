@@ -1,4 +1,3 @@
 // тут вытаскивайте любые селекторы которые вам надо
 
-export const getIsLogIn = (state) => state.auth.isLoggedIn;
- 
+export const getIsLoggedIn = (state) => state.auth.isLoggedIn;

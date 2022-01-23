@@ -6,9 +6,8 @@ import Button from "../../_styled/Button.styled";
 import ContainerStyled from "../../_styled/Container.styled";
 import { getUserData } from "../../../redux/userData/userDataSelectors";
 import { useHistory } from "react-router";
-import {dailyRateInfo} from '../../../redux/userData/userDataOperations'
-import {getIsLogIn} from '../../../redux/auth/authSelectors'
-import {} from '../../../redux/auth/authOperations'
+import { dailyRateInfo } from "../../../redux/userData/userDataOperations";
+import { getIsLoggedIn } from "../../../redux/auth/authSelectors";
 
 const validationSchema = Yup.object().shape({
   height: Yup.number()
@@ -37,7 +36,6 @@ const validationSchema = Yup.object().shape({
     "Група крови должна быть обязательно указана!"
   ),
 });
-
 
 export default function CalorieForm({ showModal }) {
   const dispatch = useDispatch();
