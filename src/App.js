@@ -7,6 +7,7 @@ import RegistrationForm from "./components/RegistrationForm/RegistrationForm";
 import CalorieForm from './components/DailyRateForm/CalorieForm'
 import LoginForm from "./components/LoginForm/LoginForm";
 import CalculatorPage from "./pages/Calculator/Calculator";
+import CalorieModal from "./components/DailyRateForm/CalorieModal/CalorieModal";
 function App() {
   return (
       <CalculatorPage/>
