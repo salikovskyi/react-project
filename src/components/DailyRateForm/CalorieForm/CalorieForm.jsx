@@ -8,7 +8,7 @@ import { getUserData } from "../../../redux/userData/userDataSelectors";
 import { useHistory } from "react-router";
 import {
   dailyRateInfo,
-  userDaily,
+  userDaily
 } from "../../../redux/userData/userDataOperations";
 import { getIsLogIn } from "../../../redux/auth/authSelectors";
 
