@@ -68,7 +68,7 @@ const accountDataSlice = createSlice({
       state.isLoading = false;
     },
     [dailyRateInfo.fulfilled]: (state, { payload }) => {
-      state.unauthData = payload;
+      state.unauthData = payload.data;
       state.isLoading = false;
     },
     [userDaily.pending]: (state) => {

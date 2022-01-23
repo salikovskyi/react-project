@@ -1,13 +1,17 @@
 import css from "./CalorieForm.module.css";
 import * as Yup from "yup";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Field, Form, Formik } from "formik";
 import Button from "../../_styled/Button.styled";
 import ContainerStyled from "../../_styled/Container.styled";
 import { getUserData } from "../../../redux/userData/userDataSelectors";
 import { useHistory } from "react-router";
-import { dailyRateInfo } from "../../../redux/userData/userDataOperations";
-import { getIsLoggedIn } from "../../../redux/auth/authSelectors";
+import {
+  dailyRateInfo,
+  userDaily,
+} from "../../../redux/userData/userDataOperations";
+import { getIsLoggedIn, getUserId } from "../../../redux/auth/authSelectors";
 
 const validationSchema = Yup.object().shape({
   height: Yup.number()
@@ -37,25 +41,48 @@ const validationSchema = Yup.object().shape({
   ),
 });
 
-export default function CalorieForm({ showModal }) {
+const initialState = {
+  height: "",
+  age: "",
+  weight: "",
+  desiredWeight: "",
+  bloodType: "",
+};
+
+export default function CalorieForm({ openModal }) {
   const dispatch = useDispatch();
+  const isLoggedIn = useSelector(getIsLoggedIn);
+  const id = useSelector(getUserId);
+  const [form, setForm] = useState(initialState);
   const history = useHistory();
 
+  const onChangeForm = (e) => {
+    setForm((prevState) => ({
+      ...prevState,
+      [e.target.name]: Number(e.target.value),
+    }));
+  };
+
+  const onSubmitForm = () => {
+    if (isLoggedIn) {
+      dispatch(userDaily({ id, form }));
+      setForm(initialState);
+    } else {
+      dispatch(dailyRateInfo(form));
+      openModal();
+      Formik.resetForm();
+    }
+  };
   return (
     <div className={css.form_section}>
       <ContainerStyled width={745}>
         <Formik
           validationSchema={validationSchema}
-          initialValues={{
-            height: "",
-            age: "",
-            weight: "",
-            desiredWeight: "",
-            bloodType: "",
-          }}
+          initialValues={initialState}
+          onSubmit={onSubmitForm}
         >
           {({ errors, touched, values }) => (
-            <Form className={css.form}>
+            <Form className={css.form} onChange={onChangeForm}>
               <h2 className={css.form_title}>
                 Просчитай свою суточную норму калорий прямо сейчас
               </h2>
