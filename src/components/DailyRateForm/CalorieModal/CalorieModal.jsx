@@ -9,8 +9,9 @@ import { useSelector } from "react-redux";
 import { useState } from "react";
 import Button from "../../_styled/Button.styled";
 
+const portalContainer = document.getElementById("modal-root");
+
 export default function CalorieModal() {
-  const portalContainer = document.getElementById("modal-root");
   const notAllowedList = useSelector(notAllowedProducts);
   const daySum = useSelector(daySummary);
   const [value, setValue] = useState("");
@@ -19,7 +20,7 @@ export default function CalorieModal() {
     product.toLowerCase().includes(value)
   );
 
-  return ReactDOM.createPortal(
+  const modal = (
     <div className={css.modal_section}>
       <h2 className={css.modal_title}>
         Ваша рекомендуемая суточная норма калорий составляет
@@ -45,7 +46,8 @@ export default function CalorieModal() {
       <Link to="/registration">
         <Button>Начать худеть</Button>
       </Link>
-    </div>,
-    portalContainer
+    </div>
   );
+  return <h1>CALORIESmODAL</h1>;
+  // ReactDOM.createPortal(modal, portalContainer);
 }

@@ -2,7 +2,7 @@ import css from "./CalorieForm.module.css";
 import * as Yup from "yup";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Field, Form, Formik } from "formik";
+import { Field, Form, Formik, useFormik } from "formik";
 import Button from "../../_styled/Button.styled";
 import ContainerStyled from "../../_styled/Container.styled";
 import { getUserData } from "../../../redux/userData/userDataSelectors";
@@ -79,10 +79,18 @@ export default function CalorieForm({ openModal }) {
         <Formik
           validationSchema={validationSchema}
           initialValues={initialState}
-          onSubmit={onSubmitForm}
+          onSubmit={(values) => console.log(values)}
         >
-          {({ errors, touched, values }) => (
-            <Form className={css.form} onChange={onChangeForm}>
+          {({ errors, touched, values, resetForm }) => (
+            <Form
+              className={css.form}
+              onChange={onChangeForm}
+              onSubmit={(e) => {
+                e.preventDefault();
+                console.log(`reset form`);
+                resetForm();
+              }}
+            >
               <h2 className={css.form_title}>
                 Просчитай свою суточную норму калорий прямо сейчас
               </h2>
@@ -193,7 +201,9 @@ export default function CalorieForm({ openModal }) {
                   )}
                 </div>
               </div>
-              <Button>Похудеть</Button>
+              <Button onClick={() => console.log("button click")}>
+                Похудеть
+              </Button>
             </Form>
           )}
         </Formik>
