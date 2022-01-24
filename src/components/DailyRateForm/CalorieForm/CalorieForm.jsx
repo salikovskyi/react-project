@@ -7,9 +7,11 @@ import { getUserData } from "../../../redux/userData/userDataSelectors";
 import { useHistory } from "react-router";
 import {
   dailyRateInfo,
-  userDaily,
+  userDaily
 } from "../../../redux/userData/userDataOperations";
-import { getIsLogIn } from "../../../redux/auth/authSelectors";
+import { getIsLoggedIn, getUserId } from "../../../redux/auth/authSelectors";
+import {openModal , closeModal} from '../../../redux/userData/userDataSlice'
+import convertFormValuesToNumbers from '../../../utils/helpers/convertFormValuesToNumbers'
 
 const validationSchema = Yup.object().shape({
   height: Yup.number()
@@ -39,26 +41,42 @@ const validationSchema = Yup.object().shape({
   ),
 });
 
-export default function CalorieForm({ showModal }) {
+const initialState = {
+  height: "",
+  age: "",
+  weight: "",
+  desiredWeight: "",
+  bloodType: "",
+};
+
+export default function CalorieForm() {
   const dispatch = useDispatch();
+  const isLoggedIn = useSelector(getIsLoggedIn);
+  const id = useSelector(getUserId);
   const history = useHistory();
 
-  // {getIsLogIn ? dispatch(dailyRateInfo())}
+  const onSubmitForm = (values) => {
+    if (isLoggedIn) {
+      dispatch(userDaily(convertFormValuesToNumbers({ id, values })));
+    } else {
+      dispatch(dailyRateInfo(convertFormValuesToNumbers(values)));
+    }
+
+
+  };
 
   return (
     <div className={css.form_section}>
-      <Formik
-        validationSchema={validationSchema}
-        initialValues={{
-          height: "",
-          age: "",
-          weight: "",
-          desiredWeight: "",
-          bloodType: "",
-        }}
-      >
-        {({ errors, touched, values }) => (
-          <Form className={css.form}>
+      <Formik validationSchema={validationSchema} initialValues={initialState}>
+        {({ errors, touched, values, resetForm }) => (
+          <Form
+            className={css.form}
+            onSubmit={(e) => {
+              e.preventDefault();
+              onSubmitForm(values);
+              resetForm();
+            }}
+          >
             <h2 className={css.form_title}>
               Узнай свою суточную норму калорий
             </h2>
