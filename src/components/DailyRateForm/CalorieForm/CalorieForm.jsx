@@ -1,9 +1,15 @@
 import css from "./CalorieForm.module.css";
 import * as Yup from "yup";
 import { useDispatch, useSelector } from "react-redux";
-import { Field, Form, Formik, validateYupSchema } from "formik";
+import { Field, Form, Formik } from "formik";
 import Button from "../../_styled/Button.styled";
 import { getUserData } from "../../../redux/userData/userDataSelectors";
+import { useHistory } from "react-router";
+import {
+  dailyRateInfo,
+  userDaily,
+} from "../../../redux/userData/userDataOperations";
+import { getIsLogIn } from "../../../redux/auth/authSelectors";
 
 const validationSchema = Yup.object().shape({
   height: Yup.number()
@@ -35,7 +41,9 @@ const validationSchema = Yup.object().shape({
 
 export default function CalorieForm({ showModal }) {
   const dispatch = useDispatch();
-  const userData = useSelector(getUserData);
+  const history = useHistory();
+
+  // {getIsLogIn ? dispatch(dailyRateInfo())}
 
   return (
     <div className={css.form_section}>
@@ -123,7 +131,7 @@ export default function CalorieForm({ showModal }) {
                     id="first"
                     type="radio"
                     value="1"
-                    name="bloodBtn"
+                    name="bloodType"
                     className={css.form_radioField}
                   />
                   <label htmlFor="first" className={css.form_radioLabel}>
@@ -133,7 +141,7 @@ export default function CalorieForm({ showModal }) {
                     id="second"
                     type="radio"
                     value="2"
-                    name="bloodBtn"
+                    name="bloodType"
                     className={css.form_radioField}
                   />
                   <label htmlFor="second" className={css.form_radioLabel}>
@@ -143,7 +151,7 @@ export default function CalorieForm({ showModal }) {
                     id="third"
                     type="radio"
                     value="3"
-                    name="bloodBtn"
+                    name="bloodType"
                     className={css.form_radioField}
                   />
                   <label htmlFor="third" className={css.form_radioLabel}>
@@ -153,7 +161,7 @@ export default function CalorieForm({ showModal }) {
                     id="fourth"
                     type="radio"
                     value="4"
-                    name="bloodBtn"
+                    name="bloodType"
                     className={css.form_radioField}
                   />
                   <label htmlFor="fourth" className={css.form_radioLabel}>
