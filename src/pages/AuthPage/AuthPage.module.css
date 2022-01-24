@@ -1,0 +1,37 @@
+
+  @media screen and (min-width: 768px) {
+    .registerSection{
+      background-image: url(../../assets/images/tablet/tabletStrawberry1x.png),url(../../assets/images/tablet/tabletleaflets1x.png),url(../../assets/images/tablet/bananaTablet1x.png),url(../../assets/images/tablet/tabletBg1x.png);
+      background-position: bottom 200px right, bottom 260px right,bottom right,bottom right;
+      background-repeat: no-repeat; 
+      height: 1024px; 
+      background-size: 305px 384px, 740px 745px,491px 431px,521px 563px;
+    }
+  }
+  @media screen and (min-width: 768px) and (min-device-pixel-ratio: 2),
+    screen and (min-width: 768px) and (-webkit-min-device-pixel-ratio: 2),
+    screen and (min-width: 768px) and (min-resolution: 192dpi),
+    screen and (min-width: 768px) and (min-resolution: 2dppx) {
+    .registerSection{
+        background-image: url(../../assets/images/tablet/tabletStrawberry2x.png),url(../../assets/images/tablet/tabletleaflets2x.png),url(../../assets/images/tablet/bananaTablet2x.png),url(../../assets/images/tablet/tabletBg2x.png);
+       
+    }
+  }
+  @media screen and (min-width: 1280px) {
+    .registerSection{
+      background-image: url(../../assets/images/desctop/descktop.fruites.register.png),url(../../assets/images/desctop/desctopBg1x.png);
+      height: 850px;
+      background-position: bottom right;
+      background-size: 941px 850px, 603px 816px;
+    }
+    
+  }
+  @media screen and (min-width: 1280px) and (min-device-pixel-ratio: 2),
+    screen and (min-width: 1280px) and (-webkit-min-device-pixel-ratio: 2),
+    screen and (min-width: 1280px) and (min-resolution: 192dpi),
+    screen and (min-width: 1280px) and (min-resolution: 2dppx) {
+        .registerSection{
+        background-image: url(../../assets/images/desctop/descktop.fruites.register-2x.png),url(../../assets/images/desctop/desctopBg2x.png);
+        
+    }
+  }
