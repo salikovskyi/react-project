@@ -11,8 +11,7 @@ import {
 } from "../../../redux/userData/userDataOperations";
 import { getIsLoggedIn, getUserId } from "../../../redux/auth/authSelectors";
 import {openModal , closeModal} from '../../../redux/userData/userDataSlice'
-
-
+import convertFormValuesToNumbers from '../../../utils/helpers/convertFormValuesToNumbers'
 
 const validationSchema = Yup.object().shape({
   height: Yup.number()
@@ -58,11 +57,12 @@ export default function CalorieForm() {
 
   const onSubmitForm = (values) => {
     if (isLoggedIn) {
-      dispatch(userDaily({ id, values }));
+      dispatch(userDaily(convertFormValuesToNumbers({ id, values })));
     } else {
-      dispatch(dailyRateInfo(values));
+      dispatch(dailyRateInfo(convertFormValuesToNumbers(values)));
     }
-    dispatch(openModal())
+
+
   };
 
   return (
