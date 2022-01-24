@@ -1,8 +1,42 @@
-
-
+@media screen and (min-width: 320px) {
+  .bg {
+    background-image: linear-gradient(to bottom, #ffffff 60%, #f0f1f3 60%);
+  }
+}
+@media screen and (min-width: 768px) {
+  .bg {
+    background-image: url(../../assets/images/tablet/tabletleafletsBottom1x.png),
+      linear-gradient(to bottom, #ffffff 73%, #f0f1f3 73%);
+    background-repeat: no-repeat;
+    background-position: bottom right;
+    background-size: 369px 362px, cover;
+  }
+}
+@media screen and (min-width: 768px) and (min-device-pixel-ratio: 2),
+  screen and (min-width: 768px) and (-webkit-min-device-pixel-ratio: 2),
+  screen and (min-width: 768px) and (min-resolution: 192dpi),
+  screen and (min-width: 768px) and (min-resolution: 2dppx) {
+  .bg {
+    background-image: url(../../assets/images/tablet/tabletleafletsBottom2x.png),
+      linear-gradient(to bottom, #ffffff 73%, #f0f1f3 73%);
+  }
+}
 @media screen and (min-width: 1280px) {
-    .calc_page {
-      display: flex;
-      justify-content: center;
-    }
+  .bg {
+    background-image: url(../../assets/images/desctop/Layerdesktop1x.png),
+      linear-gradient(to right, #ffffff 55%, #f0f1f3 55%);
+    background-size: 505px 815px, cover;
+  }
+  .position {
+    display: flex;
+  }
+}
+@media screen and (min-width: 1280px) and (min-device-pixel-ratio: 2),
+  screen and (min-width: 1280px) and (-webkit-min-device-pixel-ratio: 2),
+  screen and (min-width: 1280px) and (min-resolution: 192dpi),
+  screen and (min-width: 1280px) and (min-resolution: 2dppx) {
+  .bg {
+    background-image: url(../../assets/images/desctop/Layerdesktop2x.png),
+      linear-gradient(to right, #ffffff 55%, #f0f1f3 55%);
+  }
 }
