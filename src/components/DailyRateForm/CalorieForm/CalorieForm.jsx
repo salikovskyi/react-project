@@ -9,7 +9,7 @@ import {
   dailyRateInfo,
   userDaily
 } from "../../../redux/userData/userDataOperations";
-import { getIsLogIn } from "../../../redux/auth/authSelectors";
+import { getIsLoggedIn, getUserId } from "../../../redux/auth/authSelectors";
 
 
 
@@ -41,25 +41,44 @@ const validationSchema = Yup.object().shape({
   ),
 });
 
-export default function CalorieForm({ showModal }) {
+const initialState = {
+  height: "",
+  age: "",
+  weight: "",
+  desiredWeight: "",
+  bloodType: "",
+};
+
+export default function CalorieForm({ openModal }) {
   const dispatch = useDispatch();
+  const isLoggedIn = useSelector(getIsLoggedIn);
+  const id = useSelector(getUserId);
   const history = useHistory();
 
+<<<<<<< HEAD
   // {getIsLogIn ? dispatch(dailyRateInfo())}
+=======
+  const onSubmitForm = (values) => {
+    if (isLoggedIn) {
+      dispatch(userDaily({ id, values }));
+    } else {
+      dispatch(dailyRateInfo(values));
+    }
+  };
+
+>>>>>>> dev
   return (
     <div className={css.form_section}>
-      <Formik
-        validationSchema={validationSchema}
-        initialValues={{
-          height: "",
-          age: "",
-          weight: "",
-          desiredWeight: "",
-          bloodType: "",
-        }}
-      >
-        {({ errors, touched, values }) => (
-          <Form className={css.form}>
+      <Formik validationSchema={validationSchema} initialValues={initialState}>
+        {({ errors, touched, values, resetForm }) => (
+          <Form
+            className={css.form}
+            onSubmit={(e) => {
+              e.preventDefault();
+              onSubmitForm(values);
+              resetForm();
+            }}
+          >
             <h2 className={css.form_title}>
               Узнай свою суточную норму калорий
             </h2>
