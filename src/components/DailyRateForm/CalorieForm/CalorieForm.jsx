@@ -3,7 +3,6 @@ import * as Yup from "yup";
 import { useDispatch, useSelector } from "react-redux";
 import { Field, Form, Formik, validateYupSchema } from "formik";
 import Button from "../../_styled/Button.styled";
-import ContainerStyled from "../../_styled/Container.styled";
 import { getUserData } from "../../../redux/userData/userDataSelectors";
 
 const validationSchema = Yup.object().shape({
@@ -34,29 +33,29 @@ const validationSchema = Yup.object().shape({
   ),
 });
 
-export default function CalorieForm({showModal}) {
+export default function CalorieForm({ showModal }) {
   const dispatch = useDispatch();
   const userData = useSelector(getUserData);
 
   return (
     <div className={css.form_section}>
-      <ContainerStyled width={745}>
-        <Formik
-          validationSchema={validationSchema}
-          initialValues={{
-            height: "",
-            age: "",
-            weight: "",
-            desiredWeight: "",
-            bloodType: "",
-          }}
-        >
-          {({ errors, touched, values }) => (
-            <Form className={css.form}>
-              <h2 className={css.form_title}>
-                Просчитай свою суточную норму калорий прямо сейчас
-              </h2>
-              <div className={css.form_wrapper}>
+      <Formik
+        validationSchema={validationSchema}
+        initialValues={{
+          height: "",
+          age: "",
+          weight: "",
+          desiredWeight: "",
+          bloodType: "",
+        }}
+      >
+        {({ errors, touched, values }) => (
+          <Form className={css.form}>
+            <h2 className={css.form_title}>
+              Узнай свою суточную норму калорий
+            </h2>
+            <div className={css.form_wrapper}>
+              <div className={css.form_value}>
                 <label className={css.form_label}>
                   <Field
                     className={`${css.input} ${
@@ -99,6 +98,8 @@ export default function CalorieForm({showModal}) {
                 {touched.weight && errors.weight && (
                   <p className={css.error}>{errors.weight}</p>
                 )}
+              </div>
+              <div>
                 <label className={css.form_label}>
                   <Field
                     className={`${css.input} ${
@@ -163,11 +164,13 @@ export default function CalorieForm({showModal}) {
                   )}
                 </div>
               </div>
+            </div>
+            <div className={css.button}>
               <Button>Похудеть</Button>
-            </Form>
-          )}
-        </Formik>
-      </ContainerStyled>
+            </div>
+          </Form>
+        )}
+      </Formik>
     </div>
   );
 }
