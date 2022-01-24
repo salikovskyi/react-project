@@ -1,0 +1,75 @@
+.header_section {
+  padding-top: 18px;
+  padding-bottom: 18px;
+  border-bottom: 2px solid #e0e0e0;
+}
+.header_wrapper {
+  display: flex;
+  align-items: center;
+}
+.header_logo {
+  width: 47px;
+  height: 44px;
+  margin-right: 63px;
+}
+.header_links {
+  display: flex;
+  justify-content: flex-end;
+}
+.linknav {
+  font-family: "Gotham Pro", sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 0.9;
+  text-align: right;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+
+  color: #212121;
+}
+.linknav:not(:last-child) {
+  margin-right: 15px;
+}
+.activeLink {
+  color: #9b9faa;
+}
+/* .header_underline {
+    displ
+} */
+
+/* MEDIA */
+
+@media screen and (min-width: 768px) {
+  .header_logo {
+    margin-right: 270px;
+    width: 162px;
+    height: 44px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .header_logo {
+    width: 166px;
+    height: 66px;
+    margin-right: 43px;
+  }
+  .header_section {
+    padding-top: 82px;
+    border: none;
+  }
+  .header_wrapper {
+    align-items: end;
+    position: relative;
+  }
+  .header_underline {
+    height: 40px;
+    width: 3px;
+    position: absolute;
+    left: 187px;
+    bottom: -11px;
+    background-color: #E0E0E0;
+    color: #E0E0E0;
+    border:2px;
+  }
+}
