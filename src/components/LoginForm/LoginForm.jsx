@@ -13,9 +13,9 @@ const validationSchema = Yup.object().shape({
   email: Yup.string()
     .email(`* E-mail адрес введен неверно!`)
     .min(5, "* Минимум 5 символов")
-    .required("*Поле обязательно!"),
+    .required("*Обязательное поле!"),
   password: Yup.string()
-    .required("* Поле обязательно!")
+    .required("Обязательное поле!")
     .min(3, "* Минимум 3 символа")
     .max(20, "* Максимум 20 символов"),
 });
@@ -62,7 +62,7 @@ const LoginForm = () => {
         onSubmit={(values) => handleSubmit(values)}
       >
         <Form>
-          <FormControl label="Логин *" name="email" type="email" />
+          <FormControl label="Почта *" name="email" type="email" />
           <FormControl label="Пароль *" type="password" name="password" />
           <div className={css.btn_container}>
             <button type="submit" className={css.form_btn}>

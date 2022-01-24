@@ -48,6 +48,5 @@ export default function CalorieModal() {
       </Link>
     </div>
   );
-  return <h1>CALORIESmODAL</h1>;
-  // ReactDOM.createPortal(modal, portalContainer);
+  return ReactDOM.createPortal(modal, portalContainer);
 }
