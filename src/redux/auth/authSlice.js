@@ -12,6 +12,7 @@ const initialState = {
   user: { username: "", email: "" },
   token: null,
   sid: null,
+  userId: null,
   isLoading: false,
   isLoggedIn: false,
   error: null,
