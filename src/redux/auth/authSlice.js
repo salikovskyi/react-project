@@ -15,6 +15,7 @@ const initialState = {
   isLoading: false,
   isLoggedIn: false,
   error: null,
+  id: null,
 };
 
 const authSlice = createSlice({
@@ -30,6 +31,7 @@ const authSlice = createSlice({
       state.isLoggedIn = true;
       state.user.email = payload.email;
       state.user.username = payload.username;
+      state.id = payload.id;
     },
     [fetchUserInfo.rejected]: (state, { payload }) => {
       state.isLoading = false;
@@ -40,9 +42,7 @@ const authSlice = createSlice({
       state.error = null;
     },
     [loginUser.fulfilled]: (state, { payload }) => {
-      console.log(
-        'loging'
-      );
+      console.log("loging");
       SlimmomAPI.setToken(payload.accessToken);
       state.token = payload.accessToken;
       state.sid = payload.sid;
@@ -50,6 +50,7 @@ const authSlice = createSlice({
       state.isLoggedIn = true;
       state.user.email = payload.user.email;
       state.user.username = payload.user.username;
+      state.id = payload.user.id;
     },
     [loginUser.rejected]: (state, { payload }) => {
       state.isLoading = false;
@@ -66,6 +67,7 @@ const authSlice = createSlice({
       state.user.email = "";
       state.user.username = "";
       state.token = null;
+      state.sid = null;
       state.id = null;
     },
     [logoutUser.rejected]: (state, { payload }) => {
@@ -77,13 +79,12 @@ const authSlice = createSlice({
       state.error = null;
     },
     [registerUser.fulfilled]: (state, { payload }) => {
-      console.log(
-       'reg'
-      );
+      console.log("reg");
       state.isLoading = false;
       state.sid = payload.id;
       state.user.email = payload.email;
       state.user.username = payload.username;
+      state.id = payload.id;
     },
     [registerUser.rejected]: (state, { payload }) => {
       state.isLoading = false;
