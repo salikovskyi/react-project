@@ -9,7 +9,7 @@ import LoginForm from "./components/LoginForm/LoginForm";
 import CalculatorPage from "./pages/Calculator/Calculator";
 function App() {
   return (
-      <CalculatorPage/>
+      <  CalculatorPage />
   );
 }
 
