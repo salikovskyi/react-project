@@ -10,6 +10,7 @@ import {
   userDaily
 } from "../../../redux/userData/userDataOperations";
 import { getIsLoggedIn, getUserId } from "../../../redux/auth/authSelectors";
+import {openModal , closeModal} from '../../../redux/userData/userDataSlice'
 
 
 
@@ -49,24 +50,21 @@ const initialState = {
   bloodType: "",
 };
 
-export default function CalorieForm({ openModal }) {
+export default function CalorieForm() {
   const dispatch = useDispatch();
   const isLoggedIn = useSelector(getIsLoggedIn);
   const id = useSelector(getUserId);
   const history = useHistory();
 
-<<<<<<< HEAD
-  // {getIsLogIn ? dispatch(dailyRateInfo())}
-=======
   const onSubmitForm = (values) => {
     if (isLoggedIn) {
       dispatch(userDaily({ id, values }));
     } else {
       dispatch(dailyRateInfo(values));
     }
+    dispatch(openModal())
   };
 
->>>>>>> dev
   return (
     <div className={css.form_section}>
       <Formik validationSchema={validationSchema} initialValues={initialState}>
