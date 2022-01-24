@@ -12,6 +12,8 @@ import {
 } from "../../../redux/userData/userDataOperations";
 import { getIsLogIn } from "../../../redux/auth/authSelectors";
 
+
+
 const validationSchema = Yup.object().shape({
   height: Yup.number()
     .min(100, "Минимальный рост 100см")
@@ -45,7 +47,6 @@ export default function CalorieForm({ showModal }) {
   const history = useHistory();
 
   // {getIsLogIn ? dispatch(dailyRateInfo())}
-
   return (
     <div className={css.form_section}>
       <ContainerStyled width={745}>
