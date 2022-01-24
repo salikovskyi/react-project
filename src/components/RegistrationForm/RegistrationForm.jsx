@@ -10,14 +10,14 @@ const initialForm = { username: "", email: "", password: "" };
 
 const validationSchema = Yup.object().shape({
   username: Yup.string()
-    .required("*Поле обязательно!")
+    .required("*Обязательное поле!")
     .min(2, "* Минимум 2 символa"),
   email: Yup.string()
     .email(`* E-mail адрес введен неверно!`)
     .min(5, "* Минимум 5 символов")
-    .required("*Поле обязательно!"),
+    .required("*Обязательное поле!"),
   password: Yup.string()
-    .required("* Поле обязательно!")
+    .required("* Обязательное поле!")
     .min(3, "* Минимум 3 символа")
     .max(20, "* Максимум 20 символов"),
 });
@@ -43,7 +43,7 @@ const RegistrationForm = () => {
       >
         <Form>
           <FormControl label="Имя *" type="text" name="username" />
-          <FormControl label="Логин *" name="email" type="email" />
+          <FormControl label="Почта *" name="email" type="email" />
           <FormControl label="Пароль *" type="password" name="password" />
           <div className={css.btn_container}>
             <button type="submit" className={css.form_btn}>
