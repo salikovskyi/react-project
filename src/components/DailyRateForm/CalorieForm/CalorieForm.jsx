@@ -1,6 +1,5 @@
 import css from "./CalorieForm.module.css";
 import * as Yup from "yup";
-import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Field, Form, Formik, useFormik } from "formik";
 import Button from "../../_styled/Button.styled";
@@ -53,7 +52,6 @@ export default function CalorieForm({ openModal }) {
   const dispatch = useDispatch();
   const isLoggedIn = useSelector(getIsLoggedIn);
   const id = useSelector(getUserId);
-  const [form, setForm] = useState(initialState);
   const history = useHistory();
 
   const onChangeForm = (e) => {
@@ -63,14 +61,11 @@ export default function CalorieForm({ openModal }) {
     }));
   };
 
-  const onSubmitForm = () => {
+  const onSubmitForm = (values) => {
     if (isLoggedIn) {
-      dispatch(userDaily({ id, form }));
-      setForm(initialState);
+      dispatch(userDaily({ id, values }));
     } else {
-      dispatch(dailyRateInfo(form));
-      openModal();
-      Formik.resetForm();
+      dispatch(dailyRateInfo(values));
     }
   };
   return (
@@ -79,7 +74,6 @@ export default function CalorieForm({ openModal }) {
         <Formik
           validationSchema={validationSchema}
           initialValues={initialState}
-          onSubmit={(values) => console.log(values)}
         >
           {({ errors, touched, values, resetForm }) => (
             <Form
@@ -87,7 +81,7 @@ export default function CalorieForm({ openModal }) {
               onChange={onChangeForm}
               onSubmit={(e) => {
                 e.preventDefault();
-                console.log(`reset form`);
+                onSubmitForm(values);
                 resetForm();
               }}
             >
