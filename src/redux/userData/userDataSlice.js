@@ -29,11 +29,20 @@ const initialState = {
   notAllowedProducts: [],
   isLoading: false,
   error: null,
+  isModalOpen: false,
 };
 
 const accountDataSlice = createSlice({
   name: "account",
   initialState,
+  reducers: {
+    openModal: (state) => {
+      state.isModalOpen = true;
+    },
+    closeModal: (state) => {
+      state.isModalOpen = false;
+    },
+  },
   extraReducers: {
     [loginUser.pending]: (state) => {
       state.error = null;
@@ -70,6 +79,7 @@ const accountDataSlice = createSlice({
     [dailyRateInfo.fulfilled]: (state, { payload }) => {
       state.unauthData = payload;
       state.isLoading = false;
+      state.isModalOpen = true;
     },
     [userDaily.pending]: (state) => {
       state.error = null;
@@ -129,3 +139,4 @@ const accountDataSlice = createSlice({
 });
 
 export default accountDataSlice.reducer;
+export const { openModal, closeModal } = accountDataSlice.actions;
