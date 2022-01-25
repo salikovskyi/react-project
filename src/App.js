@@ -13,8 +13,9 @@ import LoginForm from "./components/LoginForm/LoginForm";
 import CalculatorPage from "./pages/Calculator/Calculator";
 import CalorieModal from "./components/DailyRateForm/CalorieModal/CalorieModal";
 import Diary from "./pages/Diary";
+import MainPage from "./pages/MainPage";
 function App() {
-  return <Diary />;
+  return <CalculatorPage />;
 }
 
 export default App;
