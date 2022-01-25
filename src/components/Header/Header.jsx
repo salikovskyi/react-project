@@ -22,7 +22,7 @@ export default function Header() {
         <Container>
           {!isLoggedIn && (
             <div className={css.header_wrapper}>
-              <picture class={css.header_logo}>
+              <picture className={css.header_logo}>
                 <source srcSet={logoDesc} media="(min-width: 1280px)" />
                 <source srcSet={logoTablet} media="(min-width: 768px)" />
                 <img src={logoPhone} alt="logo" />
@@ -30,19 +30,15 @@ export default function Header() {
               <hr className={css.header_underline} />
               <div className={css.header_links}>
                 <NavLink
-                  exact
                   to="/login"
                   className={css.linknav}
-                  exact
                   activeClassName={css.activeLink}
                 >
                   вход
                 </NavLink>
                 <NavLink
-                  exact
                   to="/registration"
                   className={css.linknav}
-                  exact
                   activeClassName={css.activeLink}
                 >
                   регистрация
@@ -53,7 +49,7 @@ export default function Header() {
 
           {isLoggedIn && (
             <div className={css.header_login_wrapper}>
-              <picture class={css.header_login_logo}>
+              <picture className={css.header_login_logo}>
                 <source srcSet={logoDesc} media="(min-width: 1280px)" />
                 <source srcSet={logoTablet} media="(min-width: 768px)" />
                 <img src={logoTablet} alt="logo" />

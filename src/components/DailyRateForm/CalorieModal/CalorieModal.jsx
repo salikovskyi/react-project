@@ -23,14 +23,17 @@ export default function CalorieModal() {
 
   useEffect(() => {
     // Your code here
-    window.addEventListener("keydown", closeFuckingModal);
+    window.addEventListener("keydown", onEscFuckingClose);
     return () => {
-      window.removeEventListener("keydown", closeFuckingModal);
+      window.removeEventListener("keydown", onEscFuckingClose);
     };
   }, []);
 
-  function closeFuckingModal(e) {
+  function closeFuckingModal() {
     dispatch(closeModal());
+  }
+
+  function onEscFuckingClose(e) {
     if (e.code === "Escape") {
       dispatch(closeModal());
     }
