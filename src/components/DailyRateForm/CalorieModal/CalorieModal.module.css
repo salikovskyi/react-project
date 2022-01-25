@@ -137,6 +137,9 @@
   .svg {
     display: block;
   }
+  .overlay {
+    top: 80px
+  }
 }
 
 @media screen and (min-width: 1200px) {
