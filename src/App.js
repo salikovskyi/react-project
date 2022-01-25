@@ -15,14 +15,15 @@ import CalculatorPage from "./pages/Calculator/Calculator";
 import CalorieModal from "./components/DailyRateForm/CalorieModal/CalorieModal";
 import Diary from "./pages/Diary";
 import MainPage from "./pages/MainPage";
+
+
 function App() {
-<<<<<<< HEAD
-return (<div>
-<Header/>
-   </div>);
-=======
-  return <CalculatorPage />;
->>>>>>> dev
+  return (
+  <div>
+    <Header/>
+  {/* <CalculatorPage />   */}
+  </div>
+  );
 }
 
 export default App;
