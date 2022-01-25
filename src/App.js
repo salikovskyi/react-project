@@ -7,6 +7,7 @@ import {
   registerUser,
 } from "./redux/auth/authOperations";
 import { useEffect } from "react";
+import Header from "./components/Header/Header";
 import AuthPage from "./pages/AuthPage";
 import CalorieForm from "./components/DailyRateForm/CalorieForm";
 import LoginForm from "./components/LoginForm/LoginForm";
