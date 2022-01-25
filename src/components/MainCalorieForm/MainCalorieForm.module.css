@@ -1,0 +1,174 @@
+.input {
+  width: 100%;
+  margin-top: 30px;
+  border: 0;
+  border-bottom: 1px solid rgba(224, 224, 224, 1);
+}
+
+.error_input {
+  /* background-color: rgba(228, 31, 36, 0.4); */
+  border-bottom: 1px solid #e41f24;
+}
+
+.form {
+  min-width: 240px;
+  margin-left: auto;
+  margin-right: 25px;
+}
+.form_section {
+  padding-top: 110px;
+}
+.form_radioField {
+  color: orange;
+  background-color: orange;
+}
+input[type="radio"] + label:before {
+  content: "";
+  display: block;
+  width: 20px;
+  height: 20px;
+  margin-right: 14px;
+  position: absolute;
+  top: -2px;
+  left: 0;
+  border: 1px solid rgba(224, 224, 224, 1);
+  background-color: #fff;
+  border-radius: 50%;
+}
+input[type="radio"] + label {
+  display: inline-block;
+  cursor: pointer;
+  position: relative;
+  padding-left: 28px;
+  margin-right: 15px;
+}
+input[type="radio"]:checked + label:after {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: 26%;
+  left: 14%;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #fc842d;
+}
+
+input[type="radio"] {
+  display: none !important;
+}
+
+input[type="radio"] + label {
+  display: inline-block;
+  cursor: pointer;
+  position: relative;
+  padding-left: 28px;
+  margin-right: 25px;
+}
+
+.error {
+  color: #e41f24;
+}
+@media screen and (min-width: 320px) {
+  .form_title {
+    font-family: Verdana;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 1.44;
+    color: #212121;
+    width: 290px;
+    margin-bottom: 30px;
+  }
+  .input {
+    font-family: Verdana;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 1.21;
+    letter-spacing: 0.04em;
+    color: #9b9faa;
+    /* padding-bottom: 10px; */
+  }
+  .form_subtitle {
+    margin-top: 30px;
+    margin-bottom: 10px;
+    font-family: Verdana;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 1.21;
+    letter-spacing: 0.04em;
+    color: #9b9faa;
+  }
+  .form_radioLabel {
+    font-family: Verdana;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 1.21;
+    letter-spacing: 0.04em;
+    color: #9b9faa;
+  }
+  .form_wrapper {
+    margin-bottom: 25px;
+  }
+  .button {
+    margin-left: 57px;
+    margin-bottom: 80px;
+  }
+}
+@media screen and (min-width: 768px) {
+  .form_title {
+    font-family: Verdana;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 30px;
+    line-height: 1.215;
+    color: #212121;
+    width: 605px;
+    margin-bottom: 60px;
+    margin-top: 70px;
+  }
+  .form_section {
+    height: 1024px;
+  }
+  .button {
+    margin-left: 0px;
+    margin-top: 60px;
+  }
+  .form_wrapper {
+    max-width: 510px;
+    display: flex;
+  }
+  .input {
+    max-width: 240px;
+    margin-right: 15px;
+    margin-bottom: 40px;
+  }
+  .form {
+    margin-right: auto;
+  }
+  .form_value {
+    width: 50%;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .form_title {
+    font-size: 34px;
+    margin-bottom: 68px;
+    margin-top: 152px;
+  }
+  .button {
+    margin-left: 346px;
+    margin-bottom: 111px;
+    margin-top: 0px;
+  }
+  .form_value {
+    margin-right: 30px;
+    max-width: 42%;
+  }
+  .form_section {
+    height: 850px;
+  }
+}

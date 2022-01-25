@@ -1,6 +1,9 @@
 @media screen and (min-width: 320px) {
   .bg {
     background-image: linear-gradient(to bottom, #ffffff 60%, #f0f1f3 60%);
+    width: 320px;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 @media screen and (min-width: 768px) {
@@ -10,6 +13,9 @@
     background-repeat: no-repeat;
     background-position: bottom right;
     background-size: 369px 362px, cover;
+    width: 768px;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 @media screen and (min-width: 768px) and (min-device-pixel-ratio: 2),
@@ -26,6 +32,9 @@
     background-image: url(../../assets/images/desctop/Layerdesktop1x.png),
       linear-gradient(to right, #ffffff 55%, #f0f1f3 55%);
     background-size: 505px 815px, cover;
+    width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
   }
   .position {
     display: flex;
@@ -40,4 +49,3 @@
       linear-gradient(to right, #ffffff 55%, #f0f1f3 55%);
   }
 }
-
