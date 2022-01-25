@@ -85,7 +85,6 @@
 
 /* IS LOGIN STYLES */
 
-
 .header_login_wrapper {
   display: flex;
   align-items: center;
@@ -134,4 +133,11 @@
     color: #e0e0e0;
     border: 2px;
   }
+}
+
+
+
+/* MODAL */
+.header_button_modal_exit {
+  border: none;
 }
