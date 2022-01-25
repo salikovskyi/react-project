@@ -21,7 +21,7 @@ function App() {
   return (
   <div>
     <Header/>
-  {/* <CalculatorPage />   */}
+  <CalculatorPage />  
   </div>
   );
 }
