@@ -55,25 +55,27 @@ const LoginForm = () => {
   return (
     <div className={css.form_container}>
       <h2 className={css.form_title}>ВХОД</h2>
-      <Formik
-        initialValues={initialForm}
-        validationSchema={validationSchema}
-        onSubmit={(values) => handleSubmit(values)}
-      >
-        <Form>
-          <FormControl label="Логин *" name="email" type="email" />
-          <FormControl label="Пароль *" type="password" name="password" />
-          <div className={css.btn_container}>
-            <button type="submit" className={css.form_btn}>
-              Вход
-            </button>
-            <Link to="/registration">
-              <button type="button" className={css.secondary_form_btn}>
-                Регистрация
+      <Formik initialValues={initialForm} validationSchema={validationSchema}>
+        {({ values, resetForm }) => (
+          <Form
+            onSubmit={(e) => {
+              e.preventDefault();
+              handleSubmit(values);
+              resetForm();
+            }}
+          >
+            <FormControl label="Логин *" name="email" type="email" />
+            <FormControl label="Пароль *" type="password" name="password" />
+            <div className={css.btn_container}>
+              <button type="submit" className={css.form_btn}>
+                Вход
               </button>
-            </Link>
-          </div>
-        </Form>
+              <Link to="/registration" className={css.secondary_form_btn}>
+                  Регистрация
+              </Link>
+            </div>
+          </Form>
+        )}
       </Formik>
     </div>
   );
