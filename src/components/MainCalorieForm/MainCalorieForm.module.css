@@ -16,7 +16,7 @@
   margin-right: 25px;
 }
 .form_section {
-  /* padding-top: 160px; */
+  padding-top: 110px;
 }
 .form_radioField {
   color: orange;
@@ -79,7 +79,6 @@ input[type="radio"] + label {
     color: #212121;
     width: 290px;
     margin-bottom: 30px;
-    /* margin-top: 160px; */
   }
   .input {
     font-family: Verdana;
@@ -115,8 +114,8 @@ input[type="radio"] + label {
     margin-bottom: 25px;
   }
   .button {
-    margin-left: 72px;
-    margin-right: 72px;
+    margin-left: 57px;
+    margin-bottom: 80px;
   }
 }
 @media screen and (min-width: 768px) {
@@ -129,7 +128,10 @@ input[type="radio"] + label {
     color: #212121;
     width: 605px;
     margin-bottom: 60px;
-    margin-top: 180px;
+    margin-top: 70px;
+  }
+  .form_section {
+    height: 1024px;
   }
   .button {
     margin-left: 0px;
@@ -155,14 +157,18 @@ input[type="radio"] + label {
   .form_title {
     font-size: 34px;
     margin-bottom: 68px;
-    margin-top: 160px;
+    margin-top: 152px;
   }
   .button {
     margin-left: 346px;
     margin-bottom: 111px;
+    margin-top: 0px;
   }
   .form_value {
     margin-right: 30px;
     max-width: 42%;
+  }
+  .form_section {
+    height: 850px;
   }
 }

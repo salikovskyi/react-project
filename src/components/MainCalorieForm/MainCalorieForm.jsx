@@ -1,17 +1,17 @@
-import css from "./CalorieForm.module.css";
+import css from "./MainCalorieForm.module.css";
 import * as Yup from "yup";
 import { useDispatch, useSelector } from "react-redux";
 import { Field, Form, Formik } from "formik";
-import Button from "../../_styled/Button.styled";
-import { getUserData } from "../../../redux/userData/userDataSelectors";
+import Button from "../../components/_styled/Button.styled";
+import { getUserData } from "../../redux/userData/userDataSelectors";
 import { useHistory } from "react-router";
 import {
   dailyRateInfo,
-  userDaily
-} from "../../../redux/userData/userDataOperations";
-import { getIsLoggedIn, getUserId } from "../../../redux/auth/authSelectors";
-import {openModal , closeModal} from '../../../redux/userData/userDataSlice'
-import convertFormValuesToNumbers from '../../../utils/helpers/convertFormValuesToNumbers'
+  userDaily,
+} from "../../redux/userData/userDataOperations";
+import { getIsLoggedIn, getUserId } from "../../redux/auth/authSelectors";
+import { openModal, closeModal } from "../../redux/userData/userDataSlice";
+import convertFormValuesToNumbers from "../../utils/helpers/convertFormValuesToNumbers";
 
 const validationSchema = Yup.object().shape({
   height: Yup.number()
@@ -61,8 +61,6 @@ export default function CalorieForm() {
     } else {
       dispatch(dailyRateInfo(convertFormValuesToNumbers(values)));
     }
-
-
   };
 
   return (
@@ -78,7 +76,7 @@ export default function CalorieForm() {
             }}
           >
             <h2 className={css.form_title}>
-              Узнай свою суточную норму калорий
+              Просчитай свою суточную норму калорий прямо сейчас
             </h2>
             <div className={css.form_wrapper}>
               <div className={css.form_value}>

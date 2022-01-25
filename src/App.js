@@ -13,14 +13,12 @@ import CalorieForm from "./components/DailyRateForm/CalorieForm";
 import LoginForm from "./components/LoginForm/LoginForm";
 import CalculatorPage from "./pages/Calculator/Calculator";
 import CalorieModal from "./components/DailyRateForm/CalorieModal/CalorieModal";
-import ProductForm from "./components/ProductForm/ProductForm";
+import Diary from "./pages/Diary";
+import MainPage from "./pages/MainPage";
+import AuthPage from "./pages/AuthPage";
+
 function App() {
-  return (
-    <>
-      <CalendarPicker />
-      <ProductForm />
-    </>
-  );
+  return <div></div>;
 }
 
 export default App;

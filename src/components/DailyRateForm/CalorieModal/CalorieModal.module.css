@@ -1,0 +1,152 @@
+.modal_section {
+  position: fixed;
+  top: 63%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+ 
+  /* padding: 0 15px 50px; */
+}
+
+.overlay{
+  top: 126px;
+  position: fixed;
+  left: 0;
+  right: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(33, 33, 33, 0.12);
+  bottom: 0;
+  z-index: 1000;
+}
+
+
+.svg {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  top: 24px;
+  right: 24px;
+  cursor: pointer;
+  display: none;
+}
+
+.svg:hover {
+  fill: red;
+}
+.scroller {
+  font-family: Verdana;
+  overflow-y: scroll;
+  height: 130px;
+  font-size: 14px;
+  line-height: 1.21;
+  letter-spacing: 0.04em;
+  color: #9b9faa;
+  margin-bottom: 40px;
+  scrollbar-width: thin;
+}
+
+.modal_title {
+  font-family: Verdana;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 26px;
+  /* text-align: center; */
+  color: #212121;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.modal_daySummary {
+  font-family: Verdana;
+  font-weight: bold;
+  font-size: 48px;
+  line-height: 58px;
+  text-align: center;
+  letter-spacing: 0.04em;
+  color: #264061;
+  display: flex;
+  align-items: baseline;
+  margin-bottom: 30px;
+}
+.modal_span {
+  font-family: Verdana;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 19px;
+  letter-spacing: 0.04em;
+
+  color: #264061;
+}
+
+.products_title {
+  font-family: Verdana;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 17px;
+  letter-spacing: 0.04em;
+  margin-bottom: 22px;
+  color: #212121;
+}
+
+.products_item {
+  font-family: Verdana;
+  font-size: 14px;
+  line-height: 17px;
+  letter-spacing: 0.04em;
+  color: #9b9faa;
+  margin-bottom: 15px;
+}
+
+.wrapper {
+  padding: 0 20px;
+
+  padding-bottom: 15px;
+}
+.input {
+  position: relative;
+  width: 92%;
+  border: 0;
+  border-bottom: 1px solid #e0e0e0;
+  margin-bottom: 20px;
+}
+.input:focus {
+  outline: none;
+}
+
+.button {
+  margin-bottom: 10px;
+  display: block;
+  margin: 0 auto;
+}
+
+.button:hover {
+  transform: scaleX(1.1) scaleY(1.1);
+}
+
+@media screen and (min-width: 768px) {
+  .modal_section {
+    width: 594px;
+  }
+  .wrapper {
+    padding: 0 43px;
+  }
+  .svg {
+    display: block;
+  }
+  .overlay {
+    top: 80px
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .modal_section {
+    width: 690px;
+  }
+  .wrapper {
+    padding: 0 90px;
+  }
+}

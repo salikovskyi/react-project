@@ -1,0 +1,43 @@
+
+  .header_login_user_wrapper {
+    display: flex;
+    justify-content: flex-end;
+    align-items: baseline;
+    position: relative;
+  }
+  
+  .header_login_user_nickname {
+    margin-right: 30px;
+  }
+  
+  .header_login_user_underline {
+      height: 36px;
+      width: 2px;
+      right: 63px;
+      bottom: -8px;
+      position: absolute;
+      background-color: #E0E0E0;
+      color: #E0E0E0;
+      border: 2px;
+  }
+  
+  .login_linknav {
+    font-family: "Gotham Pro", sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 0.9;
+    text-align: right;
+    letter-spacing: 0.04em;
+    color: #212121;
+  }
+  
+  /* LOGIN MEDIA */
+  
+
+  @media screen and (min-width: 768px) {
+      .header_login_user_menu {
+          display: none;
+      }
+      
+  }

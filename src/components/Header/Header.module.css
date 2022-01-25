@@ -1,0 +1,143 @@
+.header_section {
+  padding-top: 18px;
+  padding-bottom: 18px;
+  border-bottom: 2px solid #e0e0e0;
+}
+.header_wrapper {
+  display: flex;
+  align-items: center;
+}
+.header_logo {
+  width: 47px;
+  height: 44px;
+  margin-right: 63px;
+}
+.header_links {
+  display: flex;
+  justify-content: flex-end;
+}
+.linknav {
+  font-family: "Gotham Pro", sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 0.9;
+  text-align: right;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+
+  color: #212121;
+}
+.linknav:not(:last-child) {
+  margin-right: 15px;
+}
+.activeLink {
+  color: #9b9faa;
+}
+/* .header_underline {
+    displ
+} */
+.header_user_tablet {
+  display: none;
+}
+
+/* MEDIA */
+
+@media screen and (min-width: 768px) {
+  .header_logo {
+    margin-right: 270px;
+    width: 162px;
+    height: 44px;
+  }
+  .header_login_user_menu {
+    display: none;
+  }
+  .header_user_tablet {
+    display: flex;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .header_logo {
+    width: 166px;
+    height: 66px;
+    margin-right: 43px;
+  }
+  .header_section {
+    padding-top: 82px;
+    border: none;
+  }
+  .header_wrapper {
+    align-items: end;
+    position: relative;
+  }
+  .header_underline {
+    height: 40px;
+    width: 2px;
+    position: absolute;
+    left: 187px;
+    bottom: -11px;
+    background-color: #e0e0e0;
+    color: #e0e0e0;
+    border: 2px;
+  }
+}
+
+/* IS LOGIN STYLES */
+
+.header_login_wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header_logo_login {
+  width: 162px;
+  height: 44px;
+}
+.header_login_navlinks {
+  display: none;
+}
+
+/* USER MENU */
+
+.header_login_user_menu {
+  padding-top: 15px;
+  padding-bottom: 13px;
+  background-color: #eff1f3;
+}
+
+/* MEDIA LOGIN */
+@media screen and (min-width: 1280px) {
+  .header_login_wrapper {
+    justify-content: flex-start;
+    align-items: end;
+    position: relative;
+  }
+  /* .header_login_logo {
+  } */
+  .header_login_navlinks {
+    margin-left: 40px;
+    display: flex;
+  }
+  .header_user_tablet {
+    margin-left: 529px;
+  }
+  .header_login_logo_line {
+    position: absolute;
+    height: 36px;
+    width: 2px;
+    bottom: -11px;
+    left: 186px;
+    background-color: #e0e0e0;
+    color: #e0e0e0;
+    border: 2px;
+  }
+}
+
+
+
+/* MODAL */
+.header_button_modal_exit {
+  border: none;
+}
