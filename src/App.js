@@ -15,8 +15,9 @@ import CalculatorPage from "./pages/Calculator/Calculator";
 import CalorieModal from "./components/DailyRateForm/CalorieModal/CalorieModal";
 import Diary from "./pages/Diary";
 function App() {
-return  <Header/>
-  // return <Diary />;
+return (<div>
+<Header/>
+   </div>);
 }
 
 export default App;

@@ -68,8 +68,30 @@
     position: absolute;
     left: 187px;
     bottom: -11px;
-    background-color: #E0E0E0;
-    color: #E0E0E0;
-    border:2px;
+    background-color: #e0e0e0;
+    color: #e0e0e0;
+    border: 2px;
   }
 }
+
+/* IS LOGIN STYLES */
+
+.header_login_wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header_logo_login {
+  width: 162px;
+  height: 44px;
+}
+
+/* USER MENU */
+
+.header_login_user_menu {
+    padding-top: 15px;
+    padding-bottom: 13px;
+    background-color: #eff1f3;
+  }
+  
