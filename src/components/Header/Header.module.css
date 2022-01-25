@@ -37,6 +37,9 @@
 /* .header_underline {
     displ
 } */
+.header_user_tablet {
+  display: none;
+}
 
 /* MEDIA */
 
@@ -45,6 +48,12 @@
     margin-right: 270px;
     width: 162px;
     height: 44px;
+  }
+  .header_login_user_menu {
+    display: none;
+  }
+  .header_user_tablet {
+    display: flex;
   }
 }
 
@@ -64,12 +73,65 @@
   }
   .header_underline {
     height: 40px;
-    width: 3px;
+    width: 2px;
     position: absolute;
     left: 187px;
     bottom: -11px;
-    background-color: #E0E0E0;
-    color: #E0E0E0;
-    border:2px;
+    background-color: #e0e0e0;
+    color: #e0e0e0;
+    border: 2px;
+  }
+}
+
+/* IS LOGIN STYLES */
+
+
+.header_login_wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header_logo_login {
+  width: 162px;
+  height: 44px;
+}
+.header_login_navlinks {
+  display: none;
+}
+
+/* USER MENU */
+
+.header_login_user_menu {
+  padding-top: 15px;
+  padding-bottom: 13px;
+  background-color: #eff1f3;
+}
+
+/* MEDIA LOGIN */
+@media screen and (min-width: 1280px) {
+  .header_login_wrapper {
+    justify-content: flex-start;
+    align-items: end;
+    position: relative;
+  }
+  /* .header_login_logo {
+  } */
+  .header_login_navlinks {
+    margin-left: 40px;
+    display: flex;
+  }
+  .header_user_tablet {
+    margin-left: 529px;
+  }
+  .header_login_logo_line {
+    position: absolute;
+    height: 36px;
+    width: 2px;
+    bottom: -11px;
+    left: 186px;
+    background-color: #e0e0e0;
+    color: #e0e0e0;
+    border: 2px;
   }
 }
