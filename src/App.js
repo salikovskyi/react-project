@@ -7,23 +7,18 @@ import {
   registerUser,
 } from "./redux/auth/authOperations";
 import { useEffect } from "react";
-import Header from "./components/Header/Header";
-import AuthPage from "./pages/AuthPage";
+import RegistrationForm from "./components/RegistrationForm/RegistrationForm";
+import CalendarPicker from "./components/CalendarPicker";
 import CalorieForm from "./components/DailyRateForm/CalorieForm";
 import LoginForm from "./components/LoginForm/LoginForm";
 import CalculatorPage from "./pages/Calculator/Calculator";
 import CalorieModal from "./components/DailyRateForm/CalorieModal/CalorieModal";
 import Diary from "./pages/Diary";
 import MainPage from "./pages/MainPage";
-
+import AuthPage from "./pages/AuthPage";
 
 function App() {
-  return (
-  <div>
-    <Header/>
-  <CalculatorPage />  
-  </div>
-  );
+  return <div></div>;
 }
 
 export default App;

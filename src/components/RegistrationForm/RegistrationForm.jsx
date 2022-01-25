@@ -49,7 +49,7 @@ const RegistrationForm = () => {
             <button type="submit" className={css.form_btn}>
               Вход
             </button>
-            <Link to="/login" exact>
+            <Link to="/login">
               {" "}
               <button type="button" className={css.secondary_form_btn}>
                 Регистрация

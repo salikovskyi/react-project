@@ -1,4 +1,3 @@
-
 import React, { useMemo } from "react";
 import { useDispatch } from "react-redux";
 import { loginUser } from "../../redux/auth/authOperations";
@@ -68,7 +67,7 @@ const LoginForm = () => {
             <button type="submit" className={css.form_btn}>
               Вход
             </button>
-            <Link to="/registration" exact>
+            <Link to="/registration">
               <button type="button" className={css.secondary_form_btn}>
                 Регистрация
               </button>
