@@ -13,11 +13,9 @@ export default function AuthPage() {
 
   
   return (
-    <div className={styles.registerSection}>
       <ContainerStyled>
         {url === '/registration' && <RegistrationForm />}
         {url === '/login' && <LoginForm />}
       </ContainerStyled>
-    </div>
   );
 }

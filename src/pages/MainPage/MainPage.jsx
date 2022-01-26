@@ -8,13 +8,13 @@ import { useSelector } from "react-redux";
 export default function CalculatorPage() {
   const modalOpen = useSelector(isModalOpen);
   return (
-    <div className={styles.bg}>
+    // <div className={styles.bg}>
       <ContainerStyled>
         <div className={styles.position}>
           <MainCalorieForm />
           {modalOpen && <CalorieModal />}
         </div>
       </ContainerStyled>
-    </div>
+    // </div>
   );
 }
