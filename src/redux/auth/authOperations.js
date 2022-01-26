@@ -44,7 +44,8 @@ export const logoutUser = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const logoutUserResponse = await SlimmomAPI.logoutUser();
-      return logoutUserResponse.status;
+      // return logoutUserResponse.status;
+      return "success";
     } catch ({ message }) {
       return thunkAPI.rejectWithValue(message);
     }

@@ -37,6 +37,7 @@ class SlimmomAPI {
   }
 
   static postGetUserDaily(userId, request) {
+    console.log(request);
     return this.axiosInstance.post(`/daily-rate/${userId}`, request);
   }
 

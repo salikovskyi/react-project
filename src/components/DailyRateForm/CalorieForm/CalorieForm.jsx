@@ -54,7 +54,12 @@ export default function CalorieForm({ userId }) {
     const numValues = convertFormValuesToNumbers(values);
     console.log(numValues);
     if (isLoggedIn) {
-      dispatch(userDaily({ userId, values: { weight: numValues.weight } }));
+      dispatch(
+        userDaily({
+          userId,
+          request: numValues,
+        })
+      );
     } else {
       dispatch(dailyRateInfo(numValues));
     }
