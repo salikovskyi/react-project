@@ -1,14 +1,13 @@
 import css from "./CalorieForm.module.css";
 import * as Yup from "yup";
 import { useDispatch, useSelector } from "react-redux";
-import { input, Form, Formik, useFormik } from "formik";
+import { useFormik } from "formik";
 import Button from "../../_styled/Button.styled";
 import {
   dailyRateInfo,
   userDaily,
 } from "../../../redux/userData/userDataOperations";
 import { getIsLoggedIn, getUserId } from "../../../redux/auth/authSelectors";
-import { openModal, closeModal } from "../../../redux/userData/userDataSlice";
 import convertFormValuesToNumbers from "../../../utils/helpers/convertFormValuesToNumbers";
 
 const validationSchema = Yup.object().shape({
