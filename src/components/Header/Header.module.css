@@ -1,6 +1,5 @@
 .header_section {
   padding-top: 18px;
-  padding-bottom: 18px;
   border-bottom: 2px solid #e0e0e0;
 }
 .header_wrapper {
@@ -26,13 +25,13 @@
   letter-spacing: 0.04em;
   text-transform: uppercase;
 
-  color: #212121;
+  color: #9b9faa;
 }
 .linknav:not(:last-child) {
   margin-right: 15px;
 }
 .activeLink {
-  color: #9b9faa;
+  color: #212121;
 }
 /* .header_underline {
     displ

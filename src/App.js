@@ -30,7 +30,7 @@ function App() {
   }, []);
 
   return (
-    <div className="prikoldes">
+    <div className="SlimLogin">
       {isLoading ? (
         <TailSpin 
           color="#00BFFF" 
