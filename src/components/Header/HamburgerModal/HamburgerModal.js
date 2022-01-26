@@ -3,6 +3,6 @@ import css from './HamburgerModal.module.css'
 
 export default function CalcDiaryModal() {
     return (
-        h
+        <h2>LOL</h2>       
     )
 }
