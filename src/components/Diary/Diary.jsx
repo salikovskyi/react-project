@@ -17,7 +17,6 @@ export default function Diary() {
 
   return (
     <>
-      <p>MAMY E6AJI</p>
       <CalendarPicker />
       <ProductForm />
       <ul>

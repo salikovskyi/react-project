@@ -15,23 +15,25 @@ import { getIsLoading, getIsLoggedIn } from "./redux/auth/authSelectors";
 import { useEffect } from "react";
 import Header from "./components/Header";
 import { TailSpin } from "react-loader-spinner";
+import DiaryPage from "./pages/DiaryPage";
 
 const HomePage = lazy(() => import("./pages/MainPage"));
 const AuthPage = lazy(() => import("./pages/AuthPage"));
-const DiaryPage = lazy(() => import("./pages/DiaryPage"));
+// const DiaryPage = lazy(() => import("./pages/DiaryPage"));
 const Calculator = lazy(() => import("./pages/Calculator"));
 
 function App() {
-  const dispatch = useDispatch();
-  const isLoading = useSelector(getIsLoading);
-  const IsLoggedIn = useSelector(getIsLoggedIn);
-  useEffect(() => {
-    dispatch(fetchUserInfo());
-  }, []);
+  // const dispatch = useDispatch();
+  // const isLoading = useSelector(getIsLoading);
+  // const IsLoggedIn = useSelector(getIsLoggedIn);
+  // useEffect(() => {
+  //   dispatch(fetchUserInfo());
+  // }, []);
 
   return (
     <div className="SlimLogin">
-      {isLoading ? (
+    <DiaryPage/>
+      {/* {isLoading ? (
         <TailSpin 
           color="#00BFFF" 
           height={80} 
@@ -87,7 +89,7 @@ function App() {
             </Suspense>
           </Switch>
         </>
-      )}
+      )} */}
     </div>
   );
 }
