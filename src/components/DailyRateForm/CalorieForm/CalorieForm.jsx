@@ -1,7 +1,7 @@
 import css from "./CalorieForm.module.css";
 import * as Yup from "yup";
 import { useDispatch, useSelector } from "react-redux";
-import { Field, Form, Formik } from "formik";
+import { input, Form, Formik, useFormik } from "formik";
 import Button from "../../_styled/Button.styled";
 import {
   dailyRateInfo,
@@ -37,12 +37,12 @@ const validationSchema = Yup.object().shape({
     "Група крови должна быть обязательно указана!"
   ),
 });
-const initialState = {
+const initialValues = {
   height: "",
   age: "",
   weight: "",
   desiredWeight: "",
-  bloodType: "",
+  bloodType: "1",
 };
 export default function CalorieForm() {
   const dispatch = useDispatch();
@@ -55,139 +55,144 @@ export default function CalorieForm() {
       dispatch(dailyRateInfo(convertFormValuesToNumbers(values)));
     }
   };
+
+  const formik = useFormik({
+    initialValues,
+    validationSchema,
+    onSubmit: (values) => {
+      onSubmitForm(values);
+    },
+  });
+
+  const { errors, touched, values, handleChange } = formik;
   return (
     <div className={css.form_section}>
-      <Formik validationSchema={validationSchema} initialValues={initialState} onSubmit={(values) => {
-              onSubmitForm(values);
-            }}>
-        {({ errors, touched, values, resetForm }) => (
-          <Form
-            className={css.form}
-            // onSubmit={(e) => {
-            //   e.preventDefault();
-            //   onSubmitForm(values);
-            //   resetForm();
-            // }}
-          >
-            <h2 className={css.form_title}>
-              Узнай свою суточную норму калорий
-            </h2>
-            <div className={css.form_wrapper}>
-              <div className={css.form_value}>
-                <label className={css.form_label}>
-                  <Field
-                    className={`${css.input} ${
-                      errors.height && touched.height ? css.error_input : ""
-                    }`}
-                    placeholder="Рост *"
-                    name="height"
-                    type="number"
-                    value={values.height}
-                  />
-                  {touched.height && errors.height && (
-                    <p className={css.error}>{errors.height}</p>
-                  )}
-                </label>
-                <label className={css.form_label}>
-                  <Field
-                    className={`${css.input} ${
-                      errors.age && touched.age ? css.error_input : ""
-                    }`}
-                    placeholder="Возраст *"
-                    name="age"
-                    type="number"
-                    value={values.age}
-                  />
-                </label>
-                {touched.age && errors.age && (
-                  <p className={css.error}>{errors.age}</p>
-                )}
-                <label className={css.form_label}>
-                  <Field
-                    className={`${css.input} ${
-                      errors.weight && touched.weight ? css.error_input : ""
-                    }`}
-                    placeholder="Текущий вес *"
-                    name="weight"
-                    type="number"
-                    value={values.weight}
-                  />
-                </label>
-                {touched.weight && errors.weight && (
-                  <p className={css.error}>{errors.weight}</p>
-                )}
-              </div>
-              <div>
-                <label className={css.form_label}>
-                  <Field
-                    className={`${css.input} ${
-                      errors.desiredWeight && touched.weight
-                        ? css.error_input
-                        : ""
-                    }`}
-                    placeholder="Желаемый вес *"
-                    name="desiredWeight"
-                    type="number"
-                    value={values.desiredWeight}
-                  />
-                </label>
-                {touched.desiredWeight && errors.desiredWeight && (
-                  <p className={css.error}>{errors.desiredWeight}</p>
-                )}
-                <p className={css.form_subtitle}>Группа крови *</p>
-                <div className={css.form_radio}>
-                  <Field
-                    id="first"
-                    type="radio"
-                    value="1"
-                    name="bloodType"
-                    className={css.form_radioField}
-                  />
-                  <label htmlFor="first" className={css.form_radioLabel}>
-                    1
-                  </label>
-                  <Field
-                    id="second"
-                    type="radio"
-                    value="2"
-                    name="bloodType"
-                    className={css.form_radioField}
-                  />
-                  <label htmlFor="second" className={css.form_radioLabel}>
-                    2
-                  </label>
-                  <Field
-                    id="third"
-                    type="radio"
-                    value="3"
-                    name="bloodType"
-                    className={css.form_radioField}
-                  />
-                  <label htmlFor="third" className={css.form_radioLabel}>
-                    3
-                  </label>
-                  <Field
-                    id="fourth"
-                    type="radio"
-                    value="4"
-                    name="bloodType"
-                    className={css.form_radioField}
-                  />
-                  <label htmlFor="fourth" className={css.form_radioLabel}>
-                    4
-                  </label>
-                  {touched.bloodType && errors.bloodType && (
-                    <p className={css.error}>{errors.bloodType}</p>
-                  )}
-                </div>
-              </div>
+      <form className={css.form}>
+        <h2 className={css.form_title}>Узнай свою суточную норму калорий</h2>
+        <div className={css.form_wrapper}>
+          <div className={css.form_value}>
+            <label className={css.form_label}>
+              <input
+                className={`${css.input} ${
+                  errors.height && touched.height ? css.error_input : ""
+                }`}
+                placeholder="Рост *"
+                name="height"
+                type="number"
+                value={values.height}
+                onChange={handleChange}
+              />
+              {touched.height && errors.height && (
+                <p className={css.error}>{errors.height}</p>
+              )}
+            </label>
+            <label className={css.form_label}>
+              <input
+                className={`${css.input} ${
+                  errors.age && touched.age ? css.error_input : ""
+                }`}
+                placeholder="Возраст *"
+                name="age"
+                type="number"
+                value={values.age}
+                onChange={handleChange}
+              />
+            </label>
+            {touched.age && errors.age && (
+              <p className={css.error}>{errors.age}</p>
+            )}
+            <label className={css.form_label}>
+              <input
+                className={`${css.input} ${
+                  errors.weight && touched.weight ? css.error_input : ""
+                }`}
+                placeholder="Текущий вес *"
+                name="weight"
+                type="number"
+                value={values.weight}
+                onChange={handleChange}
+              />
+            </label>
+            {touched.weight && errors.weight && (
+              <p className={css.error}>{errors.weight}</p>
+            )}
+          </div>
+          <div>
+            <label className={css.form_label}>
+              <input
+                className={`${css.input} ${
+                  errors.desiredWeight && touched.weight ? css.error_input : ""
+                }`}
+                placeholder="Желаемый вес *"
+                name="desiredWeight"
+                type="number"
+                value={values.desiredWeight}
+                onChange={handleChange}
+              />
+            </label>
+            {touched.desiredWeight && errors.desiredWeight && (
+              <p className={css.error}>{errors.desiredWeight}</p>
+            )}
+            <p className={css.form_subtitle}>Группа крови *</p>
+            <div className={css.form_radio}>
+              <input
+                id="first"
+                type="radio"
+                value="1"
+                name="bloodType"
+                className={css.form_radioinput}
+                onChange={handleChange}
+                checked={'1' === values.bloodType}
+              />
+              <label htmlFor="first" className={css.form_radioLabel}>
+                1
+              </label>
+              <input
+                id="second"
+                type="radio"
+                value="2"
+                name="bloodType"
+                className={css.form_radioinput}
+                onChange={handleChange}
+                checked={'2' === values.bloodType}
+              />
+              <label htmlFor="second" className={css.form_radioLabel}>
+                2
+              </label>
+              <input
+                id="third"
+                type="radio"
+                value="3"
+                name="bloodType"
+                className={css.form_radioinput}
+                onChange={handleChange}
+                checked={'3' === values.bloodType}
+              />
+              <label htmlFor="third" className={css.form_radioLabel}>
+                3
+              </label>
+              <input
+                id="fourth"
+                type="radio"
+                value="4"
+                name="bloodType"
+                className={css.form_radioinput}
+                onChange={handleChange}
+                checked={'4' === values.bloodType}
+              />
+              <label htmlFor="fourth" className={css.form_radioLabel}>
+                4
+              </label>
+              {touched.bloodType && errors.bloodType && (
+                <p className={css.error}>{errors.bloodType}</p>
+              )}
             </div>
-            <div className={css.button}>
-              <Button type="submit">Похудеть</Button>
-            </div>
-          </Form>
-        )}
-      </Formik>
+          </div>
+        </div>
+        <div className={css.button}>
+          <Button type="submit">Похудеть</Button>
+        </div>
+      </form>
     </div>
   );
 }
