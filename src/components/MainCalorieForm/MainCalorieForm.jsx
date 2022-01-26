@@ -68,7 +68,9 @@ export default function CalorieForm() {
   return (
     <div className={css.form_section}>
       <form className={css.form} onSubmit={handleSubmit}>
-        <h2 className={css.form_title}>Узнай свою суточную норму калорий</h2>
+        <h2 className={css.form_title}>
+          Просчитай свою суточную норму калорий прямо сейчас
+        </h2>
         <div className={css.form_wrapper}>
           <div className={css.form_value}>
             <label className={css.form_label}>

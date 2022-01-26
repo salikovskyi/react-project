@@ -4,11 +4,11 @@
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: white;
- 
+
   /* padding: 0 15px 50px; */
 }
 
-.overlay{
+.overlay {
   top: 126px;
   position: fixed;
   left: 0;
@@ -22,7 +22,6 @@
   bottom: 0;
   z-index: 1000;
 }
-
 
 .svg {
   position: absolute;
@@ -129,16 +128,13 @@
 
 @media screen and (min-width: 768px) {
   .modal_section {
-    width: 594px;
+    width: 708px;
   }
   .wrapper {
     padding: 0 43px;
   }
   .svg {
     display: block;
-  }
-  .overlay {
-    top: 80px
   }
 }
 
