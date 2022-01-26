@@ -61,7 +61,7 @@ function App() {
               <PrivateRoute path="/diary" redirectTo={!IsLoggedIn && '/login'}>
                 <DiaryPage />
               </PrivateRoute>
-              <PrivateRoute path="/calculator">
+              <PrivateRoute path="/calculator" redirectTo={!IsLoggedIn && '/login'}>
                 <Calculator />
               </PrivateRoute>
             </Suspense>
