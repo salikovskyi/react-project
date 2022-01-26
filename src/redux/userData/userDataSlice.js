@@ -7,6 +7,7 @@ import {
   dayInfo,
 } from "./userDataOperations";
 import { fetchUserInfo, loginUser } from "../auth/authOperations";
+import dateFormatter from "../../utils/helpers/dateFormatter";
 
 const initialState = {
   unauthData: {
@@ -53,7 +54,7 @@ const accountDataSlice = createSlice({
       state.isLoading = false;
     },
     [loginUser.fulfilled]: (state, { payload }) => {
-      state.userData = payload.user.userData;
+      state.daySummary = payload.user.userData;
       state.isLoading = false;
     },
     [fetchUserInfo.pending]: (state) => {
@@ -65,8 +66,11 @@ const accountDataSlice = createSlice({
       state.isLoading = false;
     },
     [fetchUserInfo.fulfilled]: (state, { payload }) => {
-      state.userData = payload.userData;
+      // state.daySummary = payload.days.find((day) =>
+      //   day.date === startDate ? startDate : dateFormatter
+      // ).daySummary;
       state.isLoading = false;
+      state.notAllowedProducts = payload.userData.notAllowedProducts;
     },
     [dailyRateInfo.pending]: (state) => {
       state.error = null;
@@ -90,23 +94,26 @@ const accountDataSlice = createSlice({
       state.isLoading = false;
     },
     [userDaily.fulfilled]: (state, { payload }) => {
-      state.dailyRate = payload.dailyRate;
-      state.summaries = payload.summaries;
+      state.dailyRate = payload.data.dailyRate;
+      state.daySummary = payload.data.summaries.find(
+        (day) => day.date === dateFormatter
+      );
       state.notAllowedProducts = payload.notAllowedProducts;
       state.isLoading = false;
     },
     [addEatenProduct.pending]: (state) => {
       state.error = null;
-      state.isLoading = true;
+      // state.isLoading = true;
     },
     [addEatenProduct.rejected]: (state, { payload }) => {
       state.error = payload;
-      state.isLoading = false;
+      // state.isLoading = false;
     },
     [addEatenProduct.fulfilled]: (state, { payload }) => {
-      state.eatenProducts = payload.eatenProducts;
-      state.daySummary = payload.daySummary;
-      state.isLoading = false;
+      console.log("eaten", payload.data);
+      state.eatenProducts = payload.data.day.eatenProducts;
+      state.daySummary = payload.data.daySummary;
+      // state.isLoading = false;
     },
     [removeEatenProduct.pending]: (state) => {
       state.error = null;
@@ -130,9 +137,13 @@ const accountDataSlice = createSlice({
       state.error = payload;
       state.isLoading = false;
     },
-    [dayInfo.rejected]: (state, { payload }) => {
-      state.daySummary = payload.daySummary;
-      state.eatenProducts = payload.eatenProducts;
+    [dayInfo.fulfilled]: (state, { payload }) => {
+      state.daySummary = payload.data.daySummary
+        ? payload.data.daySummary
+        : payload.data;
+      state.eatenProducts = payload.data.eatenProducts
+        ? payload.data.eatenProducts
+        : 0;
       state.isLoading = false;
     },
   },

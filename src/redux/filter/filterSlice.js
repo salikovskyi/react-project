@@ -10,6 +10,11 @@ const initialState = {
 const filterProductsSlice = createSlice({
   name: "filter",
   initialState,
+  reducers: {
+    clearHintList: (state) => {
+      state.products.length = 0;
+    },
+  },
   extraReducers: {
     [searchProduct.pending]: (state) => {
       state.error = null;
@@ -20,10 +25,11 @@ const filterProductsSlice = createSlice({
       state.isLoading = false;
     },
     [searchProduct.fulfilled]: (state, { payload }) => {
-      state.products = payload;
+      state.products = payload.data;
       state.isLoading = false;
     },
   },
 });
 
 export default filterProductsSlice.reducer;
+export const { clearHintList } = filterProductsSlice.actions;

@@ -5,7 +5,7 @@ export const fetchUserInfo = createAsyncThunk(
   "auth/fetchUserInfo",
   async (_, thunkAPI) => {
     const { token } = thunkAPI.getState().auth;
-    SlimmomAPI.setToken(token);
+    token && SlimmomAPI.setToken(token);
     try {
       const userInfo = await SlimmomAPI.getUserInfo();
       return userInfo.data;

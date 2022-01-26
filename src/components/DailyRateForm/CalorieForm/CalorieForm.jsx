@@ -52,7 +52,6 @@ export default function CalorieForm({ userId }) {
 
   const onSubmitForm = (values) => {
     const numValues = convertFormValuesToNumbers(values);
-    console.log(numValues);
     if (isLoggedIn) {
       dispatch(
         userDaily({

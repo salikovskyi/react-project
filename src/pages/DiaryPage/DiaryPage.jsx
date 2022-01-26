@@ -1,7 +1,8 @@
 import styles from "./DiaryPage.module.css";
 import FooterInfo from "../../components/FooterInfo";
-import Dairy from '../../components/Diary'
+import Dairy from "../../components/Diary";
 import ContainerStyled from "../../components/_styled/Container.styled";
+
 export default function Diary() {
   return (
     <div className={styles.bg}>

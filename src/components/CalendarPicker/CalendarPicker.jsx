@@ -5,19 +5,13 @@ import { useDispatch, useSelector } from "react-redux";
 import SlimmomAPI from "../../api/SlimmomAPI/SlimmomAPI";
 import { dayInfo } from "../../redux/userData/userDataOperations";
 import { getToken } from "../../redux/auth/authSelectors";
+import dateFormatter from "../../utils/helpers/dateFormatter";
 
 export default function CalendarPicker() {
   const dispatch = useDispatch();
   const token = useSelector(getToken);
 
-  const date = new Date();
-  let dateString = [
-    date.getFullYear(),
-    String(date.getMonth() + 1).padStart(2, "0"),
-    String(date.getDate()).padStart(2, "0"),
-  ].join("-");
-
-  const [startDate, setStartDate] = useState(dateString);
+  const [startDate, setStartDate] = useState(new Date());
 
   useEffect(() => {
     SlimmomAPI.setToken(token);
@@ -25,10 +19,12 @@ export default function CalendarPicker() {
   }, [dispatch, startDate]);
 
   return (
-    <DatePicker
-      dateFormat="yyyy-MM-dd"
-      selected={new Date()}
-      onChange={(date) => setStartDate(date)}
-    />
+    <div>
+      <DatePicker
+        dateFormat="yyyy-MM-dd"
+        selected={startDate ? startDate : Date.parse(dateFormatter)}
+        onChange={(date) => setStartDate(date)}
+      />
+    </div>
   );
 }
