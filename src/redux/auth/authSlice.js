@@ -43,7 +43,6 @@ const authSlice = createSlice({
       state.error = null;
     },
     [loginUser.fulfilled]: (state, { payload }) => {
-      console.log("loging");
       SlimmomAPI.setToken(payload.accessToken);
       state.token = payload.accessToken;
       state.sid = payload.sid;
@@ -80,7 +79,6 @@ const authSlice = createSlice({
       state.error = null;
     },
     [registerUser.fulfilled]: (state, { payload }) => {
-      console.log("reg");
       state.isLoading = false;
       state.sid = payload.id;
       state.user.email = payload.email;

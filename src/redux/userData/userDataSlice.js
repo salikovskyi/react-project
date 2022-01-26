@@ -90,7 +90,7 @@ const accountDataSlice = createSlice({
       state.isLoading = false;
     },
     [userDaily.fulfilled]: (state, { payload }) => {
-      state.dailyRate = payload.dailyRate;
+      state.dailyRate = payload.data;
       state.summaries = payload.summaries;
       state.notAllowedProducts = payload.notAllowedProducts;
       state.isLoading = false;
@@ -130,9 +130,12 @@ const accountDataSlice = createSlice({
       state.error = payload;
       state.isLoading = false;
     },
-    [dayInfo.rejected]: (state, { payload }) => {
-      state.daySummary = payload.daySummary;
-      state.eatenProducts = payload.eatenProducts;
+    [dayInfo.fulfilled]: (state, { payload }) => {
+      state.daySummary = payload.data.daySummary
+        ? payload.data.daySummary
+        : payload.data;
+      console.log(payload.data);
+      state.eatenProducts = payload.eatenProducts ? payload.eatenProducts : [];
       state.isLoading = false;
     },
   },

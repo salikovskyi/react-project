@@ -13,7 +13,7 @@ class SlimmomAPI {
     this.axiosInstance.defaults.headers.common.Authorization = token;
   }
 
-  static usetToken() {
+  static unsetToken() {
     this.axiosInstance.defaults.headers.common.Authorization = null;
   }
 
@@ -37,7 +37,6 @@ class SlimmomAPI {
   }
 
   static postGetUserDaily(userId, request) {
-    console.log(request);
     return this.axiosInstance.post(`/daily-rate/${userId}`, request);
   }
 
