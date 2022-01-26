@@ -181,3 +181,55 @@ body {
       url(./assets/images/desctop/desctopBg2x.png);
   }
 }
+
+
+@media screen and (min-width: 320px) {
+  .SlimCalc {
+    background-image: linear-gradient(to bottom, #ffffff 58%, #f0f1f3 58%);
+    width: 320px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+@media screen and (min-width: 768px) {
+  .SlimCalc {
+    background-image: url(./assets/images/tablet/tabletleafletsBottom1x.png),
+      linear-gradient(to bottom, #ffffff 68%, #f0f1f3 68%);
+    background-repeat: no-repeat;
+    background-position: bottom right;
+    background-size: 369px 362px, cover;
+    width: 768px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+@media screen and (min-width: 768px) and (min-device-pixel-ratio: 2),
+  screen and (min-width: 768px) and (-webkit-min-device-pixel-ratio: 2),
+  screen and (min-width: 768px) and (min-resolution: 192dpi),
+  screen and (min-width: 768px) and (min-resolution: 2dppx) {
+  .SlimCalc {
+    background-image: url(./assets/images/tablet/tabletleafletsBottom2x.png),
+      linear-gradient(to bottom, #ffffff 73%, #f0f1f3 73%);
+  }
+}
+@media screen and (min-width: 1280px) {
+  .SlimCalc {
+    background-image: url(./assets/images/desctop/Layerdesktop1x.png),
+      linear-gradient(to right, #ffffff 55%, #f0f1f3 55%);
+    background-size: 505px 815px, cover;
+    width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+@media screen and (min-width: 1280px) and (min-device-pixel-ratio: 2),
+  screen and (min-width: 1280px) and (-webkit-min-device-pixel-ratio: 2),
+  screen and (min-width: 1280px) and (min-resolution: 192dpi),
+  screen and (min-width: 1280px) and (min-resolution: 2dppx) {
+  .SlimCalc {
+    background-image: url(./assets/images/desctop/Layerdesktop2x.png),
+      linear-gradient(to right, #ffffff 55%, #f0f1f3 55%);
+  }
+}
+
+
