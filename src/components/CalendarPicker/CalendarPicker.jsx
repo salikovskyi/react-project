@@ -6,6 +6,7 @@ import SlimmomAPI from "../../api/SlimmomAPI/SlimmomAPI";
 import { dayInfo } from "../../redux/userData/userDataOperations";
 import { getToken } from "../../redux/auth/authSelectors";
 import dateFormatter from "../../utils/helpers/dateFormatter";
+import { setCurrentDate } from "../../redux/userData/userDataSlice";
 
 export default function CalendarPicker() {
   const dispatch = useDispatch();
@@ -17,6 +18,10 @@ export default function CalendarPicker() {
     SlimmomAPI.setToken(token);
     dispatch(dayInfo({ date: startDate }));
   }, [dispatch, startDate]);
+
+  useEffect(() => {
+    startDate && dispatch(setCurrentDate(startDate));
+  }, [startDate]);
 
   return (
     <div>

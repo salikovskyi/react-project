@@ -2,7 +2,7 @@
 import "react-datepicker/dist/react-datepicker.css";
 
 import { lazy, Suspense } from "react";
-import { Switch } from "react-router-dom";
+import { Switch, useRouteMatch } from "react-router-dom";
 import ContainerStyled from "./components/_styled/Container.styled";
 import { useSelector, useDispatch } from "react-redux";
 import {
@@ -27,19 +27,29 @@ function App() {
   const dispatch = useDispatch();
   const isLoading = useSelector(getIsLoading);
   const IsLoggedIn = useSelector(getIsLoggedIn);
+  // const { url } = useRouteMatch();
+
+  console.log(window.location.pathname);
   useEffect(() => {
     dispatch(fetchUserInfo());
   }, []);
+  const pathname = window.location.pathname;
+  const classes = [
+    {
+      class: "SlimMom",
+      path: "/",
+    },
+    { class: "SlimLogin", path: "/login" },
+    { class: "SlimLogin", path: "/registration" },
+    { class: "SlimCalc", path: "/dairy" },
+    { class: "SlimCalc", path: "/calculator" },
+  ];
+  const chooseClass = classes.find((item) => item.path === pathname).class;
 
   return (
-    <div className="SlimLogin">
+    <div className={chooseClass}>
       {isLoading ? (
-        <TailSpin 
-          color="#00BFFF" 
-          height={80} 
-          width={80} 
-          className="loader" 
-        />
+        <TailSpin color="#00BFFF" height={80} width={80} className="loader" />
       ) : (
         <>
           <Header />
@@ -54,30 +64,16 @@ function App() {
                 />
               }
             >
-              <PublicRoute 
-              exact 
-              path="/"
-              >
+              <PublicRoute exact path="/">
                 <HomePage />
               </PublicRoute>
-              <PublicRoute 
-              path="/login" 
-              restricted 
-              redirectTo="/calculator"
-              >
+              <PublicRoute path="/login" restricted redirectTo="/calculator">
                 <AuthPage />
               </PublicRoute>
-              <PublicRoute 
-                path="/registration" 
-                restricted 
-                redirectTo="/login"
-              >
+              <PublicRoute path="/registration" restricted redirectTo="/login">
                 <AuthPage />
               </PublicRoute>
-              <PrivateRoute 
-                path="/diary" 
-                redirectTo={!IsLoggedIn && "/login"}
-              >
+              <PrivateRoute path="/diary" redirectTo={!IsLoggedIn && "/login"}>
                 <DiaryPage />
               </PrivateRoute>
               <PrivateRoute
