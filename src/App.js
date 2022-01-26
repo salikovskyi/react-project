@@ -11,10 +11,15 @@ import {
 } from "./redux/auth/authOperations";
 import PublicRoute from "./routes/PublicRoutes";
 import PrivateRoute from "./routes/PrivateRoutes";
-import { getIsLoading } from "./redux/auth/authSelectors";
+import {
+  getIsLoading,
+  getUserId,
+  getUserInfo,
+} from "./redux/auth/authSelectors";
 import { useEffect } from "react";
 import Header from "./components/Header";
 import { TailSpin } from "react-loader-spinner";
+import { getToken } from "./redux/auth/authSelectors";
 
 const HomePage = lazy(() => import("./pages/MainPage"));
 const AuthPage = lazy(() => import("./pages/AuthPage"));
@@ -23,10 +28,19 @@ const Calculator = lazy(() => import("./pages/Calculator"));
 
 function App() {
   const dispatch = useDispatch();
+  const token = useSelector(getToken);
+  const userId = useSelector(getUserId);
 
   useEffect(() => {
+    console.log("userid: ", userId);
+    console.log(token);
+    if (!token) {
+      console.log("i rejected");
+      return;
+    }
     dispatch(fetchUserInfo());
-  }, []);
+    console.log("i approved");
+  }, [token, userId]);
 
   const isLoading = useSelector(getIsLoading);
   return (

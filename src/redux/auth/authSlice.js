@@ -86,6 +86,15 @@ const authSlice = createSlice({
       state.user.email = payload.email;
       state.user.username = payload.username;
       state.id = payload.id;
+
+      // SlimmomAPI.setToken(payload.accessToken);
+      // state.token = payload.accessToken;
+      // state.sid = payload.sid;
+      // state.isLoading = false;
+      // state.isLoggedIn = true;
+      // state.user.email = payload.user.email;
+      // state.user.username = payload.user.username;
+      // state.id = payload.user.id;
     },
     [registerUser.rejected]: (state, { payload }) => {
       state.isLoading = false;

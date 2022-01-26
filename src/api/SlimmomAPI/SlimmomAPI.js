@@ -13,7 +13,7 @@ class SlimmomAPI {
     this.axiosInstance.defaults.headers.common.Authorization = token;
   }
 
-  static usetToken() {
+  static unsetToken() {
     this.axiosInstance.defaults.headers.common.Authorization = null;
   }
 

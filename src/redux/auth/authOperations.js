@@ -1,5 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import SlimmomAPI from "../../api/SlimmomAPI/SlimmomAPI";
+import { useSelector, useDispatch } from "react-redux";
 
 export const fetchUserInfo = createAsyncThunk(
   "auth/fetchUserInfo",
@@ -29,9 +30,15 @@ export const loginUser = createAsyncThunk(
 
 export const registerUser = createAsyncThunk(
   "auth/registerUser",
-  async (data, thunkAPI) => {
+  async ({ username, password, email }, thunkAPI) => {
     try {
-      const registerUserResponse = await SlimmomAPI.registerUser(data);
+      const registerUserResponse = await SlimmomAPI.registerUser({
+        username,
+        password,
+        email,
+      });
+      // const logingAfterReg = await SlimmomAPI.loginUser({ email, password });
+
       return registerUserResponse.data;
     } catch ({ message }) {
       return thunkAPI.rejectWithValue(message);

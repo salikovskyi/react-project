@@ -26,9 +26,9 @@ const RegistrationForm = () => {
   const dispatch = useDispatch();
   const onRegister = (state) => dispatch(registerUser(state));
 
-  const handleSubmit = (values) => {
-    onRegister(values);
-  };
+  // const handleSubmit = (values) => {
+  //   onRegister(values);
+  // };
 
   return (
     <div className={css.form_container}>
@@ -38,7 +38,7 @@ const RegistrationForm = () => {
         initialValues={initialForm}
         validationSchema={validationSchema}
         onSubmit={(values) => {
-          handleSubmit(values);
+          onRegister(values);
         }}
       >
         <Form>
@@ -46,14 +46,14 @@ const RegistrationForm = () => {
           <FormControl label="Почта *" name="email" type="email" />
           <FormControl label="Пароль *" type="password" name="password" />
           <div className={css.btn_container}>
-            <Link to='/login'>
-            <button type="button" className={css.form_btn}>
-              Вход
-            </button>
-            </Link>
-              <button type="submit" className={css.secondary_form_btn}>
-                Регистрация
+            <Link to="/login">
+              <button type="button" className={css.form_btn}>
+                Вход
               </button>
+            </Link>
+            <button type="submit" className={css.secondary_form_btn}>
+              Регистрация
+            </button>
           </div>
         </Form>
       </Formik>
