@@ -1,5 +1,6 @@
-import { DatePicker, CalendarContainer } from "react-datepicker";
+import DatePicker from "react-datepicker";
 import { useState, useEffect } from "react";
+import "react-datepicker/dist/react-datepicker.css";
 import { useDispatch, useSelector } from "react-redux";
 import SlimmomAPI from "../../api/SlimmomAPI/SlimmomAPI";
 import { dayInfo } from "../../redux/userData/userDataOperations";
@@ -16,26 +17,14 @@ export default function CalendarPicker() {
     SlimmomAPI.setToken(token);
     dispatch(dayInfo({ date: startDate }));
   }, [dispatch, startDate]);
-  // startDate ? startDate : Date.parse(dateFormatter)
-
-  const MyContainer = ({ className, children }) => {
-    return (
-      <div style={{ padding: "16px", background: "#216ba5", color: "#fff" }}>
-        <CalendarContainer>
-          <div style={{ background: "#f0f0f0" }}>
-            What is your favorite day?
-          </div>
-          <div style={{ position: "relative" }}>{children}</div>
-        </CalendarContainer>
-      </div>
-    );
-  };
 
   return (
-    <DatePicker
-      selected={startDate}
-      onChange={(date) => setStartDate(date)}
-      calendarContainer={}
-    />
+    <div>
+      <DatePicker
+        dateFormat="yyyy-MM-dd"
+        selected={startDate ? startDate : Date.parse(dateFormatter)}
+        onChange={(date) => setStartDate(date)}
+      />
+    </div>
   );
 }

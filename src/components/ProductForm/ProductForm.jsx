@@ -58,6 +58,7 @@ export default function ProductForm() {
               type="text"
               name="query"
               placeholder="Введите название продукта"
+              autocomplete="off"
               value={values.query}
               onChange={(e) => {
                 setFieldValue("query", e.target.value);

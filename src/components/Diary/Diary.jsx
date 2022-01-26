@@ -19,11 +19,13 @@ export default function Diary() {
     <>
       <CalendarPicker />
       <ProductForm />
-      <ul>
-        {products?.map((item) => (
-          <ProductItem key={item.id} product={item} />
-        ))}
-      </ul>
+      {products ? (
+        <ul>
+          {products?.map((item) => (
+            <ProductItem key={item.id} product={item} />
+          ))}
+        </ul>
+      ) : null}
     </>
   );
 }
