@@ -11,7 +11,7 @@ import {
 } from "./redux/auth/authOperations";
 import PublicRoute from "./routes/PublicRoutes";
 import PrivateRoute from "./routes/PrivateRoutes";
-import { getIsLoading } from "./redux/auth/authSelectors";
+import { getIsLoading, getIsLoggedIn } from "./redux/auth/authSelectors";
 import { useEffect } from "react";
 import Header from "./components/Header";
 import { TailSpin } from "react-loader-spinner";
@@ -23,16 +23,21 @@ const Calculator = lazy(() => import("./pages/Calculator"));
 
 function App() {
   const dispatch = useDispatch();
-
+  const isLoading = useSelector(getIsLoading);
+  const IsLoggedIn = useSelector(getIsLoggedIn);
   useEffect(() => {
     dispatch(fetchUserInfo());
   }, []);
 
-  const isLoading = useSelector(getIsLoading);
   return (
-    <div className="hui">
+    <div className="prikoldes">
       {isLoading ? (
-        <TailSpin color="#00BFFF" height={80} width={80} className="loader" />
+        <TailSpin 
+          color="#00BFFF" 
+          height={80} 
+          width={80} 
+          className="loader" 
+        />
       ) : (
         <>
           <Header />
@@ -47,19 +52,36 @@ function App() {
                 />
               }
             >
-              <PublicRoute exact path="/">
+              <PublicRoute 
+              exact 
+              path="/"
+              >
                 <HomePage />
               </PublicRoute>
-              <PublicRoute path="/login" restricted redirectTo="/diary">
+              <PublicRoute 
+              path="/login" 
+              restricted 
+              redirectTo="/calculator"
+              >
                 <AuthPage />
               </PublicRoute>
-              <PublicRoute path="/registration" restricted redirectTo="/diary">
+              <PublicRoute 
+                path="/registration" 
+                restricted 
+                redirectTo="/login"
+              >
                 <AuthPage />
               </PublicRoute>
-              <PrivateRoute path="/diary" redirectTo="/login">
+              <PrivateRoute 
+                path="/diary" 
+                redirectTo={!IsLoggedIn && "/login"}
+              >
                 <DiaryPage />
               </PrivateRoute>
-              <PrivateRoute path="/calculator">
+              <PrivateRoute
+                path="/calculator"
+                redirectTo={!IsLoggedIn && "/login"}
+              >
                 <Calculator />
               </PrivateRoute>
             </Suspense>
