@@ -7,11 +7,9 @@ export default function AuthPage() {
   const { url } = useRouteMatch();
 
   return (
-    <div className={styles.registerSection}>
       <ContainerStyled>
         {url === "/registration" && <RegistrationForm />}
         {url === "/login" && <LoginForm />}
       </ContainerStyled>
-    </div>
   );
 }

@@ -91,3 +91,93 @@ body {
   background-position: center;
   background-repeat: no-repeat;
 }
+
+@media screen and (min-width: 768px) {
+  .SlimMom {
+    background-image: url(./assets/images/tablet/tabletStrawberry1xtop.png),
+      url(./assets/images/tablet/tabletleaflets1xtop.png),
+      url(./assets/images/tablet/bananaTablet1x.png),
+      url(./assets/images/tablet/tabletBg1x.png);
+    background-repeat: no-repeat;
+    background-position: bottom 170px right, bottom left, bottom right,
+      bottom right;
+    background-size: 308px 390px, 602px 601px, 491px 547px, 521px 674px;
+    /* width: 768px; */
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+@media screen and (min-width: 768px) and (min-device-pixel-ratio: 2),
+  screen and (min-width: 768px) and (-webkit-min-device-pixel-ratio: 2),
+  screen and (min-width: 768px) and (min-resolution: 192dpi),
+  screen and (min-width: 768px) and (min-resolution: 2dppx) {
+  .SlimMom {
+    background-image: url(./assets/images/tablet/tabletStrawberry2xtop.png),
+      url(./assets/images/tablet/tabletleaflets2xtop.png),
+      url(./assets/images/tablet/bananaTablet2x.png),
+      url(./assets/images/tablet/tabletBg2x.png);
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .SlimMom {
+    background-image: url(./assets/images/desctop/desktop1x.png),
+      url(./assets/images/desctop/desctopBg1x.png);
+    background-repeat: no-repeat;
+    background-position: bottom 70px right, bottom right;
+    background-size: 812px 659px, 501px 659px;
+    /* min-width: 1280px; */
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+@media screen and (min-width: 1280px) and (min-device-pixel-ratio: 2),
+  screen and (min-width: 1280px) and (-webkit-min-device-pixel-ratio: 2),
+  screen and (min-width: 1280px) and (min-resolution: 192dpi),
+  screen and (min-width: 1280px) and (min-resolution: 2dppx) {
+  .SlimMom {
+    background-image: url(./assets/images/desctop/desktop2x.png),
+      url(./assets/images/desctop/desctopBg2x.png);
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .SlimLogin {
+    background-image: url(./assets/images/tablet/tabletStrawberry1x.png),
+      url(./assets/images/tablet/tabletleaflets1x.png),
+      url(./assets/images/tablet/bananaTablet1x.png),
+      url(./assets/images/tablet/tabletBg1x.png);
+    background-position: bottom 200px right, bottom 260px right, bottom right,
+      bottom right;
+    background-repeat: no-repeat;
+    background-size: 305px 384px, 740px 745px, 491px 431px, 521px 563px;
+  }
+}
+@media screen and (min-width: 768px) and (min-device-pixel-ratio: 2),
+  screen and (min-width: 768px) and (-webkit-min-device-pixel-ratio: 2),
+  screen and (min-width: 768px) and (min-resolution: 192dpi),
+  screen and (min-width: 768px) and (min-resolution: 2dppx) {
+  .SlimLogin {
+    background-image: url(./assets/images/tablet/tabletStrawberry2x.png),
+      url(./assets/images/tablet/tabletleaflets2x.png),
+      url(./assets/images/tablet/bananaTablet2x.png),
+      url(./assets/images/tablet/tabletBg2x.png);
+  }
+}
+@media screen and (min-width: 1280px) {
+  .SlimLogin {
+    background-image: url(./assets/images/desctop/descktop.fruites.register.png),
+      url(./assets/images/desctop/desctopBg1x.png);
+    background-position: bottom right;
+    background-size: 941px 850px, 603px 816px;
+  }
+}
+@media screen and (min-width: 1280px) and (min-device-pixel-ratio: 2),
+  screen and (min-width: 1280px) and (-webkit-min-device-pixel-ratio: 2),
+  screen and (min-width: 1280px) and (min-resolution: 192dpi),
+  screen and (min-width: 1280px) and (min-resolution: 2dppx) {
+  .SlimLogin {
+    background-image: url(./assets/images/desctop/descktop.fruites.register-2x.png),
+      url(./assets/images/desctop/desctopBg2x.png);
+  }
+}
