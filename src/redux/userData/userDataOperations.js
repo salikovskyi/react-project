@@ -15,9 +15,9 @@ export const dailyRateInfo = createAsyncThunk(
 
 export const userDaily = createAsyncThunk(
   "userData/userDaily",
-  async ({ id, request }, { rejectWithValue }) => {
+  async ({ userId, request }, { rejectWithValue }) => {
     try {
-      const dailyRate = await SlimmomAPI.postGetUserDaily(id, request);
+      const dailyRate = await SlimmomAPI.postGetUserDaily(userId, request);
       return dailyRate;
     } catch ({ message }) {
       return rejectWithValue(message);

@@ -107,7 +107,7 @@ export default function Header() {
                   <path
                     d="M14 1.5V4.5H2M2 4.5L5.5 1M2 4.5L5.5 8"
                     stroke="black"
-                    stroke-width="2"
+                    strokeWidth="2"
                   />
                 </svg>
               </button>

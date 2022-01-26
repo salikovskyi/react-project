@@ -14,8 +14,6 @@ import { fetchUserInfo } from "../../redux/auth/authOperations";
 
 export default function Diary() {
   const products = useSelector(getEatenProducts);
-  const dispatch = useDispatch();
-
 
   return (
     <>
