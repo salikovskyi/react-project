@@ -7,6 +7,9 @@ import { searchProduct } from "../../redux/filter/filterOperations";
 import css from "../DailyRateForm/CalorieForm/CalorieForm.module.css";
 import { getProducts } from "../../redux/filter/filterSelectors";
 import { addEatenProduct } from "../../redux/userData/userDataOperations";
+import { clearHintList } from "../../redux/filter/filterSlice";
+import dateFormatter from "../../utils/helpers/dateFormatter";
+import { getUserData } from "../../redux/userData/userDataSelectors";
 const validationSchema = Yup.object().shape({
   query: Yup.string().required("Обязательное поле!"),
   weight: Yup.number()
@@ -18,6 +21,7 @@ const validationSchema = Yup.object().shape({
 export default function ProductForm() {
   const dispatch = useDispatch();
   const products = useSelector(getProducts);
+
   const [productId, setProductId] = useState("");
 
   const findProducts = (query) => {
@@ -27,8 +31,9 @@ export default function ProductForm() {
   const debouncedFindProducts = debounce(findProducts, 400);
 
   const onSubmitForm = (weight) => {
-    weight &&
-      dispatch(addEatenProduct({ date: new Date(), productId, weight }));
+    const product = { date: dateFormatter, productId, weight };
+    console.log(`product`, product);
+    weight && dispatch(addEatenProduct(product));
   };
 
   return (
@@ -42,7 +47,8 @@ export default function ProductForm() {
       >
         {({ errors, touched, values, resetForm, setFieldValue }) => (
           <form
-            onSubmit={() => {
+            onSubmit={(e) => {
+              e.preventDefault();
               onSubmitForm(values.weight);
               resetForm();
             }}
@@ -70,7 +76,7 @@ export default function ProductForm() {
             {touched.weight && errors.weight && (
               <p className={css.error}>{errors.weight}</p>
             )}
-            <button type="submit"></button>
+            <button type="submit">Добавить</button>
             <ul>
               {products.map((product) => (
                 <li
@@ -78,6 +84,7 @@ export default function ProductForm() {
                   onClick={() => {
                     setProductId(product._id);
                     setFieldValue("query", product.title.ru);
+                    dispatch(clearHintList());
                   }}
                 >
                   <p>{product.title.ru}</p>

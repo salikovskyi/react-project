@@ -1,4 +1,6 @@
 // import Loader from "./components/Loader";
+import "react-datepicker/dist/react-datepicker.css";
+
 import { lazy, Suspense } from "react";
 import { Switch } from "react-router-dom";
 import ContainerStyled from "./components/_styled/Container.styled";

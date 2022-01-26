@@ -97,16 +97,16 @@ const accountDataSlice = createSlice({
     },
     [addEatenProduct.pending]: (state) => {
       state.error = null;
-      state.isLoading = true;
+      // state.isLoading = true;
     },
     [addEatenProduct.rejected]: (state, { payload }) => {
       state.error = payload;
-      state.isLoading = false;
+      // state.isLoading = false;
     },
     [addEatenProduct.fulfilled]: (state, { payload }) => {
       state.eatenProducts = payload.eatenProducts;
       state.daySummary = payload.daySummary;
-      state.isLoading = false;
+      // state.isLoading = false;
     },
     [removeEatenProduct.pending]: (state) => {
       state.error = null;
