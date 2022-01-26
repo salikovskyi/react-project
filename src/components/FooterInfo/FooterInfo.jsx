@@ -10,41 +10,40 @@ export default function FooterInfo() {
   const summary = useSelector(daySummary);
   const products = useSelector(notAllowedProducts);
 
-  const { date, kcalLeft, kcalConsumed, dailyRate, percentsOfDailyRate } =
-    summary;
-  let str = date;
+  // const { date, kcalLeft, kcalConsumed, dailyRate, percentsOfDailyRate } =
+  //   summary;
+  // console.log(summary);
+  // let str = date;
   return (
     <section className={styles.section}>
       <div className={styles.daySection}>
-        <span className={styles.title}>
-          Сводка за {date ? str.replace(/^(\d+)-(\d+)-(\d+)$/, `$3.$2.$1`) : ""}
-        </span>
+        <span className={styles.title}>Сводка за {summary.date}</span>
         <ul className={styles.kcalList}>
           <li className={styles.kcalItem}>
             <span>Осталось</span>
             <span className={styles.kcalListSpan}>
-              {String(kcalLeft).padStart(3, "0")}
+              {String(summary.kcalLeft).padStart(3, "0")}
             </span>
             <span> ккал</span>
           </li>
           <li className={styles.kcalItem}>
             <span>Употреблено</span>
             <span className={styles.kcalListSpan}>
-              {String(kcalConsumed).padStart(3, "0")}
+              {String(summary.kcalConsumed).padStart(3, "0")}
             </span>
             <span> ккал</span>
           </li>
           <li className={styles.kcalItem}>
             <span>Дневная норма</span>
             <span className={styles.kcalListSpan}>
-              {String(dailyRate).padStart(3, "0")}
+              {String(summary.dailyRate).padStart(3, "0")}
             </span>
             <span> ккал</span>
           </li>
           <li className={styles.kcalItem}>
             <span>n% от нормы</span>
             <span className={styles.kcalListSpan}>
-              {Math.round(percentsOfDailyRate)}%
+              {Math.round(summary.percentsOfDailyRate)}%
             </span>
             <span> ккал</span>
           </li>

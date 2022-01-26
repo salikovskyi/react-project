@@ -8,6 +8,7 @@ import {
   userDaily,
 } from "../../../redux/userData/userDataOperations";
 import { getIsLoggedIn, getUserId } from "../../../redux/auth/authSelectors";
+import { openModal, closeModal } from "../../../redux/userData/userDataSlice";
 import convertFormValuesToNumbers from "../../../utils/helpers/convertFormValuesToNumbers";
 
 const validationSchema = Yup.object().shape({
@@ -37,6 +38,7 @@ const validationSchema = Yup.object().shape({
     "Група крови должна быть обязательно указана!"
   ),
 });
+
 const initialValues = {
   height: "",
   age: "",
@@ -44,15 +46,22 @@ const initialValues = {
   desiredWeight: "",
   bloodType: "1",
 };
-export default function CalorieForm() {
+export default function CalorieForm({ userId }) {
   const dispatch = useDispatch();
   const isLoggedIn = useSelector(getIsLoggedIn);
-  const id = useSelector(getUserId);
+
   const onSubmitForm = (values) => {
+    const numValues = convertFormValuesToNumbers(values);
+    console.log(numValues);
     if (isLoggedIn) {
-      dispatch(userDaily(convertFormValuesToNumbers({ id, values })));
+      dispatch(
+        userDaily({
+          userId,
+          request: numValues,
+        })
+      );
     } else {
-      dispatch(dailyRateInfo(convertFormValuesToNumbers(values)));
+      dispatch(dailyRateInfo(numValues));
     }
   };
 
@@ -64,10 +73,11 @@ export default function CalorieForm() {
     },
   });
 
-  const { errors, touched, values, handleChange } = formik;
+  const { errors, touched, values, handleChange, handleSubmit, resetForm } =
+    formik;
   return (
     <div className={css.form_section}>
-      <form className={css.form}>
+      <form className={css.form} onSubmit={handleSubmit}>
         <h2 className={css.form_title}>Узнай свою суточную норму калорий</h2>
         <div className={css.form_wrapper}>
           <div className={css.form_value}>
@@ -78,7 +88,7 @@ export default function CalorieForm() {
                 }`}
                 placeholder="Рост *"
                 name="height"
-                type="number"
+                type="text"
                 value={values.height}
                 onChange={handleChange}
               />
@@ -93,7 +103,7 @@ export default function CalorieForm() {
                 }`}
                 placeholder="Возраст *"
                 name="age"
-                type="number"
+                type="text"
                 value={values.age}
                 onChange={handleChange}
               />
@@ -108,7 +118,7 @@ export default function CalorieForm() {
                 }`}
                 placeholder="Текущий вес *"
                 name="weight"
-                type="number"
+                type="text"
                 value={values.weight}
                 onChange={handleChange}
               />
@@ -125,7 +135,7 @@ export default function CalorieForm() {
                 }`}
                 placeholder="Желаемый вес *"
                 name="desiredWeight"
-                type="number"
+                type="text"
                 value={values.desiredWeight}
                 onChange={handleChange}
               />
@@ -142,7 +152,7 @@ export default function CalorieForm() {
                 name="bloodType"
                 className={css.form_radioinput}
                 onChange={handleChange}
-                checked={'1' === values.bloodType}
+                checked={"1" === values.bloodType}
               />
               <label htmlFor="first" className={css.form_radioLabel}>
                 1
@@ -154,7 +164,7 @@ export default function CalorieForm() {
                 name="bloodType"
                 className={css.form_radioinput}
                 onChange={handleChange}
-                checked={'2' === values.bloodType}
+                checked={"2" === values.bloodType}
               />
               <label htmlFor="second" className={css.form_radioLabel}>
                 2
@@ -166,7 +176,7 @@ export default function CalorieForm() {
                 name="bloodType"
                 className={css.form_radioinput}
                 onChange={handleChange}
-                checked={'3' === values.bloodType}
+                checked={"3" === values.bloodType}
               />
               <label htmlFor="third" className={css.form_radioLabel}>
                 3
@@ -178,7 +188,7 @@ export default function CalorieForm() {
                 name="bloodType"
                 className={css.form_radioinput}
                 onChange={handleChange}
-                checked={'4' === values.bloodType}
+                checked={"4" === values.bloodType}
               />
               <label htmlFor="fourth" className={css.form_radioLabel}>
                 4

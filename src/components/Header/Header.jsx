@@ -7,6 +7,7 @@ import { useSelector } from "react-redux";
 import { getIsLoggedIn } from "../../redux/auth/authSelectors";
 import { isModalOpen } from "../../redux/userData/userDataSelectors";
 import { closeModal } from "../../redux/userData/userDataSlice";
+import { logoutUser } from "../../redux/auth/authOperations";
 import Container from "../_styled/Container.styled";
 import { NavLink } from "react-router-dom";
 import UserMenu from "./UserMenu/UserMenu";
@@ -14,7 +15,7 @@ import { useDispatch } from "react-redux";
 export default function Header() {
   const dispatch = useDispatch();
   const isLoggedIn = useSelector(getIsLoggedIn);
-  
+
   const modalOpen = useSelector(isModalOpen);
   return (
     <header>
@@ -57,19 +58,15 @@ export default function Header() {
               <hr className={css.header_login_logo_line} />
               <div className={css.header_login_navlinks}>
                 <NavLink
-                  exact
                   to="/diary"
                   className={css.linknav}
-                  exact
                   activeClassName={css.activeLink}
                 >
                   дневник
                 </NavLink>
                 <NavLink
-                  exact
                   to="/calculator"
                   className={css.linknav}
-                  exact
                   activeClassName={css.activeLink}
                 >
                   калькулятор
@@ -88,12 +85,18 @@ export default function Header() {
       {isLoggedIn && (
         <div className={css.header_login_user_menu}>
           <Container>
-            <UserMenu className={css.usermenu} />
+            <UserMenu
+              logout={() => dispatch(logoutUser())}
+              className={css.usermenu}
+            />
           </Container>
         </div>
       )}
       {modalOpen && (
-        <div className={css.header_login_user_menu} onClick={ () => dispatch(closeModal())}>
+        <div
+          className={css.header_login_user_menu}
+          onClick={() => dispatch(closeModal())}
+        >
           <Container>
             <div className={css.header_login_user_wrapper}>
               <button className={css.header_button_modal_exit}>

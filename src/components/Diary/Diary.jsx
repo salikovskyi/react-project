@@ -10,16 +10,18 @@ import ProductItem from "../ProductItem/ProductItem";
 import CalendarPicker from "../CalendarPicker";
 import ProductForm from "../ProductForm/ProductForm";
 import { getEatenProducts } from "../../redux/userData/userDataSelectors";
+import { fetchUserInfo } from "../../redux/auth/authOperations";
 
 export default function Diary() {
   const products = useSelector(getEatenProducts);
-  
+
   return (
     <>
+      <p>MAMY E6AJI</p>
       <CalendarPicker />
       <ProductForm />
       <ul>
-        {products.map((item) => (
+        {products?.map((item) => (
           <ProductItem key={item.id} product={item} />
         ))}
       </ul>
