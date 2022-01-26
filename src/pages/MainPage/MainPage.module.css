@@ -8,7 +8,7 @@
     background-position: bottom 170px right, bottom left, bottom right,
       bottom right;
     background-size: 308px 303px, 602px 531px, 491px 431px, 521px 563px;
-    width: 768px;
+    /* width: 768px; */
     margin-left: auto;
     margin-right: auto;
   }
@@ -30,17 +30,17 @@
     background-image: url(../../assets/images/desctop/desktop1x.png),
       url(../../assets/images/desctop/desctopBg1x.png);
     background-repeat: no-repeat;
-    background-position: bottom right;
+    background-position: bottom 70px right, bottom right;
     background-size: 941px 850px, 603px 816px;
-    width: 1280px;
+    /* min-width: 1280px; */
     margin-left: auto;
     margin-right: auto;
   }
 }
-@media screen and (min-width: 768px) and (min-device-pixel-ratio: 2),
-  screen and (min-width: 768px) and (-webkit-min-device-pixel-ratio: 2),
-  screen and (min-width: 768px) and (min-resolution: 192dpi),
-  screen and (min-width: 768px) and (min-resolution: 2dppx) {
+@media screen and (min-width: 1280px) and (min-device-pixel-ratio: 2),
+  screen and (min-width: 1280px) and (-webkit-min-device-pixel-ratio: 2),
+  screen and (min-width: 1280px) and (min-resolution: 192dpi),
+  screen and (min-width: 1280px) and (min-resolution: 2dppx) {
   .bg {
     background-image: url(../../assets/images/desctop/desktop2x.png),
       url(../../assets/images/desctop/desctopBg2x.png);

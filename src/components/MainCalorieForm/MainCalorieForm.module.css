@@ -16,7 +16,7 @@
   margin-right: 25px;
 }
 .form_section {
-  padding-top: 110px;
+  padding-top: 30px;
 }
 .form_radioField {
   color: orange;
@@ -78,7 +78,9 @@ input[type="radio"] + label {
     line-height: 1.44;
     color: #212121;
     width: 290px;
-    margin-bottom: 30px;
+  }
+  .form_section {
+    height: 568px;
   }
   .input {
     font-family: Verdana;
@@ -88,7 +90,7 @@ input[type="radio"] + label {
     line-height: 1.21;
     letter-spacing: 0.04em;
     color: #9b9faa;
-    /* padding-bottom: 10px; */
+    padding-bottom: 10px;
   }
   .form_subtitle {
     margin-top: 30px;
@@ -114,7 +116,7 @@ input[type="radio"] + label {
     margin-bottom: 25px;
   }
   .button {
-    margin-left: 57px;
+    margin-left: 50px;
     margin-bottom: 80px;
   }
 }
@@ -128,14 +130,14 @@ input[type="radio"] + label {
     color: #212121;
     width: 605px;
     margin-bottom: 60px;
-    margin-top: 70px;
   }
   .form_section {
-    height: 1024px;
+    height: 944px;
+    padding-top: 100px;
   }
   .button {
     margin-left: 0px;
-    margin-top: 60px;
+    margin-top: 35px;
   }
   .form_wrapper {
     max-width: 510px;
@@ -144,7 +146,7 @@ input[type="radio"] + label {
   .input {
     max-width: 240px;
     margin-right: 15px;
-    margin-bottom: 40px;
+    padding-bottom: 19px;
   }
   .form {
     margin-right: auto;
@@ -157,7 +159,7 @@ input[type="radio"] + label {
   .form_title {
     font-size: 34px;
     margin-bottom: 68px;
-    margin-top: 152px;
+    margin-top: 144px;
   }
   .button {
     margin-left: 346px;
@@ -170,5 +172,6 @@ input[type="radio"] + label {
   }
   .form_section {
     height: 850px;
+    padding-top: 0px;
   }
 }
