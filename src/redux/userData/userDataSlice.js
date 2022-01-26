@@ -19,7 +19,7 @@ const initialState = {
   userData: null,
   daySummary: {
     date: "2020-12-31",
-    kcalLeft: 0,
+    kcalLeft: 5,
     kcalConsumed: 0,
     dailyRate: 0,
     percentsOfDailyRate: 0,

@@ -7,11 +7,11 @@ import { getUserData } from "../../../redux/userData/userDataSelectors";
 import { useHistory } from "react-router";
 import {
   dailyRateInfo,
-  userDaily
+  userDaily,
 } from "../../../redux/userData/userDataOperations";
 import { getIsLoggedIn, getUserId } from "../../../redux/auth/authSelectors";
-import {openModal , closeModal} from '../../../redux/userData/userDataSlice'
-import convertFormValuesToNumbers from '../../../utils/helpers/convertFormValuesToNumbers'
+import { openModal, closeModal } from "../../../redux/userData/userDataSlice";
+import convertFormValuesToNumbers from "../../../utils/helpers/convertFormValuesToNumbers";
 
 const validationSchema = Yup.object().shape({
   height: Yup.number()
@@ -56,13 +56,12 @@ export default function CalorieForm() {
   const history = useHistory();
 
   const onSubmitForm = (values) => {
+    const numvalues = convertFormValuesToNumbers(values);
     if (isLoggedIn) {
-      dispatch(userDaily(convertFormValuesToNumbers({ id, values })));
+      dispatch(userDaily({ id, numvalues }));
     } else {
-      dispatch(dailyRateInfo(convertFormValuesToNumbers(values)));
+      dispatch(dailyRateInfo(numvalues));
     }
-
-
   };
 
   return (
