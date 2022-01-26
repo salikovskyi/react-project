@@ -64,7 +64,7 @@ export default function CalorieForm() {
     },
   });
 
-  const { errors, touched, values, handleChange, handleSubmit, resetForm} = formik;
+  const { errors, touched, values, handleChange, handleSubmit } = formik;
   return (
     <div className={css.form_section}>
       <form className={css.form} onSubmit={handleSubmit}>
@@ -142,7 +142,7 @@ export default function CalorieForm() {
                 name="bloodType"
                 className={css.form_radioinput}
                 onChange={handleChange}
-                checked={'1' === values.bloodType}
+                checked={"1" === values.bloodType}
               />
               <label htmlFor="first" className={css.form_radioLabel}>
                 1
@@ -154,7 +154,7 @@ export default function CalorieForm() {
                 name="bloodType"
                 className={css.form_radioinput}
                 onChange={handleChange}
-                checked={'2' === values.bloodType}
+                checked={"2" === values.bloodType}
               />
               <label htmlFor="second" className={css.form_radioLabel}>
                 2
@@ -166,7 +166,7 @@ export default function CalorieForm() {
                 name="bloodType"
                 className={css.form_radioinput}
                 onChange={handleChange}
-                checked={'3' === values.bloodType}
+                checked={"3" === values.bloodType}
               />
               <label htmlFor="third" className={css.form_radioLabel}>
                 3
@@ -178,7 +178,7 @@ export default function CalorieForm() {
                 name="bloodType"
                 className={css.form_radioinput}
                 onChange={handleChange}
-                checked={'4' === values.bloodType}
+                checked={"4" === values.bloodType}
               />
               <label htmlFor="fourth" className={css.form_radioLabel}>
                 4
