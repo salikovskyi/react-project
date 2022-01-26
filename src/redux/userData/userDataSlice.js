@@ -31,6 +31,7 @@ const initialState = {
   isLoading: false,
   error: null,
   isModalOpen: false,
+  currentDate: dateFormatter,
 };
 
 const accountDataSlice = createSlice({
@@ -42,6 +43,9 @@ const accountDataSlice = createSlice({
     },
     closeModal: (state) => {
       state.isModalOpen = false;
+    },
+    setCurrentDate: (state, { payload }) => {
+      state.currentDate = payload;
     },
   },
   extraReducers: {
@@ -66,9 +70,9 @@ const accountDataSlice = createSlice({
       state.isLoading = false;
     },
     [fetchUserInfo.fulfilled]: (state, { payload }) => {
-      // state.daySummary = payload.days.find((day) =>
-      //   day.date === startDate ? startDate : dateFormatter
-      // ).daySummary;
+      state.daySummary = payload.days.find(
+        (day) => day.date === state.currentDate
+      ).daySummary;
       state.isLoading = false;
       state.notAllowedProducts = payload.userData.notAllowedProducts;
     },
@@ -150,4 +154,5 @@ const accountDataSlice = createSlice({
 });
 
 export default accountDataSlice.reducer;
-export const { openModal, closeModal } = accountDataSlice.actions;
+export const { openModal, closeModal, setCurrentDate } =
+  accountDataSlice.actions;
