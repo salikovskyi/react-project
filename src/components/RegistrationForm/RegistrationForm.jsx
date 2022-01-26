@@ -46,15 +46,14 @@ const RegistrationForm = () => {
           <FormControl label="Почта *" name="email" type="email" />
           <FormControl label="Пароль *" type="password" name="password" />
           <div className={css.btn_container}>
-            <button type="submit" className={css.form_btn}>
+            <Link to='/login'>
+            <button type="button" className={css.form_btn}>
               Вход
             </button>
-            <Link to="/login" exact>
-              {" "}
-              <button type="button" className={css.secondary_form_btn}>
+            </Link>
+              <button type="submit" className={css.secondary_form_btn}>
                 Регистрация
               </button>
-            </Link>
           </div>
         </Form>
       </Formik>

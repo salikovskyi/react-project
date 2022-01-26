@@ -16,7 +16,7 @@
   margin-right: 25px;
 }
 .form_section {
-  padding-top: 160px;
+  /* padding-top: 160px; */
 }
 .form_radioField {
   color: orange;
@@ -79,7 +79,7 @@ input[type="radio"] + label {
     color: #212121;
     width: 290px;
     margin-bottom: 30px;
-    margin-top: 160px;
+    /* margin-top: 160px; */
   }
   .input {
     font-family: Verdana;

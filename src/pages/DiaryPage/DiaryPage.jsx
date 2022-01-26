@@ -1,13 +1,13 @@
-import styles from "./Diary.module.css";
+import styles from "./DiaryPage.module.css";
 import FooterInfo from "../../components/FooterInfo";
-// import Egor from "../../components/Egor";
+import Dairy from '../../components/Diary'
 import ContainerStyled from "../../components/_styled/Container.styled";
 export default function Diary() {
   return (
     <div className={styles.bg}>
       <ContainerStyled>
         <div className={styles.position}>
-          {/* <Egor /> */}
+          <Dairy />
           <FooterInfo />
         </div>
       </ContainerStyled>
