@@ -10,7 +10,6 @@ import { getUserId } from "../../redux/auth/authSelectors";
 
 export default function CalculatorPage() {
   const id = useSelector(getUserId);
-  console.log(id);
 
   const modalOpen = useSelector(isModalOpen);
   return (

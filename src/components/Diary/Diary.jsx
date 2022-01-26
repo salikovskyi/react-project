@@ -17,14 +17,15 @@ export default function Diary() {
 
   return (
     <>
-      <p>MAMY E6AJI</p>
       <CalendarPicker />
       <ProductForm />
-      <ul>
-        {products?.map((item) => (
-          <ProductItem key={item.id} product={item} />
-        ))}
-      </ul>
+      {products ? (
+        <ul>
+          {products?.map((item) => (
+            <ProductItem key={item.id} product={item} />
+          ))}
+        </ul>
+      ) : null}
     </>
   );
 }
