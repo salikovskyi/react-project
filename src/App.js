@@ -29,12 +29,15 @@ function App() {
     dispatch(fetchUserInfo());
   }, []);
 
- 
-
   return (
     <div className="prikoldes">
       {isLoading ? (
-        <TailSpin color="#00BFFF" height={80} width={80} className="loader" />
+        <TailSpin 
+          color="#00BFFF" 
+          height={80} 
+          width={80} 
+          className="loader" 
+        />
       ) : (
         <>
           <Header />
@@ -49,19 +52,36 @@ function App() {
                 />
               }
             >
-              <PublicRoute exact path="/">
+              <PublicRoute 
+              exact 
+              path="/"
+              >
                 <HomePage />
               </PublicRoute>
-              <PublicRoute path="/login" restricted redirectTo="/calculator">
+              <PublicRoute 
+              path="/login" 
+              restricted 
+              redirectTo="/calculator"
+              >
                 <AuthPage />
               </PublicRoute>
-              <PublicRoute path="/registration" restricted redirectTo="/login">
+              <PublicRoute 
+                path="/registration" 
+                restricted 
+                redirectTo="/login"
+              >
                 <AuthPage />
               </PublicRoute>
-              <PrivateRoute path="/diary" redirectTo={!IsLoggedIn && '/login'}>
+              <PrivateRoute 
+                path="/diary" 
+                redirectTo={!IsLoggedIn && "/login"}
+              >
                 <DiaryPage />
               </PrivateRoute>
-              <PrivateRoute path="/calculator" redirectTo={!IsLoggedIn && '/login'}>
+              <PrivateRoute
+                path="/calculator"
+                redirectTo={!IsLoggedIn && "/login"}
+              >
                 <Calculator />
               </PrivateRoute>
             </Suspense>
