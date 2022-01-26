@@ -13,7 +13,7 @@ import { getEatenProducts } from "../../redux/userData/userDataSelectors";
 
 export default function Diary() {
   const products = useSelector(getEatenProducts);
-
+  
   return (
     <>
       <CalendarPicker />

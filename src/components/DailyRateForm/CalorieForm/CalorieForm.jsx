@@ -3,15 +3,12 @@ import * as Yup from "yup";
 import { useDispatch, useSelector } from "react-redux";
 import { Field, Form, Formik } from "formik";
 import Button from "../../_styled/Button.styled";
-import { getUserData } from "../../../redux/userData/userDataSelectors";
-import { useHistory } from "react-router";
 import {
   dailyRateInfo,
-  userDaily
+  userDaily,
 } from "../../../redux/userData/userDataOperations";
 import { getIsLoggedIn, getUserId } from "../../../redux/auth/authSelectors";
-import {openModal , closeModal} from '../../../redux/userData/userDataSlice'
-import convertFormValuesToNumbers from '../../../utils/helpers/convertFormValuesToNumbers'
+import convertFormValuesToNumbers from "../../../utils/helpers/convertFormValuesToNumbers";
 
 const validationSchema = Yup.object().shape({
   height: Yup.number()
@@ -40,7 +37,6 @@ const validationSchema = Yup.object().shape({
     "Група крови должна быть обязательно указана!"
   ),
 });
-
 const initialState = {
   height: "",
   age: "",
@@ -48,34 +44,30 @@ const initialState = {
   desiredWeight: "",
   bloodType: "",
 };
-
 export default function CalorieForm() {
   const dispatch = useDispatch();
   const isLoggedIn = useSelector(getIsLoggedIn);
   const id = useSelector(getUserId);
-  const history = useHistory();
-
   const onSubmitForm = (values) => {
     if (isLoggedIn) {
       dispatch(userDaily(convertFormValuesToNumbers({ id, values })));
     } else {
       dispatch(dailyRateInfo(convertFormValuesToNumbers(values)));
     }
-
-
   };
-
   return (
     <div className={css.form_section}>
-      <Formik validationSchema={validationSchema} initialValues={initialState}>
+      <Formik validationSchema={validationSchema} initialValues={initialState} onSubmit={(values) => {
+              onSubmitForm(values);
+            }}>
         {({ errors, touched, values, resetForm }) => (
           <Form
             className={css.form}
-            onSubmit={(e) => {
-              e.preventDefault();
-              onSubmitForm(values);
-              resetForm();
-            }}
+            // onSubmit={(e) => {
+            //   e.preventDefault();
+            //   onSubmitForm(values);
+            //   resetForm();
+            // }}
           >
             <h2 className={css.form_title}>
               Узнай свою суточную норму калорий
@@ -89,7 +81,7 @@ export default function CalorieForm() {
                     }`}
                     placeholder="Рост *"
                     name="height"
-                    type="text"
+                    type="number"
                     value={values.height}
                   />
                   {touched.height && errors.height && (
@@ -103,7 +95,7 @@ export default function CalorieForm() {
                     }`}
                     placeholder="Возраст *"
                     name="age"
-                    type="text"
+                    type="number"
                     value={values.age}
                   />
                 </label>
@@ -117,7 +109,7 @@ export default function CalorieForm() {
                     }`}
                     placeholder="Текущий вес *"
                     name="weight"
-                    type="text"
+                    type="number"
                     value={values.weight}
                   />
                 </label>
@@ -135,14 +127,13 @@ export default function CalorieForm() {
                     }`}
                     placeholder="Желаемый вес *"
                     name="desiredWeight"
-                    type="text"
+                    type="number"
                     value={values.desiredWeight}
                   />
                 </label>
                 {touched.desiredWeight && errors.desiredWeight && (
                   <p className={css.error}>{errors.desiredWeight}</p>
                 )}
-
                 <p className={css.form_subtitle}>Группа крови *</p>
                 <div className={css.form_radio}>
                   <Field
@@ -192,7 +183,7 @@ export default function CalorieForm() {
               </div>
             </div>
             <div className={css.button}>
-              <Button>Похудеть</Button>
+              <Button type="submit">Похудеть</Button>
             </div>
           </Form>
         )}
