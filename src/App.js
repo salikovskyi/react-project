@@ -38,20 +38,20 @@ function App() {
     dispatch(rootClass('SlimMom'));
   }, []);
  
-  const classes = [
-    {
-      class: "SlimMom",
-      path: "/",
-    },
-    { class: "SlimLogin", path: "/login" },
-    { class: "SlimLogin", path: "/registration" },
-    { class: "SlimCalc", path: "/diary" },
-    { class: "SlimCalc", path: "/calculator" }
-  ];
-  const chooseCls = classes.find((item) => item.path === url).class;
+  // const classes = [
+  //   {
+  //     class: "SlimMom",
+  //     path: "/",
+  //   },
+  //   { class: "SlimLogin", path: "/login" },
+  //   { class: "SlimLogin", path: "/registration" },
+  //   { class: "SlimCalc", path: "/diary" },
+  //   { class: "SlimCalc", path: "/calculator" }
+  // ];
+  // const chooseCls = classes.find((item) => item.path === url).class;
 
   return (
-    <div className={chooseCls}>
+    <div className={chooseClass}>
       {isLoading ? (
         <TailSpin color="#00BFFF" height={80} width={80} className="loader" />
       ) : (
