@@ -1,0 +1,45 @@
+.dairy{
+    width:max-content;
+    margin:0 auto;
+    padding-top: 60px;
+    height: 488px;
+    padding-left:15px;
+    padding-right:15px;
+    width: 320px;
+    background-color:#264061;
+}
+
+.linknav{
+    display:inline-block;
+    font-family: Verdana;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 1.21;
+    letter-spacing: 0.04em;
+    color: #9b9faa;
+    width: 290px;
+
+    text-align: center;
+}
+.activeLink{
+    color:#FFFFFF;    
+}
+
+@media screen and (min-width:768px){
+    .dairy{
+        width:768px;
+        margin:0 auto;
+        padding-top: 108px;
+        height:944px;
+        padding-left:15px;
+        padding-right:15px;
+        text-align: center;
+
+    }
+    .linknav{
+        font-size:24px;
+        line-height: 2.2;
+        width: 306px;
+}
+}

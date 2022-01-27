@@ -30,21 +30,21 @@ export default function FooterInfo() {
           <li className={styles.kcalItem}>
             <span>Осталось</span>
             <span className={styles.kcalListSpan}>
-              {String(kcalLeft).padStart(3, "0")}
+              {String(Math.round(kcalLeft)).padStart(4, "0")}
             </span>
             <span> ккал</span>
           </li>
           <li className={styles.kcalItem}>
             <span>Употреблено</span>
             <span className={styles.kcalListSpan}>
-              {String(kcalConsumed).padStart(3, "0")}
+              {String(Math.round(kcalConsumed)).padStart(4, "0")}
             </span>
             <span> ккал</span>
           </li>
           <li className={styles.kcalItem}>
             <span>Дневная норма</span>
             <span className={styles.kcalListSpan}>
-              {String(dailyRate).padStart(3, "0")}
+              {String(Math.round(dailyRate)).padStart(4, "0")}
             </span>
             <span> ккал</span>
           </li>

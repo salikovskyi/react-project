@@ -25,7 +25,7 @@ const filterProductsSlice = createSlice({
       state.isLoading = false;
     },
     [searchProduct.fulfilled]: (state, { payload }) => {
-      state.products = payload.data;
+      state.products = payload;
       state.isLoading = false;
     },
   },

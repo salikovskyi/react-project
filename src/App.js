@@ -2,15 +2,10 @@
 import "react-datepicker/dist/react-datepicker.css";
 
 import { lazy, Suspense } from "react";
-import { Switch, useRouteMatch } from "react-router-dom";
-import ContainerStyled from "./components/_styled/Container.styled";
+import { Switch } from "react-router-dom";
+
 import { useSelector, useDispatch } from "react-redux";
-import {
-  fetchUserInfo,
-  loginUser,
-  refreshUser,
-  registerUser,
-} from "./redux/auth/authOperations";
+import { fetchUserInfo } from "./redux/auth/authOperations";
 import PublicRoute from "./routes/PublicRoutes";
 import PrivateRoute from "./routes/PrivateRoutes";
 import {
@@ -43,48 +38,44 @@ function App() {
 
   return (
     <div className={chooseClass}>
-      {/* {isLoading &&
-        (<TailSpin
-          color="#00BFFF"
-          height={80}
-          width={80}
-          className="loader"
-        />)( */}
-      <>
-        <Header />
-        <Switch>
-          <Suspense
-            fallback={
-              <TailSpin
-                color="#00BFFF"
-                height={80}
-                width={80}
-                className="loader"
-              />
-            }
-          >
-            <PublicRoute exact path="/">
-              <HomePage />
-            </PublicRoute>
-            <PublicRoute path="/login" restricted redirectTo="/calculator">
-              <AuthPage />
-            </PublicRoute>
-            <PublicRoute path="/registration" restricted redirectTo="/login">
-              <AuthPage />
-            </PublicRoute>
-            <PrivateRoute path="/diary" redirectTo={!IsLoggedIn && "/login"}>
-              <DiaryPage />
-            </PrivateRoute>
-            <PrivateRoute
-              path="/calculator"
-              redirectTo={!IsLoggedIn && "/login"}
+      {isLoading ? (
+        <TailSpin color="#00BFFF" height={80} width={80} className="loader" />
+      ) : (
+        <>
+          <Header />
+          <Switch>
+            <Suspense
+              fallback={
+                <TailSpin
+                  color="#00BFFF"
+                  height={80}
+                  width={80}
+                  className="loader"
+                />
+              }
             >
-              <Calculator />
-            </PrivateRoute>
-          </Suspense>
-        </Switch>
-      </>
-      {/* )} */}
+              <PublicRoute exact path="/">
+                <HomePage />
+              </PublicRoute>
+              <PublicRoute path="/login" restricted redirectTo="/calculator">
+                <AuthPage />
+              </PublicRoute>
+              <PublicRoute path="/registration" restricted redirectTo="/login">
+                <AuthPage />
+              </PublicRoute>
+              <PrivateRoute path="/diary" redirectTo={!IsLoggedIn && "/login"}>
+                <DiaryPage />
+              </PrivateRoute>
+              <PrivateRoute
+                path="/calculator"
+                redirectTo={!IsLoggedIn && "/login"}
+              >
+                <Calculator />
+              </PrivateRoute>
+            </Suspense>
+          </Switch>
+        </>
+      )}
     </div>
   );
 }

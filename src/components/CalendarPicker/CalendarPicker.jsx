@@ -5,9 +5,9 @@ import { useDispatch, useSelector } from "react-redux";
 import SlimmomAPI from "../../api/SlimmomAPI/SlimmomAPI";
 import { dayInfo } from "../../redux/userData/userDataOperations";
 import { getToken } from "../../redux/auth/authSelectors";
-import dateFormatter from "../../utils/helpers/dateFormatter";
 import { setCurrentDate } from "../../redux/userData/userDataSlice";
 import { convertDate } from "../../utils/helpers/convertDate";
+import css from "./CalendarPicker.module.css";
 
 export default function CalendarPicker() {
   const dispatch = useDispatch();
@@ -17,7 +17,7 @@ export default function CalendarPicker() {
 
   useEffect(() => {
     SlimmomAPI.setToken(token);
-    console.log(`startDate`, startDate);
+
     dispatch(dayInfo({ date: convertDate(startDate) }));
   }, [dispatch, startDate]);
 
@@ -27,12 +27,15 @@ export default function CalendarPicker() {
   }, [startDate]);
 
   return (
-    <div>
-      <DatePicker
-        dateFormat="yyyy-MM-dd"
-        selected={startDate}
-        onChange={(date) => setStartDate(date)}
-      />
+    <div className={css.div}>
+      <div className={css.calendar_container}>
+        <DatePicker
+          dateFormat="yyyy-MM-dd"
+          selected={startDate}
+          onChange={(date) => setStartDate(date)}
+          className={css.date}
+        />
+      </div>
     </div>
   );
 }
