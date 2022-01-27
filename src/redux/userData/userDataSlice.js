@@ -33,6 +33,7 @@ const initialState = {
   isModalOpen: false,
   currentDate: dateFormatter,
   rootClass: "SlimMom",
+  firstEntry: false,
 };
 
 const accountDataSlice = createSlice({
@@ -62,8 +63,11 @@ const accountDataSlice = createSlice({
       state.isLoading = false;
     },
     [loginUser.fulfilled]: (state, { payload }) => {
+      console.log(payload);
       state.daySummary = payload.user.userData;
       state.isLoading = false;
+      state.isModalOpen = false;
+      state.firstEntry = true;
     },
     [fetchUserInfo.pending]: (state) => {
       state.error = null;
@@ -80,6 +84,8 @@ const accountDataSlice = createSlice({
       ).daySummary;
       state.isLoading = false;
       state.notAllowedProducts = payload.userData.notAllowedProducts;
+      state.isModalOpen = false;
+      state.firstEntry = false;
     },
     [dailyRateInfo.pending]: (state) => {
       state.error = null;
@@ -107,7 +113,7 @@ const accountDataSlice = createSlice({
       state.daySummary = payload.data.summaries.find(
         (day) => day.date === dateFormatter
       );
-      state.notAllowedProducts = payload.notAllowedProducts;
+      state.notAllowedProducts = payload.data.notAllowedProducts;
       state.isLoading = false;
     },
     [addEatenProduct.pending]: (state) => {
@@ -148,7 +154,7 @@ const accountDataSlice = createSlice({
       state.isLoading = false;
     },
     [dayInfo.fulfilled]: (state, { payload }) => {
-      console.log(payload.data);
+      console.log(payload);
       state.daySummary = payload.data.daySummary
         ? payload.data.daySummary
         : payload.data;
