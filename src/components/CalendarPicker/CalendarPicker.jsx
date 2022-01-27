@@ -7,6 +7,7 @@ import { dayInfo } from "../../redux/userData/userDataOperations";
 import { getToken } from "../../redux/auth/authSelectors";
 import dateFormatter from "../../utils/helpers/dateFormatter";
 import { setCurrentDate } from "../../redux/userData/userDataSlice";
+import css from "./CalendarPicker.module.css";
 
 export default function CalendarPicker() {
   const dispatch = useDispatch();
@@ -25,12 +26,15 @@ export default function CalendarPicker() {
   }, [startDate]);
 
   return (
-    <div>
+    <div className={css.div}>
+      <div className={css.calendar_container}>
       <DatePicker
         dateFormat="yyyy-MM-dd"
         selected={startDate ? startDate : Date.parse(dateFormatter)}
         onChange={(date) => setStartDate(date)}
+        className={css.date}
       />
     </div>
+  </div>
   );
 }

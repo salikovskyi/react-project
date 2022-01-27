@@ -1,15 +1,16 @@
 import { useDispatch, useSelector } from "react-redux";
 import { removeEatenProduct } from "../../redux/userData/userDataOperations";
 import { getDayId } from "../../redux/userData/userDataSelectors";
+import styles from "./ProductItem.module.css";
 
 export default function ProductItem({ product }) {
   const dispatch = useDispatch();
   const dayd = useSelector(getDayId);
   return (
-    <li>
-      <p>{product.title}</p>
-      <span className={styled.product}>{product.weight} г</span>
-      <span>{product.kcal} ккал</span>
+    <li className={styles.item}>
+      <p className={styles.name}>{product.title}</p>
+        <p className={styles.weight}>{product.weight} г</p>
+        <p className={styles.kcal}>{product.kcal} ккaл</p>
       <button
         onClick={() =>
           dispatch(
@@ -21,10 +22,9 @@ export default function ProductItem({ product }) {
             )
           )
         }
+        className={styles.buttonCross}
       >
-        <svg width="5" height="5">
-          <use href="../../assets/images/sprite/cross.svg"></use>
-        </svg>
+        X
       </button>
     </li>
   );
