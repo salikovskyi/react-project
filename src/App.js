@@ -48,7 +48,7 @@ function App() {
   //   { class: "SlimCalc", path: "/diary" },
   //   { class: "SlimCalc", path: "/calculator" }
   // ];
-  // const chooseClass = classes.find((item) => item.path === url).class;
+  // const chooseCls = classes.find((item) => item.path === url).class;
 
   return (
     <div className={chooseClass}>

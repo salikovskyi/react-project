@@ -30,6 +30,7 @@
     text-align: right;
     letter-spacing: 0.04em;
     color: #212121;
+    border: none;
   }
   
   /* LOGIN MEDIA */
@@ -38,6 +39,9 @@
   @media screen and (min-width: 768px) {
       .header_login_user_menu {
           display: none;
+      }
+      .login_linknav {
+        background-color: inherit;
       }
       
   }
