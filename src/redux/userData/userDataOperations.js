@@ -41,6 +41,7 @@ export const removeEatenProduct = createAsyncThunk(
   "userData/removeEatenProduct",
   async (product, { rejectWithValue }) => {
     try {
+      console.log(product);
       const response = await SlimmomAPI.deleteEatenProduct(product);
       return response;
     } catch ({ message }) {

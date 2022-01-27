@@ -70,6 +70,7 @@ const accountDataSlice = createSlice({
       state.isLoading = false;
     },
     [fetchUserInfo.fulfilled]: (state, { payload }) => {
+      console.log(payload);
       state.daySummary = payload.days.find(
         (day) => day.date === state.currentDate
       ).daySummary;
@@ -128,9 +129,10 @@ const accountDataSlice = createSlice({
       state.isLoading = false;
     },
     [removeEatenProduct.fulfilled]: (state, { payload }) => {
-      state.products = state.products.filter(
-        (product) => product.id !== payload.id
-      );
+      // state.products = state.products.filter(
+      //   (product) => product.id !== payload.id
+      // );
+      state.eatenProducts = payload.data.eatenProducts;
       state.isLoading = false;
     },
     [dayInfo.pending]: (state) => {
@@ -142,12 +144,14 @@ const accountDataSlice = createSlice({
       state.isLoading = false;
     },
     [dayInfo.fulfilled]: (state, { payload }) => {
+      console.log(payload.data);
       state.daySummary = payload.data.daySummary
         ? payload.data.daySummary
         : payload.data;
       state.eatenProducts = payload.data.eatenProducts
         ? payload.data.eatenProducts
         : 0;
+      state.dayId = payload.data.id;
       state.isLoading = false;
     },
   },

@@ -41,7 +41,7 @@ function App() {
     },
     { class: "SlimLogin", path: "/login" },
     { class: "SlimLogin", path: "/registration" },
-    { class: "SlimCalc", path: "/dairy" },
+    { class: "SlimCalc", path: "/diary" },
     { class: "SlimCalc", path: "/calculator" },
   ];
   const chooseClass = classes.find((item) => item.path === pathname).class;
