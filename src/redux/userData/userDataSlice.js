@@ -32,15 +32,15 @@ const initialState = {
   error: null,
   isModalOpen: false,
   currentDate: dateFormatter,
-  rootClass:"SlimMom",
+  rootClass: "SlimMom",
 };
 
 const accountDataSlice = createSlice({
   name: "account",
   initialState,
   reducers: {
-    rootClass: (state, {payload}) =>{
-     state.rootClass = payload;
+    rootClass: (state, { payload }) => {
+      state.rootClass = payload;
     },
     openModal: (state) => {
       state.isModalOpen = true;
@@ -73,13 +73,14 @@ const accountDataSlice = createSlice({
       state.error = payload;
       state.isLoading = false;
     },
-    // [fetchUserInfo.fulfilled]: (state, { payload }) => {
-    //   state.daySummary = payload.days.find(
-    //     (day) => day.date === state.currentDate
-    //   ).daySummary;
-    //   state.isLoading = false;
-    //   state.notAllowedProducts = payload.userData.notAllowedProducts;
-    // },
+    [fetchUserInfo.fulfilled]: (state, { payload }) => {
+      console.log(payload);
+      state.daySummary = payload.days.find(
+        (day) => day.date === state.currentDate
+      ).daySummary;
+      state.isLoading = false;
+      state.notAllowedProducts = payload.userData.notAllowedProducts;
+    },
     [dailyRateInfo.pending]: (state) => {
       state.error = null;
       state.isLoading = true;
@@ -132,9 +133,10 @@ const accountDataSlice = createSlice({
       state.isLoading = false;
     },
     [removeEatenProduct.fulfilled]: (state, { payload }) => {
-      state.products = state.products.filter(
-        (product) => product.id !== payload.id
-      );
+      // state.products = state.products.filter(
+      //   (product) => product.id !== payload.id
+      // );
+      state.eatenProducts = payload.data.eatenProducts;
       state.isLoading = false;
     },
     [dayInfo.pending]: (state) => {
@@ -146,12 +148,14 @@ const accountDataSlice = createSlice({
       state.isLoading = false;
     },
     [dayInfo.fulfilled]: (state, { payload }) => {
+      console.log(payload.data);
       state.daySummary = payload.data.daySummary
         ? payload.data.daySummary
         : payload.data;
       state.eatenProducts = payload.data.eatenProducts
         ? payload.data.eatenProducts
         : 0;
+      state.dayId = payload.data.id;
       state.isLoading = false;
     },
   },

@@ -49,6 +49,7 @@ class SlimmomAPI {
   }
 
   static deleteEatenProduct(product) {
+    console.log(product);
     return this.axiosInstance.delete("/day", product);
   }
 

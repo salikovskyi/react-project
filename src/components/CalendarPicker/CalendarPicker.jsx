@@ -12,15 +12,16 @@ export default function CalendarPicker() {
   const dispatch = useDispatch();
   const token = useSelector(getToken);
 
-  const [startDate, setStartDate] = useState(new Date());
+  const [startDate, setStartDate] = useState("");
 
   useEffect(() => {
     SlimmomAPI.setToken(token);
-    dispatch(dayInfo({ date: startDate }));
+    dispatch(dayInfo({ date: startDate ? startDate : dateFormatter }));
   }, [dispatch, startDate]);
 
   useEffect(() => {
-    startDate && dispatch(setCurrentDate(startDate));
+    const toString = Object.prototype.toString;
+    toString === "string" && dispatch(setCurrentDate(startDate));
   }, [startDate]);
 
   return (
