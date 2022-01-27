@@ -51,7 +51,9 @@ export default function ProductForm() {
               e.preventDefault();
               onSubmitForm(values.weight);
               resetForm();
+            
             }}
+            className={css.ProductForm}
           >
             <Field
               className={css.input}
@@ -64,12 +66,13 @@ export default function ProductForm() {
                 setFieldValue("query", e.target.value);
                 debouncedFindProducts(values.query);
               }}
+              className={css.ProductSearch}
             />
             {touched.query && errors.query && (
               <p className={css.error}>{errors.query}</p>
             )}
             <Field
-              className={css.input}
+            className={css.ProductInput}
               type="number"
               name="weight"
               placeholder="Граммы"
@@ -77,7 +80,8 @@ export default function ProductForm() {
             {touched.weight && errors.weight && (
               <p className={css.error}>{errors.weight}</p>
             )}
-            <button type="submit">Добавить</button>
+            <button type="submit"className={css.ProductAddBtn} 
+></button>
             <ul>
               {products.map((product) => (
                 <li
