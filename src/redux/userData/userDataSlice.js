@@ -25,7 +25,7 @@ const initialState = {
     dailyRate: 0,
     percentsOfDailyRate: 0,
     userId: "",
-    id: "",
+    _id: null,
   },
   notAllowedProducts: [],
   isLoading: false,
@@ -63,11 +63,9 @@ const accountDataSlice = createSlice({
       state.isLoading = false;
     },
     [loginUser.fulfilled]: (state, { payload }) => {
-      console.log(payload);
       state.daySummary = payload.user.userData;
       state.isLoading = false;
       state.isModalOpen = false;
-      state.firstEntry = true;
     },
     [fetchUserInfo.pending]: (state) => {
       state.error = null;
@@ -78,14 +76,12 @@ const accountDataSlice = createSlice({
       state.isLoading = false;
     },
     [fetchUserInfo.fulfilled]: (state, { payload }) => {
-      console.log(payload);
       state.daySummary = payload.days.find(
         (day) => day.date === state.currentDate
       ).daySummary;
       state.isLoading = false;
       state.notAllowedProducts = payload.userData.notAllowedProducts;
       state.isModalOpen = false;
-      state.firstEntry = false;
     },
     [dailyRateInfo.pending]: (state) => {
       state.error = null;
@@ -125,9 +121,8 @@ const accountDataSlice = createSlice({
       // state.isLoading = false;
     },
     [addEatenProduct.fulfilled]: (state, { payload }) => {
-      console.log("eaten", payload.data);
-      state.eatenProducts = payload.data.day.eatenProducts;
-      state.daySummary = payload.data.daySummary;
+      state.eatenProducts = payload.day.eatenProducts;
+      state.daySummary = payload.daySummary;
       // state.isLoading = false;
     },
     [removeEatenProduct.pending]: (state) => {
@@ -139,10 +134,10 @@ const accountDataSlice = createSlice({
       state.isLoading = false;
     },
     [removeEatenProduct.fulfilled]: (state, { payload }) => {
-      // state.products = state.products.filter(
-      //   (product) => product.id !== payload.id
-      // );
-      state.eatenProducts = payload.data.eatenProducts;
+      state.eatenProducts = state.eatenProducts.filter(
+        (product) => product.id !== payload.removedProductId
+      );
+      state.daySummary = payload.newDaySummary;
       state.isLoading = false;
     },
     [dayInfo.pending]: (state) => {
@@ -154,14 +149,9 @@ const accountDataSlice = createSlice({
       state.isLoading = false;
     },
     [dayInfo.fulfilled]: (state, { payload }) => {
-      console.log(payload);
-      state.daySummary = payload.data.daySummary
-        ? payload.data.daySummary
-        : payload.data;
-      state.eatenProducts = payload.data.eatenProducts
-        ? payload.data.eatenProducts
-        : 0;
-      state.dayId = payload.data.id;
+      state.daySummary = payload.daySummary ? payload.daySummary : payload;
+      state.eatenProducts = payload.eatenProducts ? payload.eatenProducts : 0;
+      state.dayId = payload.id;
       state.isLoading = false;
     },
   },

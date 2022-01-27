@@ -9,17 +9,15 @@ export default function ProductItem({ product }) {
   return (
     <li className={styles.item}>
       <p className={styles.name}>{product.title}</p>
-        <p className={styles.weight}>{product.weight} г</p>
-        <p className={styles.kcal}>{product.kcal} ккaл</p>
+      <p className={styles.weight}>{Math.round(product.weight)} г</p>
+      <p className={styles.kcal}>{Math.round(product.kcal)} ккaл</p>
       <button
         onClick={() =>
           dispatch(
-            removeEatenProduct(
-              {
-                dayId: dayd,
-                eatenProductId: product.id,
-              }
-            )
+            removeEatenProduct({
+              dayId: dayd,
+              eatenProductId: product.id,
+            })
           )
         }
         className={styles.buttonCross}

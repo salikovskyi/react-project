@@ -24,16 +24,12 @@ export default function ProductForm() {
   const products = useSelector(getProducts);
   const [showDiaryMenu, setShowDiaryMenu] = useState(false);
 
-  const [productId, setProductId] = useState("");
-
   const findProducts = (query) => {
     query && dispatch(searchProduct(query));
   };
 
-  const debouncedFindProducts = debounce(findProducts, 400);
-
   const onSubmitForm = (weight) => {
-    const product = { date: dateFormatter, productId, weight };
+    const product = { date: dateFormatter, productId: products[0]._id, weight };
     console.log(`product`, product);
     weight && dispatch(addEatenProduct(product));
   };
@@ -53,28 +49,34 @@ export default function ProductForm() {
               e.preventDefault();
               onSubmitForm(values.weight);
               resetForm();
-            
             }}
             className={css.ProductForm}
           >
             <Field
               className={css.input}
-              type="text"
+              type="search"
               name="query"
+              list="products"
               placeholder="Введите название продукта"
-              autocomplete="off"
+              autoComplete="off"
               value={values.query}
               onChange={(e) => {
                 setFieldValue("query", e.target.value);
-                debouncedFindProducts(values.query);
+
+                findProducts(values.query);
               }}
               className={css.ProductSearch}
             />
+            <datalist id="products">
+              {products.map((product) => (
+                <option key={product._id}>{product.title.ru}</option>
+              ))}
+            </datalist>
             {touched.query && errors.query && (
               <p className={css.error}>{errors.query}</p>
             )}
             <Field
-            className={css.ProductInput}
+              className={css.ProductInput}
               type="number"
               name="weight"
               placeholder="Граммы"
@@ -82,24 +84,8 @@ export default function ProductForm() {
             {touched.weight && errors.weight && (
               <p className={css.error}>{errors.weight}</p>
             )}
-            <button
-            onClick={() => setShowDiaryMenu(!showDiaryMenu)}
-            className={css.product_btn}>Добавить</button> 
-            <ProductModal active={showDiaryMenu} setActive={setShowDiaryMenu} /> 
-            <ul>
-              {products.map((product) => (
-                <li
-                  key={product._id}
-                  onClick={() => {
-                    setProductId(product._id);
-                    setFieldValue("query", product.title.ru);
-                    dispatch(clearHintList());
-                  }}
-                >
-                  <p>{product.title.ru}</p>
-                </li>
-              ))}
-            </ul>
+            <button className={css.ProductAddBtn}></button>
+            {/* <ProductModal active={showDiaryMenu} setActive={setShowDiaryMenu} /> */}
           </form>
         )}
       </Formik>

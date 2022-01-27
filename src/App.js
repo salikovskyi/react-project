@@ -2,18 +2,17 @@
 import "react-datepicker/dist/react-datepicker.css";
 
 import { lazy, Suspense } from "react";
-import { Switch, useRouteMatch } from "react-router-dom";
-import ContainerStyled from "./components/_styled/Container.styled";
+import { Switch } from "react-router-dom";
+
 import { useSelector, useDispatch } from "react-redux";
-import {
-  fetchUserInfo,
-  loginUser,
-  refreshUser,
-  registerUser,
-} from "./redux/auth/authOperations";
+import { fetchUserInfo } from "./redux/auth/authOperations";
 import PublicRoute from "./routes/PublicRoutes";
 import PrivateRoute from "./routes/PrivateRoutes";
-import { getIsLoading, getIsLoggedIn } from "./redux/auth/authSelectors";
+import {
+  getIsLoading,
+  getIsLoggedIn,
+  getToken,
+} from "./redux/auth/authSelectors";
 import { useEffect } from "react";
 import Header from "./components/Header";
 import { TailSpin } from "react-loader-spinner";
@@ -22,7 +21,7 @@ import { getRootClass } from "./redux/userData/userDataSelectors";
 
 const HomePage = lazy(() => import("./pages/MainPage"));
 const AuthPage = lazy(() => import("./pages/AuthPage"));
- const DiaryPage = lazy(() => import("./pages/DiaryPage"));
+const DiaryPage = lazy(() => import("./pages/DiaryPage"));
 const Calculator = lazy(() => import("./pages/Calculator"));
 
 function App() {
@@ -30,10 +29,10 @@ function App() {
   const isLoading = useSelector(getIsLoading);
   const IsLoggedIn = useSelector(getIsLoggedIn);
   const chooseClass = useSelector(getRootClass);
+  const token = useSelector(getToken);
 
   useEffect(() => {
-    dispatch(fetchUserInfo());
-
+    token && dispatch(fetchUserInfo());
     dispatch(rootClass("SlimMom"));
   }, []);
 
@@ -76,7 +75,7 @@ function App() {
             </Suspense>
           </Switch>
         </>
-      )} 
+      )}
     </div>
   );
 }

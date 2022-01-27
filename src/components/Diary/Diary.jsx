@@ -11,12 +11,13 @@ import CalendarPicker from "../CalendarPicker";
 import ProductForm from "../ProductForm/ProductForm";
 import { getEatenProducts } from "../../redux/userData/userDataSelectors";
 import { fetchUserInfo } from "../../redux/auth/authOperations";
+import css from "./Diary.module.css";
 
 export default function Diary() {
   const products = useSelector(getEatenProducts);
 
   return (
-    <>
+    <div className={css.flex}>
       <CalendarPicker />
       <ProductForm />
       {products ? (
@@ -26,6 +27,6 @@ export default function Diary() {
           ))}
         </ul>
       ) : null}
-    </>
+    </div>
   );
 }

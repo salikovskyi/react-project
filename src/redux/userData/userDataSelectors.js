@@ -10,3 +10,5 @@ export const getEatenProducts = (state) => state.userData.eatenProducts;
 export const getDayId = (state) => state.userData.dayId;
 export const getRootClass = (state) => state.userData.rootClass;
 export const getFirstEntry = (state) => state.userData.firstEntry;
+export const getIsDaySummaryExist = (state) =>
+  Boolean(state.userData.daySummary._id);

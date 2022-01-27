@@ -6,7 +6,7 @@ export const searchProduct = createAsyncThunk(
   async (search, { rejectWithValue }) => {
     try {
       const product = await SlimmomAPI.getProduct(search);
-      return product;
+      return product.data;
     } catch ({ message }) {
       return rejectWithValue(message);
     }
