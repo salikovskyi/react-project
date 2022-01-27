@@ -32,12 +32,16 @@ const initialState = {
   error: null,
   isModalOpen: false,
   currentDate: dateFormatter,
+  rootClass: "SlimMom",
 };
 
 const accountDataSlice = createSlice({
   name: "account",
   initialState,
   reducers: {
+    rootClass: (state, { payload }) => {
+      state.rootClass = payload;
+    },
     openModal: (state) => {
       state.isModalOpen = true;
     },
@@ -158,5 +162,5 @@ const accountDataSlice = createSlice({
 });
 
 export default accountDataSlice.reducer;
-export const { openModal, closeModal, setCurrentDate } =
+export const { openModal, closeModal, setCurrentDate, rootClass } =
   accountDataSlice.actions;

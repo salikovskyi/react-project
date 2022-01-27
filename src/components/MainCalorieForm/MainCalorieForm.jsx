@@ -1,7 +1,7 @@
 import css from "./MainCalorieForm.module.css";
 import * as Yup from "yup";
 import { useDispatch, useSelector } from "react-redux";
-import { input, Form, Formik, useFormik } from "formik";
+import { useFormik } from "formik";
 import Button from "../_styled/Button.styled";
 import {
   dailyRateInfo,

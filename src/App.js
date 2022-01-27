@@ -17,6 +17,8 @@ import { getIsLoading, getIsLoggedIn } from "./redux/auth/authSelectors";
 import { useEffect } from "react";
 import Header from "./components/Header";
 import { TailSpin } from "react-loader-spinner";
+import { rootClass } from "./redux/userData/userDataSlice";
+import { getRootClass } from "./redux/userData/userDataSelectors";
 
 const HomePage = lazy(() => import("./pages/MainPage"));
 const AuthPage = lazy(() => import("./pages/AuthPage"));
@@ -27,24 +29,26 @@ function App() {
   const dispatch = useDispatch();
   const isLoading = useSelector(getIsLoading);
   const IsLoggedIn = useSelector(getIsLoggedIn);
-  // const { url } = useRouteMatch();
+  const chooseClass = useSelector(getRootClass);
+  const { url } = useRouteMatch();
 
   console.log(window.location.pathname);
   useEffect(() => {
     dispatch(fetchUserInfo());
+    dispatch(rootClass("SlimMom"));
   }, []);
-  const pathname = window.location.pathname;
-  const classes = [
-    {
-      class: "SlimMom",
-      path: "/",
-    },
-    { class: "SlimLogin", path: "/login" },
-    { class: "SlimLogin", path: "/registration" },
-    { class: "SlimCalc", path: "/diary" },
-    { class: "SlimCalc", path: "/calculator" },
-  ];
-  const chooseClass = classes.find((item) => item.path === pathname).class;
+
+  // const classes = [
+  //   {
+  //     class: "SlimMom",
+  //     path: "/",
+  //   },
+  //   { class: "SlimLogin", path: "/login" },
+  //   { class: "SlimLogin", path: "/registration" },
+  //   { class: "SlimCalc", path: "/diary" },
+  //   { class: "SlimCalc", path: "/calculator" }
+  // ];
+  // const chooseClass = classes.find((item) => item.path === url).class;
 
   return (
     <div className={chooseClass}>
