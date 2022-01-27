@@ -31,17 +31,25 @@ const initialState = {
   isLoading: false,
   error: null,
   isModalOpen: false,
+  currentDate: dateFormatter,
+  rootClass:"SlimMom",
 };
 
 const accountDataSlice = createSlice({
   name: "account",
   initialState,
   reducers: {
+    rootClass: (state, {payload}) =>{
+     state.rootClass = payload;
+    },
     openModal: (state) => {
       state.isModalOpen = true;
     },
     closeModal: (state) => {
       state.isModalOpen = false;
+    },
+    setCurrentDate: (state, { payload }) => {
+      state.currentDate = payload;
     },
   },
   extraReducers: {
@@ -65,13 +73,13 @@ const accountDataSlice = createSlice({
       state.error = payload;
       state.isLoading = false;
     },
-    [fetchUserInfo.fulfilled]: (state, { payload }) => {
-      // state.daySummary = payload.days.find((day) =>
-      //   day.date === startDate ? startDate : dateFormatter
-      // ).daySummary;
-      state.isLoading = false;
-      state.notAllowedProducts = payload.userData.notAllowedProducts;
-    },
+    // [fetchUserInfo.fulfilled]: (state, { payload }) => {
+    //   state.daySummary = payload.days.find(
+    //     (day) => day.date === state.currentDate
+    //   ).daySummary;
+    //   state.isLoading = false;
+    //   state.notAllowedProducts = payload.userData.notAllowedProducts;
+    // },
     [dailyRateInfo.pending]: (state) => {
       state.error = null;
       state.isLoading = true;
@@ -150,4 +158,5 @@ const accountDataSlice = createSlice({
 });
 
 export default accountDataSlice.reducer;
-export const { openModal, closeModal } = accountDataSlice.actions;
+export const { openModal, closeModal, setCurrentDate, rootClass } =
+  accountDataSlice.actions;

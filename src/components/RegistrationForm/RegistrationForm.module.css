@@ -13,12 +13,11 @@
 .form_title {
   display: flex;
   justify-content: center;
-  margin-top: 120px;
-  margin-bottom: 60px;
   font-family: "Verdana Bold";
   font-style: normal;
   font-weight: 700;
   font-size: 14px;
+  margin-bottom: 60px;
   line-height: 0.92;
   letter-spacing: 0.04em;
   text-transform: uppercase;
@@ -123,7 +122,6 @@
   box-sizing: border-box;
   border-radius: 30px;
   transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-  margin-bottom: 466px;
 }
 
 .secondary_form_btn:hover {
@@ -138,6 +136,13 @@
 
   .form_control_container {
     display: block;
+  }
+  .form_container {
+    padding-top: 157px;
+    padding-bottom: 466px;
+  }
+  .form_title {
+    margin-bottom: 40px;
   }
 
   .input {
@@ -155,7 +160,7 @@
 
   .btn_container {
     display: block;
-    margin-top: 60px;
+    margin-top: 40px;
   }
 
   /* .form_btn {
@@ -177,5 +182,16 @@
   .form_btn:first-child {
     margin-bottom: 0;
     margin-right: 30px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .form_container{
+    padding-bottom: 123px;
+    padding-top: 95px;
+  }
+  
+  .btn_container {
+    margin-top: 20px;
   }
 }

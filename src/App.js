@@ -2,7 +2,7 @@
 import "react-datepicker/dist/react-datepicker.css";
 
 import { lazy, Suspense } from "react";
-import { Switch } from "react-router-dom";
+import { Switch, useRouteMatch } from "react-router-dom";
 import ContainerStyled from "./components/_styled/Container.styled";
 import { useSelector, useDispatch } from "react-redux";
 import {
@@ -17,8 +17,8 @@ import { getIsLoading, getIsLoggedIn } from "./redux/auth/authSelectors";
 import { useEffect } from "react";
 import Header from "./components/Header";
 import { TailSpin } from "react-loader-spinner";
-import DiaryPage from "./pages/DiaryPage";
-import Inc from "./components/DiaryLink/Inc";
+import { rootClass } from "./redux/userData/userDataSlice";
+import { getRootClass } from "./redux/userData/userDataSelectors";
 
 const HomePage = lazy(() => import("./pages/MainPage"));
 const AuthPage = lazy(() => import("./pages/AuthPage"));
@@ -26,23 +26,34 @@ const AuthPage = lazy(() => import("./pages/AuthPage"));
 const Calculator = lazy(() => import("./pages/Calculator"));
 
 function App() {
-  // const dispatch = useDispatch();
-  // const isLoading = useSelector(getIsLoading);
-  // const IsLoggedIn = useSelector(getIsLoggedIn);
-  // useEffect(() => {
-  //   dispatch(fetchUserInfo());
-  // }, []);
+  const dispatch = useDispatch();
+  const isLoading = useSelector(getIsLoading);
+  const IsLoggedIn = useSelector(getIsLoggedIn);
+  const chooseClass = useSelector(getRootClass);
+  const { url } = useRouteMatch();
 
-  return ( <div>
-    {/* // <div className="SlimLogin"> */}
- <Inc/>
-      {/* {isLoading ? (
-        <TailSpin 
-          color="#00BFFF" 
-          height={80} 
-          width={80} 
-          className="loader" 
-        />
+  console.log(window.location.pathname);
+  useEffect(() => {
+    dispatch(fetchUserInfo());
+    dispatch(rootClass('SlimMom'));
+  }, []);
+ 
+  // const classes = [
+  //   {
+  //     class: "SlimMom",
+  //     path: "/",
+  //   },
+  //   { class: "SlimLogin", path: "/login" },
+  //   { class: "SlimLogin", path: "/registration" },
+  //   { class: "SlimCalc", path: "/diary" },
+  //   { class: "SlimCalc", path: "/calculator" }
+  // ];
+  // const chooseClass = classes.find((item) => item.path === url).class;
+
+  return (
+    <div className={chooseClass}>
+      {isLoading ? (
+        <TailSpin color="#00BFFF" height={80} width={80} className="loader" />
       ) : (
         <>
           <Header />
@@ -57,30 +68,16 @@ function App() {
                 />
               }
             >
-              <PublicRoute 
-              exact 
-              path="/"
-              >
+              <PublicRoute exact path="/">
                 <HomePage />
               </PublicRoute>
-              <PublicRoute 
-              path="/login" 
-              restricted 
-              redirectTo="/calculator"
-              >
+              <PublicRoute path="/login" restricted redirectTo="/calculator">
                 <AuthPage />
               </PublicRoute>
-              <PublicRoute 
-                path="/registration" 
-                restricted 
-                redirectTo="/login"
-              >
+              <PublicRoute path="/registration" restricted redirectTo="/login">
                 <AuthPage />
               </PublicRoute>
-              <PrivateRoute 
-                path="/diary" 
-                redirectTo={!IsLoggedIn && "/login"}
-              >
+              <PrivateRoute path="/diary" redirectTo={!IsLoggedIn && "/login"}>
                 <DiaryPage />
               </PrivateRoute>
               <PrivateRoute
@@ -92,7 +89,7 @@ function App() {
             </Suspense>
           </Switch>
         </>
-      )} */}
+      )} 
     </div>
   );
 }
