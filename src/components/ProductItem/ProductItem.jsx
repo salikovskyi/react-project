@@ -15,10 +15,10 @@ export default function ProductItem({ product }) {
         onClick={() =>
           dispatch(
             removeEatenProduct(
-              JSON.stringify({
+              {
                 dayId: dayd,
                 eatenProductId: product.id,
-              })
+              }
             )
           )
         }
