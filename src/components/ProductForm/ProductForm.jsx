@@ -4,7 +4,7 @@ import { debounce } from "lodash";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { searchProduct } from "../../redux/filter/filterOperations";
-import css from "../DailyRateForm/CalorieForm/CalorieForm.module.css";
+import css from "./ProductForm.module.css";
 import { getProducts } from "../../redux/filter/filterSelectors";
 import { addEatenProduct } from "../../redux/userData/userDataOperations";
 import { clearHintList } from "../../redux/filter/filterSlice";
@@ -53,7 +53,9 @@ export default function ProductForm() {
               e.preventDefault();
               onSubmitForm(values.weight);
               resetForm();
+            
             }}
+            className={css.ProductForm}
           >
             <Field
               className={css.input}
@@ -66,12 +68,13 @@ export default function ProductForm() {
                 setFieldValue("query", e.target.value);
                 debouncedFindProducts(values.query);
               }}
+              className={css.ProductSearch}
             />
             {touched.query && errors.query && (
               <p className={css.error}>{errors.query}</p>
             )}
             <Field
-              className={css.input}
+            className={css.ProductInput}
               type="number"
               name="weight"
               placeholder="Граммы"

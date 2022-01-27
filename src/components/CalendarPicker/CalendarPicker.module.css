@@ -1,0 +1,45 @@
+.date {
+    display: block;
+    border: none;
+    border-bottom: 0px solid #e0e0e0;
+    width: 225px;
+    outline: 0;
+    font-family: Verdana;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 22px;
+    transition: all .25s cubic-bezier(.4,0,.2,1);
+  
+  
+    color: #212121;
+  }
+  
+  .div {
+    position: relative;
+  }
+  
+  .calendar_container:after {
+    content: url("../../assets/images/sprite/calendar\ 1.png");
+    position: absolute;
+    top: 1px;
+    left: 120px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  @media screen and (min-width: 768px) {
+    .date {
+      font-size: 34px;
+      line-height: 41px;
+    }
+  
+    .calendar_container:after {
+      top: 10px;
+      left: 225px;
+    }
+  }

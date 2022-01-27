@@ -22,7 +22,7 @@ import { getRootClass } from "./redux/userData/userDataSelectors";
 
 const HomePage = lazy(() => import("./pages/MainPage"));
 const AuthPage = lazy(() => import("./pages/AuthPage"));
-const DiaryPage = lazy(() => import("./pages/DiaryPage"));
+ const DiaryPage = lazy(() => import("./pages/DiaryPage"));
 const Calculator = lazy(() => import("./pages/Calculator"));
 
 function App() {
@@ -76,7 +76,7 @@ function App() {
             </Suspense>
           </Switch>
         </>
-      )}
+      )} 
     </div>
   );
 }
