@@ -10,6 +10,7 @@ import { addEatenProduct } from "../../redux/userData/userDataOperations";
 import { clearHintList } from "../../redux/filter/filterSlice";
 import dateFormatter from "../../utils/helpers/dateFormatter";
 import { getUserData } from "../../redux/userData/userDataSelectors";
+import ProductModal from "./ProductModal/ProductModal";
 const validationSchema = Yup.object().shape({
   query: Yup.string().required("Обязательное поле!"),
   weight: Yup.number()
@@ -21,6 +22,7 @@ const validationSchema = Yup.object().shape({
 export default function ProductForm() {
   const dispatch = useDispatch();
   const products = useSelector(getProducts);
+  const [showDiaryMenu, setShowDiaryMenu] = useState(false);
 
   const [productId, setProductId] = useState("");
 
@@ -77,7 +79,10 @@ export default function ProductForm() {
             {touched.weight && errors.weight && (
               <p className={css.error}>{errors.weight}</p>
             )}
-            <button type="submit">Добавить</button>
+            <button
+            onClick={() => setShowDiaryMenu(!showDiaryMenu)}
+            className={css.product_btn}>Добавить</button> 
+            <ProductModal active={showDiaryMenu} setActive={setShowDiaryMenu} /> 
             <ul>
               {products.map((product) => (
                 <li
