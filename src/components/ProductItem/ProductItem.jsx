@@ -1,10 +1,10 @@
 import { useDispatch, useSelector } from "react-redux";
 import { removeEatenProduct } from "../../redux/userData/userDataOperations";
-import { daySummary } from "../../redux/userData/userDataSelectors";
+import { getDayId } from "../../redux/userData/userDataSelectors";
 
 export default function ProductItem({ product }) {
   const dispatch = useDispatch();
-  const { date, id: dayId } = useSelector(daySummary);
+  const dayd = useSelector(getDayId);
   return (
     <li>
       <p>{product.title}</p>
@@ -12,10 +12,17 @@ export default function ProductItem({ product }) {
       <span>{product.kcal} ккал</span>
       <button
         onClick={() =>
-          dispatch(removeEatenProduct({ eatenProductId: product.id, dayId }))
+          dispatch(
+            removeEatenProduct(
+              JSON.stringify({
+                dayId: dayd,
+                eatenProductId: product.id,
+              })
+            )
+          )
         }
       >
-        <svg>
+        <svg width="5" height="5">
           <use href="../../assets/images/sprite/cross.svg"></use>
         </svg>
       </button>

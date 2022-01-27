@@ -35,9 +35,9 @@ function App() {
   console.log(window.location.pathname);
   useEffect(() => {
     dispatch(fetchUserInfo());
-    dispatch(rootClass('SlimMom'));
+    dispatch(rootClass("SlimMom"));
   }, []);
- 
+
   // const classes = [
   //   {
   //     class: "SlimMom",
