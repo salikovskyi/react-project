@@ -43,7 +43,8 @@ export const removeEatenProduct = createAsyncThunk(
     try {
       console.log(product);
       const response = await SlimmomAPI.deleteEatenProduct(product);
-      return response;
+      console.log("respo", response.data);
+      return { ...response.data, removedProductId: product.eatenProductId };
     } catch ({ message }) {
       return rejectWithValue(message);
     }
@@ -55,7 +56,7 @@ export const dayInfo = createAsyncThunk(
   async (date, { rejectWithValue }) => {
     try {
       const response = await SlimmomAPI.getDayInfo(date);
-      return response;
+      return response.data;
     } catch ({ message }) {
       return rejectWithValue(message);
     }

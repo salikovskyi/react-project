@@ -7,23 +7,19 @@ import { dayInfo } from "../../redux/userData/userDataOperations";
 import { getToken } from "../../redux/auth/authSelectors";
 import dateFormatter from "../../utils/helpers/dateFormatter";
 import { setCurrentDate } from "../../redux/userData/userDataSlice";
-import convertDate from "../../utils/helpers/convertDate";
+import { convertDate } from "../../utils/helpers/convertDate";
 
 export default function CalendarPicker() {
   const dispatch = useDispatch();
   const token = useSelector(getToken);
 
-  const [startDate, setStartDate] = useState("");
-  const [convertedDate, setConvertedDate] = useState(dateFormatter);
+  const [startDate, setStartDate] = useState(new Date());
 
   useEffect(() => {
     SlimmomAPI.setToken(token);
-    dispatch(dayInfo({ date: startDate ? startDate : dateFormatter }));
+    console.log(`startDate`, startDate);
+    dispatch(dayInfo({ date: convertDate(startDate) }));
   }, [dispatch, startDate]);
-
-  // useEffect(() => {
-  //   setConvertedDate(convertDate(startDate));
-  // }, [startDate]);
 
   useEffect(() => {
     const toString = Object.prototype.toString;
@@ -34,7 +30,7 @@ export default function CalendarPicker() {
     <div>
       <DatePicker
         dateFormat="yyyy-MM-dd"
-        selected={startDate ? startDate : Date.parse(dateFormatter)}
+        selected={startDate}
         onChange={(date) => setStartDate(date)}
       />
     </div>

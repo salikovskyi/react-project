@@ -8,6 +8,7 @@ export const fetchUserInfo = createAsyncThunk(
     token && SlimmomAPI.setToken(token);
     try {
       const userInfo = await SlimmomAPI.getUserInfo();
+      console.log(`data`, userInfo);
       return userInfo.data;
     } catch ({ message }) {
       return thunkAPI.rejectWithValue(message);

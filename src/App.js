@@ -13,7 +13,11 @@ import {
 } from "./redux/auth/authOperations";
 import PublicRoute from "./routes/PublicRoutes";
 import PrivateRoute from "./routes/PrivateRoutes";
-import { getIsLoading, getIsLoggedIn } from "./redux/auth/authSelectors";
+import {
+  getIsLoading,
+  getIsLoggedIn,
+  getToken,
+} from "./redux/auth/authSelectors";
 import { useEffect } from "react";
 import Header from "./components/Header";
 import { TailSpin } from "react-loader-spinner";
@@ -30,53 +34,57 @@ function App() {
   const isLoading = useSelector(getIsLoading);
   const IsLoggedIn = useSelector(getIsLoggedIn);
   const chooseClass = useSelector(getRootClass);
+  const token = useSelector(getToken);
 
   useEffect(() => {
-    dispatch(fetchUserInfo());
-
+    token && dispatch(fetchUserInfo());
     dispatch(rootClass("SlimMom"));
   }, []);
 
   return (
     <div className={chooseClass}>
-      {isLoading ? (
-        <TailSpin color="#00BFFF" height={80} width={80} className="loader" />
-      ) : (
-        <>
-          <Header />
-          <Switch>
-            <Suspense
-              fallback={
-                <TailSpin
-                  color="#00BFFF"
-                  height={80}
-                  width={80}
-                  className="loader"
-                />
-              }
+      {/* {isLoading &&
+        (<TailSpin
+          color="#00BFFF"
+          height={80}
+          width={80}
+          className="loader"
+        />)( */}
+      <>
+        <Header />
+        <Switch>
+          <Suspense
+            fallback={
+              <TailSpin
+                color="#00BFFF"
+                height={80}
+                width={80}
+                className="loader"
+              />
+            }
+          >
+            <PublicRoute exact path="/">
+              <HomePage />
+            </PublicRoute>
+            <PublicRoute path="/login" restricted redirectTo="/calculator">
+              <AuthPage />
+            </PublicRoute>
+            <PublicRoute path="/registration" restricted redirectTo="/login">
+              <AuthPage />
+            </PublicRoute>
+            <PrivateRoute path="/diary" redirectTo={!IsLoggedIn && "/login"}>
+              <DiaryPage />
+            </PrivateRoute>
+            <PrivateRoute
+              path="/calculator"
+              redirectTo={!IsLoggedIn && "/login"}
             >
-              <PublicRoute exact path="/">
-                <HomePage />
-              </PublicRoute>
-              <PublicRoute path="/login" restricted redirectTo="/calculator">
-                <AuthPage />
-              </PublicRoute>
-              <PublicRoute path="/registration" restricted redirectTo="/login">
-                <AuthPage />
-              </PublicRoute>
-              <PrivateRoute path="/diary" redirectTo={!IsLoggedIn && "/login"}>
-                <DiaryPage />
-              </PrivateRoute>
-              <PrivateRoute
-                path="/calculator"
-                redirectTo={!IsLoggedIn && "/login"}
-              >
-                <Calculator />
-              </PrivateRoute>
-            </Suspense>
-          </Switch>
-        </>
-      )}
+              <Calculator />
+            </PrivateRoute>
+          </Suspense>
+        </Switch>
+      </>
+      {/* )} */}
     </div>
   );
 }
