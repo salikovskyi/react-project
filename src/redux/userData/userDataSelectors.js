@@ -9,3 +9,4 @@ export const calRate = (state) => state.userData.unauthData.dailyRate;
 export const getEatenProducts = (state) => state.userData.eatenProducts;
 export const getDayId = (state) => state.userData.dayId;
 export const getRootClass = (state) => state.userData.rootClass;
+export const getFirstEntry = (state) => state.userData.firstEntry;

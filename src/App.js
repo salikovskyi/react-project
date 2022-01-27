@@ -30,25 +30,12 @@ function App() {
   const isLoading = useSelector(getIsLoading);
   const IsLoggedIn = useSelector(getIsLoggedIn);
   const chooseClass = useSelector(getRootClass);
-  const { url } = useRouteMatch();
 
-  console.log(window.location.pathname);
   useEffect(() => {
     dispatch(fetchUserInfo());
+
     dispatch(rootClass("SlimMom"));
   }, []);
-
-  // const classes = [
-  //   {
-  //     class: "SlimMom",
-  //     path: "/",
-  //   },
-  //   { class: "SlimLogin", path: "/login" },
-  //   { class: "SlimLogin", path: "/registration" },
-  //   { class: "SlimCalc", path: "/diary" },
-  //   { class: "SlimCalc", path: "/calculator" }
-  // ];
-  // const chooseCls = classes.find((item) => item.path === url).class;
 
   return (
     <div className={chooseClass}>
