@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { removeEatenProduct } from "../../redux/userData/userDataOperations";
 import { daySummary } from "../../redux/userData/userDataSelectors";
+import styled from "./ProductItem.module.css";
 
 export default function ProductItem({ product }) {
   const dispatch = useDispatch();
@@ -8,7 +9,7 @@ export default function ProductItem({ product }) {
   return (
     <li>
       <p>{product.title}</p>
-      <span>{product.weight} г</span>
+      <span className={styled.product}>{product.weight} г</span>
       <span>{product.kcal} ккал</span>
       <button
         onClick={() =>

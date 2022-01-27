@@ -18,6 +18,7 @@ import { useEffect } from "react";
 import Header from "./components/Header";
 import { TailSpin } from "react-loader-spinner";
 import DiaryPage from "./pages/DiaryPage";
+import Inc from "./components/DiaryLink/Inc";
 
 const HomePage = lazy(() => import("./pages/MainPage"));
 const AuthPage = lazy(() => import("./pages/AuthPage"));
@@ -32,9 +33,9 @@ function App() {
   //   dispatch(fetchUserInfo());
   // }, []);
 
-  return (
-    <div className="SlimLogin">
-    <DiaryPage/>
+  return ( <div>
+    {/* // <div className="SlimLogin"> */}
+ <Inc/>
       {/* {isLoading ? (
         <TailSpin 
           color="#00BFFF" 

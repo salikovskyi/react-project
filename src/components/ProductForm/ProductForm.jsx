@@ -4,7 +4,7 @@ import { debounce } from "lodash";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { searchProduct } from "../../redux/filter/filterOperations";
-import css from "../DailyRateForm/CalorieForm/CalorieForm.module.css";
+import css from "./ProductForm.module.css";
 import { getProducts } from "../../redux/filter/filterSelectors";
 import { addEatenProduct } from "../../redux/userData/userDataOperations";
 import { clearHintList } from "../../redux/filter/filterSlice";
