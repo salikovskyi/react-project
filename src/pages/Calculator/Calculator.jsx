@@ -13,15 +13,17 @@ import { getIsLoggedIn, getUserId } from "../../redux/auth/authSelectors";
 import { useEffect } from "react";
 import { rootClass } from "../../redux/userData/userDataSlice";
 import { fetchUserInfo } from "../../redux/auth/authOperations";
+import { dayInfo } from "../../redux/userData/userDataOperations";
+import dateFormatter from "../../utils/helpers/dateFormatter";
 
 export default function CalculatorPage() {
   const id = useSelector(getUserId);
   const dispatch = useDispatch();
-  
+  const isLoggedIn = useSelector(getIsLoggedIn);
 
   useEffect(() => {
     dispatch(rootClass("SlimCalc"));
-    // firstEntry && dispatch(fetchUserInfo());
+    isLoggedIn && dispatch(dayInfo({ date: dateFormatter }));
   }, []);
 
   const modalOpen = useSelector(isModalOpen);

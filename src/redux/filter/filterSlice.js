@@ -25,7 +25,9 @@ const filterProductsSlice = createSlice({
       state.isLoading = false;
     },
     [searchProduct.fulfilled]: (state, { payload }) => {
-      state.products = payload;
+      payload.length < 10
+        ? (state.products = payload)
+        : (state.products = payload.slice(0, 9));
       state.isLoading = false;
     },
   },
