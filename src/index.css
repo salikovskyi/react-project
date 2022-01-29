@@ -211,9 +211,6 @@ body {
     background-image: url(./assets/images/desctop/Layerdesktop1x.png),
       linear-gradient(to right, #ffffff 55%, #f0f1f3 55%);
     background-size: 505px 815px, cover;
-    width: 1280px;
-    margin-left: auto;
-    margin-right: auto;
   }
 }
 @media screen and (min-width: 1280px) and (min-device-pixel-ratio: 2),
