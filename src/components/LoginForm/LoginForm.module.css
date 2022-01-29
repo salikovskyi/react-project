@@ -7,7 +7,7 @@
     display: flex;
     justify-content: center;
     
-    margin-bottom: 60px;
+    margin-bottom: 71px;
     font-family: "Verdana Bold";
     font-style: normal;
     font-weight: 700;
@@ -38,9 +38,6 @@
     border-bottom: 1px solid rgba(224, 224, 224);
     width: 100%;
     outline: 0;
-    height: 20px;
-    margin-top: 3px;
-    height: 30px;
   }
   
   .input_error {
