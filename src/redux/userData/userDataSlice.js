@@ -76,9 +76,9 @@ const accountDataSlice = createSlice({
       state.isLoading = false;
     },
     [fetchUserInfo.fulfilled]: (state, { payload }) => {
-      state.daySummary = payload.days.find(
-        (day) => day.date === state.currentDate
-      ).daySummary;
+      // state.daySummary = payload.days.find(
+      //   (day) => day.date === state.currentDate
+      // ).daySummary;
       state.isLoading = false;
       state.notAllowedProducts = payload.userData.notAllowedProducts;
       state.isModalOpen = false;
