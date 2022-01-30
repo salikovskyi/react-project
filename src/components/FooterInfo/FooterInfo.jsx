@@ -11,6 +11,7 @@ import { userDaily } from "../../redux/userData/userDataOperations";
 
 export default function FooterInfo() {
   const summary = useSelector(daySummary);
+
   const products = useSelector(ownNotAllowedProducts);
 
   const { kcalLeft, kcalConsumed, dailyRate, percentsOfDailyRate } = summary;
