@@ -1,7 +1,5 @@
 import { Field, Formik } from "formik";
 import * as Yup from "yup";
-import { debounce } from "lodash";
-import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { searchProduct } from "../../redux/filter/filterOperations";
 import css from "./ProductForm.module.css";
@@ -9,8 +7,11 @@ import { getProducts } from "../../redux/filter/filterSelectors";
 import { addEatenProduct } from "../../redux/userData/userDataOperations";
 import { clearHintList } from "../../redux/filter/filterSlice";
 import dateFormatter from "../../utils/helpers/dateFormatter";
-import { getUserData } from "../../redux/userData/userDataSelectors";
-import ProductModal from "./ProductModal/ProductModal";
+
+import useDebouncedInput from "../../hooks/hook";
+import { useState } from "react";
+import { useEffect } from "react";
+import { debounce } from "lodash-es";
 const validationSchema = Yup.object().shape({
   query: Yup.string().required("Обязательное поле!"),
   weight: Yup.number()
@@ -22,11 +23,17 @@ const validationSchema = Yup.object().shape({
 export default function ProductForm() {
   const dispatch = useDispatch();
   const products = useSelector(getProducts);
-  const [showDiaryMenu, setShowDiaryMenu] = useState(false);
 
-  const findProducts = (query) => {
-    query && dispatch(searchProduct(query));
+  const [sentQuery, setSentQuery] = useState("");
+
+  const fetchProducts = (e) => {
+    setSentQuery(e.target.value);
   };
+  const debouncedFetchProduct = debounce(fetchProducts, 500);
+
+  useEffect(() => {
+    sentQuery && dispatch(searchProduct(sentQuery));
+  }, [sentQuery]);
 
   const onSubmitForm = (weight) => {
     const product = { date: dateFormatter, productId: products[0]._id, weight };
@@ -53,7 +60,6 @@ export default function ProductForm() {
             className={css.ProductForm}
           >
             <Field
-              className={css.input}
               type="search"
               name="query"
               list="products"
@@ -62,8 +68,7 @@ export default function ProductForm() {
               value={values.query}
               onChange={(e) => {
                 setFieldValue("query", e.target.value);
-
-                findProducts(values.query);
+                debouncedFetchProduct(e);
               }}
               className={css.ProductSearch}
             />

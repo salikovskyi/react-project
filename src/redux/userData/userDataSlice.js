@@ -76,9 +76,9 @@ const accountDataSlice = createSlice({
       state.isLoading = false;
     },
     [fetchUserInfo.fulfilled]: (state, { payload }) => {
-      state.daySummary = payload.days.find(
-        (day) => day.date === state.currentDate
-      ).daySummary;
+      // state.daySummary = payload.days.find(
+      //   (day) => day.date === state.currentDate
+      // ).daySummary;
       state.isLoading = false;
       state.notAllowedProducts = payload.userData.notAllowedProducts;
       state.isModalOpen = false;
@@ -105,11 +105,11 @@ const accountDataSlice = createSlice({
       state.isLoading = false;
     },
     [userDaily.fulfilled]: (state, { payload }) => {
-      state.dailyRate = payload.data.dailyRate;
-      state.daySummary = payload.data.summaries.find(
+      state.dailyRate = payload.dailyRate;
+      state.daySummary = payload.summaries.find(
         (day) => day.date === dateFormatter
       );
-      state.notAllowedProducts = payload.data.notAllowedProducts;
+      state.notAllowedProducts = payload.notAllowedProducts;
       state.isLoading = false;
     },
     [addEatenProduct.pending]: (state) => {
@@ -121,6 +121,7 @@ const accountDataSlice = createSlice({
       // state.isLoading = false;
     },
     [addEatenProduct.fulfilled]: (state, { payload }) => {
+      console.log(payload);
       state.eatenProducts = payload.day.eatenProducts;
       state.daySummary = payload.daySummary;
       // state.isLoading = false;

@@ -125,7 +125,7 @@ body {
       url(./assets/images/desctop/desctopBg1x.png);
     background-repeat: no-repeat;
     background-position: bottom 70px right, bottom right;
-    background-size: 812px 659px, 501px 659px;
+    background-size: 812px 769px, 550px 812px;
     /* min-width: 1280px; */
     margin-left: auto;
     margin-right: auto;
@@ -211,9 +211,6 @@ body {
     background-image: url(./assets/images/desctop/Layerdesktop1x.png),
       linear-gradient(to right, #ffffff 55%, #f0f1f3 55%);
     background-size: 505px 815px, cover;
-    width: 1280px;
-    margin-left: auto;
-    margin-right: auto;
   }
 }
 @media screen and (min-width: 1280px) and (min-device-pixel-ratio: 2),
