@@ -1,11 +1,5 @@
-import React, { useState } from "react";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
-import { Formik } from "formik";
-import * as Yup from "yup";
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { dayInfo } from "../../redux/userData/userDataOperations";
+import { useSelector } from "react-redux";
+
 import ProductItem from "../ProductItem/ProductItem";
 import CalendarPicker from "../CalendarPicker";
 import ProductForm from "../ProductForm/ProductForm";
