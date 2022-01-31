@@ -105,10 +105,9 @@ const accountDataSlice = createSlice({
       state.isLoading = false;
     },
     [userDaily.fulfilled]: (state, { payload }) => {
-      state.dailyRate = payload.dailyRate;
-      console.log(payload);
-      state.summaries = payload.summaries;
+      state.daySummary.dailyRate = payload.dailyRate;
       state.notAllowedProducts = payload.notAllowedProducts;
+
       state.isLoading = false;
     },
     [addEatenProduct.pending]: (state) => {

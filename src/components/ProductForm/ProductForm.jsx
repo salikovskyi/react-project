@@ -5,10 +5,8 @@ import { searchProduct } from "../../redux/filter/filterOperations";
 import css from "./ProductForm.module.css";
 import { getProducts } from "../../redux/filter/filterSelectors";
 import { addEatenProduct } from "../../redux/userData/userDataOperations";
-import { clearHintList } from "../../redux/filter/filterSlice";
 import dateFormatter from "../../utils/helpers/dateFormatter";
 
-import useDebouncedInput from "../../hooks/hook";
 import { useState } from "react";
 import { useEffect } from "react";
 import { debounce } from "lodash-es";
@@ -33,7 +31,7 @@ export default function ProductForm() {
 
   useEffect(() => {
     sentQuery && dispatch(searchProduct(sentQuery));
-  }, [sentQuery]);
+  }, [dispatch, sentQuery]);
 
   const onSubmitForm = (weight) => {
     const product = { date: dateFormatter, productId: products[0]._id, weight };
