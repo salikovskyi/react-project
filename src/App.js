@@ -1,9 +1,6 @@
-// import Loader from "./components/Loader";
 import "react-datepicker/dist/react-datepicker.css";
-
 import { lazy, Suspense } from "react";
 import { Switch } from "react-router-dom";
-
 import { useSelector, useDispatch } from "react-redux";
 import { fetchUserInfo } from "./redux/auth/authOperations";
 import PublicRoute from "./routes/PublicRoutes";
