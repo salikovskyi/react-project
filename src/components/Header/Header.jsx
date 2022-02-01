@@ -51,11 +51,13 @@ export default function Header() {
 
           {isLoggedIn && (
             <div className={css.header_login_wrapper}>
-              <picture className={css.header_login_logo}>
+              <Link to="/diary" className={css.header_login_logo}>
+              <picture>
                 <source srcSet={logoDesc} media="(min-width: 1280px)" />
                 <source srcSet={logoTablet} media="(min-width: 768px)" />
                 <img src={logoTablet} alt="logo" />
               </picture>
+              </Link>
               <hr className={css.header_login_logo_line} />
               <div className={css.header_login_navlinks}>
                 <NavLink
