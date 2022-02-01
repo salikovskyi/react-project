@@ -68,6 +68,7 @@ export default function CalorieForm({ userId }) {
     validationSchema,
     onSubmit: (values) => {
       onSubmitForm(values);
+      resetForm();
     },
   });
 
