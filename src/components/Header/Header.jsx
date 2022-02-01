@@ -5,13 +5,13 @@ import logoDesc from "../../assets/header-logo/header/logoDesc.png";
 import BurgerMenu from "./BurgerMenu/BurgerMenu";
 import { useSelector } from "react-redux";
 import { getIsLoggedIn } from "../../redux/auth/authSelectors";
-import { isModalOpen } from "../../redux/userData/userDataSelectors";
-import { closeModal } from "../../redux/userData/userDataSlice";
 import { logoutUser } from "../../redux/auth/authOperations";
 import Container from "../_styled/Container.styled";
 import { NavLink, Link } from "react-router-dom";
 import UserMenu from "./UserMenu/UserMenu";
 import { useDispatch } from "react-redux";
+
+
 export default function Header() {
   const dispatch = useDispatch();
   const isLoggedIn = useSelector(getIsLoggedIn);
@@ -22,8 +22,8 @@ export default function Header() {
         <Container>
           {!isLoggedIn && (
             <div className={css.header_wrapper}>
-              <Link to="/">
-                <picture className={css.header_logo}>
+              <Link to="/" className={css.header_logo}>
+                <picture>
                   <source srcSet={logoDesc} media="(min-width: 1280px)" />
                   <source srcSet={logoTablet} media="(min-width: 768px)" />
                   <img src={logoPhone} alt="logo" />
