@@ -24,11 +24,6 @@
   bottom: 0;
   z-index: 1000;
 }
-.header_login_user_menu {
-  padding-top: 15px;
-  padding-bottom: 13px;
-  background-color: #eff1f3;
-}
 .svg {
   position: absolute;
   width: 15px;
