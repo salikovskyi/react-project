@@ -16,6 +16,7 @@
 
 .div {
   position: relative;
+  height: 91px;
 }
 
 .calendar_container:after {

@@ -63,10 +63,11 @@ export default function CalorieForm() {
     validationSchema,
     onSubmit: (values) => {
       onSubmitForm(values);
+      resetForm();
     },
   });
 
-  const { errors, touched, values, handleChange, handleSubmit } = formik;
+  const { errors, touched, values, handleChange, handleSubmit, resetForm } = formik;
   return (
     <div className={`${css.form_section} ${modalOpen && css.hidden}`}>
       <form className={css.form} onSubmit={handleSubmit}>

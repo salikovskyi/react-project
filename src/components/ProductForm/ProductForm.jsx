@@ -15,7 +15,7 @@ const validationSchema = Yup.object().shape({
   weight: Yup.number()
     .min(1, "Минимум 1")
     .max(1000, "Максимум 1000")
-    .required(),
+    .required('Обязательно!'),
 });
 
 export default function ProductForm() {
@@ -35,7 +35,6 @@ export default function ProductForm() {
 
   const onSubmitForm = (weight) => {
     const product = { date: dateFormatter, productId: products[0]._id, weight };
-    console.log(`product`, product);
     weight && dispatch(addEatenProduct(product));
   };
 
@@ -57,6 +56,7 @@ export default function ProductForm() {
             }}
             className={css.ProductForm}
           >
+            <label className={css.label}>
             <Field
               type="search"
               name="query"
@@ -78,6 +78,8 @@ export default function ProductForm() {
             {touched.query && errors.query && (
               <p className={css.error}>{errors.query}</p>
             )}
+            </label>
+            <label className={css.label}>
             <Field
               className={css.ProductInput}
               type="number"
@@ -87,8 +89,8 @@ export default function ProductForm() {
             {touched.weight && errors.weight && (
               <p className={css.error}>{errors.weight}</p>
             )}
+            </label>
             <button className={css.ProductAddBtn}></button>
-            {/* <ProductModal active={showDiaryMenu} setActive={setShowDiaryMenu} /> */}
           </form>
         )}
       </Formik>

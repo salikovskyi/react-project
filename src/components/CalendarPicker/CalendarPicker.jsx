@@ -30,10 +30,13 @@ export default function CalendarPicker() {
     <div className={css.div}>
       <div className={css.calendar_container}>
         <DatePicker
-          dateFormat="yyyy-MM-dd"
+          dateFormat="yyyy.MM.dd"
           selected={startDate}
           onChange={(date) => setStartDate(date)}
-          className={css.date}
+          onKeyDown={(e) => {
+            e.preventDefault();
+          }}
+          className={`datte ${css.date}`}
         />
       </div>
     </div>
