@@ -13,9 +13,9 @@ const validationSchema = Yup.object().shape({
     .max(50, "Слишком длинный")
     .required("Обязательное поле!"),
   password: Yup.string()
-    .min(8, "Минимум 8 символа")
+    .min(8, "Минимум 8 символов")
     .max(40, "Максимум 40 символов")
-    .required("Обязательное поле!")
+    .required("Обязательное поле!"),
 });
 
 const initialValues = {
@@ -32,7 +32,7 @@ export default function LoginForm() {
     validationSchema,
     onSubmit: (values) => {
       onLogin(values);
-    }
+    },
   });
   const { errors, touched, values, handleChange, handleSubmit } = formik;
   return (

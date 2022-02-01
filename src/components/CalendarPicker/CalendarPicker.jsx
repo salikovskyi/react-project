@@ -5,9 +5,10 @@ import { useDispatch, useSelector } from "react-redux";
 import SlimmomAPI from "../../api/SlimmomAPI/SlimmomAPI";
 import { dayInfo } from "../../redux/userData/userDataOperations";
 import { getToken } from "../../redux/auth/authSelectors";
-import { setCurrentDate } from "../../redux/userData/userDataSlice";
+import { pickDate, setCurrentDate } from "../../redux/userData/userDataSlice";
 import { convertDate } from "../../utils/helpers/convertDate";
 import css from "./CalendarPicker.module.css";
+import { getCurrentDate } from "../../redux/userData/userDataSelectors";
 
 export default function CalendarPicker() {
   const dispatch = useDispatch();
@@ -19,12 +20,8 @@ export default function CalendarPicker() {
     SlimmomAPI.setToken(token);
 
     dispatch(dayInfo({ date: convertDate(startDate) }));
+    dispatch(pickDate(convertDate(startDate)));
   }, [dispatch, startDate]);
-
-  useEffect(() => {
-    const toString = Object.prototype.toString;
-    toString === "string" && dispatch(setCurrentDate(startDate));
-  }, [startDate]);
 
   return (
     <div className={css.div}>
