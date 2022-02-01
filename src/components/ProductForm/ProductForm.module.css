@@ -7,9 +7,6 @@
   }
 
   .ProductSearch {
-    display: flex;
-    margin-top: 30px;
-    padding-bottom: 10px;
     font-family: Verdana;
     font-style: normal;
     width: 290px;
@@ -20,10 +17,17 @@
     border-bottom: 1px solid #e0e0e0;
   }
 
+  .error {
+    color: #e41f24;
+    width: 200px;
+    display: block;
+    position: absolute;
+  }
+
+  .label {
+    position: relative;
+  }
   .ProductInput {
-    display: flex;
-    margin-top: 30px;
-    padding-bottom: 10px;
     font-family: Verdana;
     font-style: normal;
     width: 290px;
@@ -40,6 +44,7 @@
 
   .ProductAddBtn {
     margin: 60px auto;
+    cursor: pointer;
     display: flex;
     justify-content: center;
     text-align: center;
@@ -67,20 +72,15 @@
     margin-bottom: 120px;
   }
   .ProductSearch {
-    margin-top: 0px;
-    padding: 0 0 20px 0;
     font-family: Verdana;
     width: 260px;
     margin-right: 30px;
   }
 
   .ProductInput {
-    margin-top: 0px;
-    padding: 0 0 20px 0;
     text-align: right;
     font-family: Verdana;
     width: 105px;
-    margin-right: 50px;
   }
 
   .ProductAddBtn::after {
@@ -98,8 +98,12 @@
     border-radius: 50%;
     font-size: 30px;
     color: white;
-    background: #fc842d;
+    background-color: #fc842d;
     box-shadow: 0px 4px 10px rgba(252, 132, 45, 0.5);
+    transition: background-color 0.5s;
+  }
+  .ProductAddBtn:hover {
+    background-color: #F54545;
   }
 }
 
