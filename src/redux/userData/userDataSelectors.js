@@ -16,3 +16,5 @@ export const getRootClass = (state) => state.userData.rootClass;
 export const getFirstEntry = (state) => state.userData.firstEntry;
 export const getIsDaySummaryExist = (state) =>
   Boolean(state.userData.daySummary._id);
+export const getCurrentDate = (state) => state.userData.currentDate;
+export const getPickedDate = (state) => state.userData.pickedDate;
