@@ -35,7 +35,7 @@ function App() {
   }, []);
 
   return (
-    <div className={`${chooseClass}}`}>
+    <div className={`${chooseClass}`}>
       {isLoading ? (
         <TailSpin color="#00BFFF" height={80} width={80} className="loader" />
       ) : (
