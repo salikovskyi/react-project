@@ -8,6 +8,7 @@ import PrivateRoute from "./routes/PrivateRoutes";
 import {
   getIsLoading,
   getIsLoggedIn,
+  getMessage,
   getToken,
 } from "./redux/auth/authSelectors";
 import { useEffect } from "react";
@@ -15,6 +16,7 @@ import Header from "./components/Header";
 import { TailSpin } from "react-loader-spinner";
 import { rootClass } from "./redux/userData/userDataSlice";
 import { getRootClass, isModalOpen } from "./redux/userData/userDataSelectors";
+import Notiflix from "notiflix";
 
 const HomePage = lazy(() => import("./pages/MainPage"));
 const AuthPage = lazy(() => import("./pages/AuthPage"));
@@ -26,13 +28,20 @@ function App() {
   const isLoading = useSelector(getIsLoading);
   const IsLoggedIn = useSelector(getIsLoggedIn);
   const chooseClass = useSelector(getRootClass);
-  const modalOpen = useSelector(isModalOpen);
+  const message = useSelector(getMessage);
   const token = useSelector(getToken);
 
   useEffect(() => {
     token && dispatch(fetchUserInfo());
     dispatch(rootClass("SlimMom"));
   }, []);
+
+  useEffect(() => {
+    message &&
+      (message.type === "success"
+        ? Notiflix.Notify.success(message.text, 5000)
+        : Notiflix.Notify.failure(message.text, 5000));
+  }, [message]);
 
   return (
     <div className={`${chooseClass}`}>

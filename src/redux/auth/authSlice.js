@@ -55,7 +55,10 @@ const authSlice = createSlice({
     [loginUser.rejected]: (state, { payload }) => {
       state.isLoading = false;
       state.error = payload;
-      // state.error = "Неверный логин или пароль";
+      state.message = {
+        text: "Неверный логин или пароль!",
+        type: "failure",
+      };
     },
     [logoutUser.pending]: (state) => {
       state.isLoading = true;
@@ -74,6 +77,10 @@ const authSlice = createSlice({
     [logoutUser.rejected]: (state, { payload }) => {
       state.isLoading = false;
       state.error = payload;
+      state.message = {
+        text: "Время сессии истекло, перезагрузите страницу!",
+        type: "failure",
+      };
     },
     [registerUser.pending]: (state) => {
       state.isLoading = true;
@@ -85,10 +92,18 @@ const authSlice = createSlice({
       state.user.email = payload.email;
       state.user.username = payload.username;
       state.id = payload.id;
+      state.message = {
+        text: "Вы успешно зарегистрировались!",
+        type: "success",
+      };
     },
     [registerUser.rejected]: (state, { payload }) => {
       state.isLoading = false;
       state.error = payload;
+      state.message = {
+        text: "Такой пользователь уже существует!",
+        type: "failure",
+      };
     },
     [refreshUser.pending]: (state) => {
       //   state.isLoading = true;
