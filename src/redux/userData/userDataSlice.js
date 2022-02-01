@@ -105,11 +105,9 @@ const accountDataSlice = createSlice({
       state.isLoading = false;
     },
     [userDaily.fulfilled]: (state, { payload }) => {
-      state.dailyRate = payload.dailyRate;
-      state.daySummary = payload.summaries.find(
-        (day) => day.date === dateFormatter
-      );
+      state.daySummary.dailyRate = payload.dailyRate;
       state.notAllowedProducts = payload.notAllowedProducts;
+
       state.isLoading = false;
     },
     [addEatenProduct.pending]: (state) => {

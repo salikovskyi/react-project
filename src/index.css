@@ -182,7 +182,6 @@ body {
   }
 }
 
-
 @media screen and (min-width: 320px) {
   .SlimCalc {
     background-image: linear-gradient(to bottom, #ffffff 58%, #f0f1f3 58%);
@@ -222,5 +221,8 @@ body {
       linear-gradient(to right, #ffffff 55%, #f0f1f3 55%);
   }
 }
-
-
+/* 
+#modal-root {
+  position: fixed;
+  z-index: 1001;
+} */

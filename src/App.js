@@ -17,7 +17,7 @@ import { useEffect } from "react";
 import Header from "./components/Header";
 import { TailSpin } from "react-loader-spinner";
 import { rootClass } from "./redux/userData/userDataSlice";
-import { getRootClass } from "./redux/userData/userDataSelectors";
+import { getRootClass, isModalOpen } from "./redux/userData/userDataSelectors";
 
 const HomePage = lazy(() => import("./pages/MainPage"));
 const AuthPage = lazy(() => import("./pages/AuthPage"));
@@ -29,6 +29,7 @@ function App() {
   const isLoading = useSelector(getIsLoading);
   const IsLoggedIn = useSelector(getIsLoggedIn);
   const chooseClass = useSelector(getRootClass);
+  const modalOpen = useSelector(isModalOpen);
   const token = useSelector(getToken);
 
   useEffect(() => {
@@ -37,7 +38,7 @@ function App() {
   }, []);
 
   return (
-    <div className={chooseClass}>
+    <div className={`${chooseClass}}`}>
       {isLoading ? (
         <TailSpin color="#00BFFF" height={80} width={80} className="loader" />
       ) : (

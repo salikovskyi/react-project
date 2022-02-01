@@ -48,9 +48,7 @@
     width: 162px;
     height: 44px;
   }
-  .header_login_user_menu {
-    display: none;
-  }
+
   .header_user_tablet {
     display: flex;
   }
@@ -100,12 +98,6 @@
 
 /* USER MENU */
 
-.header_login_user_menu {
-  padding-top: 15px;
-  padding-bottom: 13px;
-  background-color: #eff1f3;
-}
-
 /* MEDIA LOGIN */
 @media screen and (min-width: 1280px) {
   .header_login_wrapper {
@@ -135,6 +127,3 @@
 }
 
 /* MODAL */
-.header_button_modal_exit {
-  border: none;
-}

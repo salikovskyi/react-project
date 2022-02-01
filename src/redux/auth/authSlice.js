@@ -55,6 +55,7 @@ const authSlice = createSlice({
     [loginUser.rejected]: (state, { payload }) => {
       state.isLoading = false;
       state.error = payload;
+      // state.error = "Неверный логин или пароль";
     },
     [logoutUser.pending]: (state) => {
       state.isLoading = true;

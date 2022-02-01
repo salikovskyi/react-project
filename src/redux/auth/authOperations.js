@@ -1,5 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import SlimmomAPI from "../../api/SlimmomAPI/SlimmomAPI";
+import Notiflix from "notiflix";
 
 export const fetchUserInfo = createAsyncThunk(
   "auth/fetchUserInfo",
@@ -22,6 +23,7 @@ export const loginUser = createAsyncThunk(
       const loginUserResponse = await SlimmomAPI.loginUser(data);
       return loginUserResponse.data;
     } catch ({ message }) {
+      Notiflix.Notify.failure("Неверный логин или пароль", 5000);
       return thunkAPI.rejectWithValue(message);
     }
   }
@@ -32,8 +34,10 @@ export const registerUser = createAsyncThunk(
   async (data, thunkAPI) => {
     try {
       const registerUserResponse = await SlimmomAPI.registerUser(data);
+      // Notiflix.Notify.success("Вы успешно зарегистрировались!", 5000);
       return registerUserResponse.data;
     } catch ({ message }) {
+      // Notiflix.Notify.failure("Такой пользователь уже существует!", 5000);
       return thunkAPI.rejectWithValue(message);
     }
   }
@@ -47,6 +51,10 @@ export const logoutUser = createAsyncThunk(
       // return logoutUserResponse.status;
       return "success";
     } catch ({ message }) {
+      Notiflix.Notify.failure(
+        "Время сессии истекло, перезагрузите страницу!",
+        5000
+      );
       return thunkAPI.rejectWithValue(message);
     }
   }

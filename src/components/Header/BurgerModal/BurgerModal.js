@@ -1,34 +1,41 @@
-import css from './BurgerModal.module.css'
-// import { createPortal } from "react-dom";
-// import { useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
+import css from "./BurgerModal.module.css";
 
-const modalRoot = document.querySelector("#modal-root");
+import ReactDOM from "react-dom";
+import { NavLink } from "react-router-dom";
 
-export default function BurgerModal({active}) {
-    return (
+const modalRoot = document.getElementById("modal-root");
 
-        <div className={`${active ? css.burger_modal_active : css.burger_modal_closed} ${css.burger_modal}`}>
-            <nav>
-                <ul>
-                <div className={css.burger_login_navlinks}>
-                <NavLink
-                  to="/diary"
-                  className={css.burger_linknav}
-                  activeClassName={css.burger_activeLink}
-                >
-                  дневник
-                </NavLink>
-                <NavLink
-                  to="/calculator"
-                  className={css.burger_linknav}
-                  activeClassName={css.burger_activeLink}
-                >
-                  калькулятор
-                </NavLink>
-              </div>
-                </ul>
-            </nav>
-      </div>
-    )
-    }
+export default function BurgerModal({ active, closeMenu }) {
+  return ReactDOM.createPortal(
+    <div
+      className={`${
+        active ? css.burger_modal_active : css.burger_modal_closed
+      } ${css.burger_modal}`}
+    >
+      <nav>
+        <ul>
+          <div className={css.burger_login_navlinks}>
+            <NavLink
+              onClick={closeMenu}
+              to="/diary"
+              className={css.burger_linknav}
+              activeClassName={css.burger_activeLink}
+            >
+              дневник
+            </NavLink>
+
+            <NavLink
+              onClick={closeMenu}
+              to="/calculator"
+              className={css.burger_linknav}
+              activeClassName={css.burger_activeLink}
+            >
+              калькулятор
+            </NavLink>
+          </div>
+        </ul>
+      </nav>
+    </div>,
+    modalRoot
+  );
+}
