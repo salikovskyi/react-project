@@ -15,7 +15,7 @@ import { useEffect } from "react";
 import Header from "./components/Header";
 import { TailSpin } from "react-loader-spinner";
 import { rootClass } from "./redux/userData/userDataSlice";
-import { getRootClass, isModalOpen } from "./redux/userData/userDataSelectors";
+import { getRootClass } from "./redux/userData/userDataSelectors";
 import Notiflix from "notiflix";
 
 const HomePage = lazy(() => import("./pages/MainPage"));
@@ -64,7 +64,7 @@ function App() {
               <PublicRoute exact path="/">
                 <HomePage />
               </PublicRoute>
-              <PublicRoute path="/login" restricted redirectTo="/calculator">
+              <PublicRoute path="/login" restricted redirectTo="/diary">
                 <AuthPage />
               </PublicRoute>
               <PublicRoute path="/registration" restricted redirectTo="/login">

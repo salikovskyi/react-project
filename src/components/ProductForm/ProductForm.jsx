@@ -90,7 +90,7 @@ export default function ProductForm() {
               <p className={css.error}>{errors.weight}</p>
             )}
             </label>
-            <button className={css.ProductAddBtn}></button>
+            <button type='submit' className={css.ProductAddBtn}></button>
           </form>
         )}
       </Formik>
