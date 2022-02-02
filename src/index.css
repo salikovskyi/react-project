@@ -221,11 +221,13 @@ body {
       linear-gradient(to right, #ffffff 55%, #f0f1f3 55%);
   }
 }
-/* 
-#modal-root {
-  position: fixed;
+
+div#modal-root {
+  position: absolute;
   z-index: 1001;
-} */
+  /* height: 100vh;
+  width: 100vh; */
+}
 
 .datte {
   caret-color: transparent;
