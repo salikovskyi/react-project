@@ -52,6 +52,9 @@ const accountDataSlice = createSlice({
     setCurrentDate: (state, { payload }) => {
       state.currentDate = payload;
     },
+    pickDate: (state, { payload }) => {
+      state.pickedDate = payload;
+    },
   },
   extraReducers: {
     [loginUser.pending]: (state) => {
@@ -105,26 +108,23 @@ const accountDataSlice = createSlice({
       state.isLoading = false;
     },
     [userDaily.fulfilled]: (state, { payload }) => {
-      state.dailyRate = payload.dailyRate;
-      state.daySummary = payload.summaries.find(
-        (day) => day.date === dateFormatter
-      );
+      state.daySummary.dailyRate = payload.dailyRate;
       state.notAllowedProducts = payload.notAllowedProducts;
+
       state.isLoading = false;
     },
     [addEatenProduct.pending]: (state) => {
       state.error = null;
-      // state.isLoading = true;
+      state.isLoading = true;
     },
     [addEatenProduct.rejected]: (state, { payload }) => {
       state.error = payload;
-      // state.isLoading = false;
+      state.isLoading = false;
     },
     [addEatenProduct.fulfilled]: (state, { payload }) => {
-      console.log(payload);
       state.eatenProducts = payload.day.eatenProducts;
       state.daySummary = payload.daySummary;
-      // state.isLoading = false;
+      state.isLoading = false;
     },
     [removeEatenProduct.pending]: (state) => {
       state.error = null;
@@ -151,7 +151,9 @@ const accountDataSlice = createSlice({
     },
     [dayInfo.fulfilled]: (state, { payload }) => {
       state.daySummary = payload.daySummary ? payload.daySummary : payload;
-      state.eatenProducts = payload.eatenProducts ? payload.eatenProducts : 0;
+      state.eatenProducts =
+        payload.eatenProducts && (state.eatenProducts = payload.eatenProducts);
+
       state.dayId = payload.id;
       state.isLoading = false;
     },
@@ -159,5 +161,5 @@ const accountDataSlice = createSlice({
 });
 
 export default accountDataSlice.reducer;
-export const { openModal, closeModal, setCurrentDate, rootClass } =
+export const { openModal, closeModal, setCurrentDate, rootClass, pickDate } =
   accountDataSlice.actions;

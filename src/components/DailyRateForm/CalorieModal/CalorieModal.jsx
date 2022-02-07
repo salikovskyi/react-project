@@ -3,17 +3,20 @@ import { Link } from "react-router-dom";
 import ReactDOM from "react-dom";
 import {
   calRate,
+  isModalOpen,
   notAllowedProducts,
 } from "../../../redux/userData/userDataSelectors";
 import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
 import Button from "../../_styled/Button.styled";
 import { closeModal } from "../../../redux/userData/userDataSlice";
+import Container from "../../_styled/Container.styled";
 const portalContainer = document.getElementById("modal-root");
 
 export default function CalorieModal() {
   const notAllowedList = useSelector(notAllowedProducts);
   const calRated = useSelector(calRate);
+  const modalOpen = useSelector(isModalOpen);
   const dispatch = useDispatch();
   const [value, setValue] = useState("");
   const handleChange = (e) => setValue(e.target.value);
@@ -39,9 +42,36 @@ export default function CalorieModal() {
     }
   }
 
+
   const modal = (
     <div id="overlay" className={css.overlay}>
       <div className={css.modal_section}>
+        {modalOpen && (
+          <div
+            className={css.header_login_user_menu}
+            onClick={() => dispatch(closeModal())}
+          >
+            <Container>
+              <div className={css.header_login_user_wrapper}>
+                <button className={css.header_button_modal_exit}>
+                  <svg
+                    width="15"
+                    height="9"
+                    viewBox="0 0 15 9"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M14 1.5V4.5H2M2 4.5L5.5 1M2 4.5L5.5 8"
+                      stroke="black"
+                      strokeWidth="2"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </Container>
+          </div>
+        )}
         <div className={css.wrapper}>
           <h2 className={css.modal_title}>
             Ваша рекомендуемая суточная норма калорий составляет

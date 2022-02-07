@@ -1,5 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import SlimmomAPI from "../../api/SlimmomAPI/SlimmomAPI";
+import Notiflix from "notiflix";
 
 export const fetchUserInfo = createAsyncThunk(
   "auth/fetchUserInfo",
@@ -44,7 +45,6 @@ export const logoutUser = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const logoutUserResponse = await SlimmomAPI.logoutUser();
-      // return logoutUserResponse.status;
       return "success";
     } catch ({ message }) {
       return thunkAPI.rejectWithValue(message);

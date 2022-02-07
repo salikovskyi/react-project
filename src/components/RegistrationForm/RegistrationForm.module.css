@@ -1,9 +1,27 @@
-/* .input {
+
+.input {
   width: 100%;
-  margin-bottom: 30px;
   border: 0;
   border-bottom: 1px solid rgba(224, 224, 224, 1);
-} */
+  margin-top: 40px;
+  display: block;
+
+}
+
+.error_input {
+  background-color: rgba(228, 31, 36, 0.4);
+  border-bottom: 1px solid #e41f24;
+}
+.form_label{
+  position: relative;
+  /* margin-bottom: 20px; */
+}
+
+.error {
+  color: #e41f24;
+  width: 200px;
+  position: absolute;
+}
 .form_container {
     display: block;
     margin: 0 auto;
@@ -39,8 +57,7 @@
   color:rgba(155, 159, 170, 1)
 }
 
-.input {
-  display: block;
+/* .input {
   border: none;
   border-bottom: 1px solid rgba(224, 224, 224);
   width: 100%;
@@ -48,10 +65,7 @@
   height: 20px;
   margin-top: 3px; 
   height: 30px;
-  position: absolute; 
-  
-
-}
+} */
 
 .input_error {
   display: block;
@@ -167,7 +181,7 @@
 
   .btn_container {
     display: block;
-    margin-top: 40px;
+    margin-top: 100px;
   }
 
   /* .form_btn {
@@ -194,11 +208,14 @@
 
 @media screen and (min-width: 1280px) {
   .form_container{
-    padding-bottom: 123px;
+    padding-bottom: 244px;
     padding-top: 95px;
   }
   
   .btn_container {
-    margin-top: 20px;
+    margin-top: 105px;
+  }
+  .form_title{
+    margin-bottom: 60px;
   }
 }

@@ -7,19 +7,22 @@ import BurgerModal from "../BurgerModal/BurgerModal";
 const BurgerMenu = () => {
   const [showMenu, setShowMenu] = useState(false);
 
-  useEffect(() => {
-    if (showMenu) {
-    }
-  });
+  const toggleMenu = () => {
+    setShowMenu(!showMenu);
+  };
 
   return (
     <div>
       <nav className={css.burger_icon}>
-        <span onClick={() => setShowMenu(!showMenu)}>
-          <Hamburger size={25} />
+        <span onClick={toggleMenu}>
+          <Hamburger toggled={showMenu} size={25} />
         </span>
       </nav>
-      <BurgerModal active={showMenu} setActive={setShowMenu} />
+      <BurgerModal
+        active={showMenu}
+        setActive={setShowMenu}
+        closeMenu={toggleMenu}
+      />
     </div>
   );
 };

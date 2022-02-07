@@ -1,4 +1,8 @@
+import { convertDate } from "../../utils/helpers/convertDate";
+
 export const daySummary = (state) => state.userData.daySummary;
+export const todaySummaries = (state) =>
+  state.userData.summaries.find((day) => day.date === convertDate(new Date()));
 export const notAllowedProducts = (state) =>
   state.userData.unauthData.notAllowedProducts;
 export const ownNotAllowedProducts = (state) =>
@@ -12,3 +16,5 @@ export const getRootClass = (state) => state.userData.rootClass;
 export const getFirstEntry = (state) => state.userData.firstEntry;
 export const getIsDaySummaryExist = (state) =>
   Boolean(state.userData.daySummary._id);
+export const getCurrentDate = (state) => state.userData.currentDate;
+export const getPickedDate = (state) => state.userData.pickedDate;

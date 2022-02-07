@@ -5,29 +5,30 @@ import logoDesc from "../../assets/header-logo/header/logoDesc.png";
 import BurgerMenu from "./BurgerMenu/BurgerMenu";
 import { useSelector } from "react-redux";
 import { getIsLoggedIn } from "../../redux/auth/authSelectors";
-import { isModalOpen } from "../../redux/userData/userDataSelectors";
-import { closeModal } from "../../redux/userData/userDataSlice";
 import { logoutUser } from "../../redux/auth/authOperations";
 import Container from "../_styled/Container.styled";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import UserMenu from "./UserMenu/UserMenu";
 import { useDispatch } from "react-redux";
+
+
 export default function Header() {
   const dispatch = useDispatch();
   const isLoggedIn = useSelector(getIsLoggedIn);
 
-  const modalOpen = useSelector(isModalOpen);
   return (
     <header>
       <div className={css.header_section}>
         <Container>
           {!isLoggedIn && (
             <div className={css.header_wrapper}>
-              <picture className={css.header_logo}>
-                <source srcSet={logoDesc} media="(min-width: 1280px)" />
-                <source srcSet={logoTablet} media="(min-width: 768px)" />
-                <img src={logoPhone} alt="logo" />
-              </picture>
+              <Link to="/" className={css.header_logo}>
+                <picture>
+                  <source srcSet={logoDesc} media="(min-width: 1280px)" />
+                  <source srcSet={logoTablet} media="(min-width: 768px)" />
+                  <img src={logoPhone} alt="logo" />
+                </picture>
+              </Link>
               <hr className={css.header_underline} />
               <div className={css.header_links}>
                 <NavLink
@@ -50,11 +51,13 @@ export default function Header() {
 
           {isLoggedIn && (
             <div className={css.header_login_wrapper}>
-              <picture className={css.header_login_logo}>
+              <Link to="/diary" className={css.header_login_logo}>
+              <picture>
                 <source srcSet={logoDesc} media="(min-width: 1280px)" />
                 <source srcSet={logoTablet} media="(min-width: 768px)" />
                 <img src={logoTablet} alt="logo" />
               </picture>
+              </Link>
               <hr className={css.header_login_logo_line} />
               <div className={css.header_login_navlinks}>
                 <NavLink
@@ -89,32 +92,6 @@ export default function Header() {
               logout={() => dispatch(logoutUser())}
               className={css.usermenu}
             />
-          </Container>
-        </div>
-      )}
-      {modalOpen && (
-        <div
-          className={css.header_login_user_menu}
-          onClick={() => dispatch(closeModal())}
-        >
-          <Container>
-            <div className={css.header_login_user_wrapper}>
-              <button className={css.header_button_modal_exit}>
-                <svg
-                  width="15"
-                  height="9"
-                  viewBox="0 0 15 9"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M14 1.5V4.5H2M2 4.5L5.5 1M2 4.5L5.5 8"
-                    stroke="black"
-                    strokeWidth="2"
-                  />
-                </svg>
-              </button>
-            </div>
           </Container>
         </div>
       )}

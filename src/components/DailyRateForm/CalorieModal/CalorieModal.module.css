@@ -1,15 +1,22 @@
 .modal_section {
   position: fixed;
-  top: 47%;
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: white;
-
-  /* padding: 0 15px 50px; */
+  max-height: 100vh;
+  top: 56%;
+}
+.header_button_modal_exit {
+  border: none;
+  width: 320px;
+  height: 40px;
+  justify-content: flex-start;
+  position: relative;
+  right: 15px;
 }
 
 .overlay {
-  top: 129px;
+  /* top: 7%; */
   position: fixed;
   left: 0;
   right: 0;
@@ -22,7 +29,6 @@
   bottom: 0;
   z-index: 1000;
 }
-
 .svg {
   position: absolute;
   width: 15px;
@@ -39,7 +45,7 @@
 .scroller {
   font-family: Verdana;
   overflow-y: scroll;
-  height: 130px;
+  height: 100px;
   font-size: 14px;
   line-height: 1.21;
   letter-spacing: 0.04em;
@@ -51,11 +57,11 @@
 .modal_title {
   font-family: Verdana;
   font-weight: bold;
-  font-size: 18px;
+  font-size: 20px;
   line-height: 26px;
   /* text-align: center; */
   color: #212121;
-  margin-top: 40px;
+  /* margin-top: 40px; */
   margin-bottom: 40px;
 }
 
@@ -71,6 +77,14 @@
   align-items: baseline;
   justify-content: center;
   margin-bottom: 30px;
+}
+@media screen and (min-width: 320px) and (max-width: 747px) {
+  .modal_daySummary {
+    font-size: 40px;
+  }
+  .modal_title {
+    font-size: 16px;
+  }
 }
 .modal_span {
   font-family: Verdana;
@@ -151,6 +165,12 @@
   .productss {
     width: 70%;
     margin: 0 auto;
+  }
+  .header_login_user_menu {
+    display: none;
+  }
+  .header_button_modal_exit {
+    display: none;
   }
 }
 

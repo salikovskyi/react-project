@@ -3,14 +3,13 @@ import { useSelector } from "react-redux";
 import styles from "./FooterInfo.module.css";
 import {
   daySummary,
-  getUserData,
   ownNotAllowedProducts,
 } from "../../redux/userData/userDataSelectors.js";
 import dateFormatter from "../../utils/helpers/dateFormatter";
-import { userDaily } from "../../redux/userData/userDataOperations";
 
 export default function FooterInfo() {
   const summary = useSelector(daySummary);
+
   const products = useSelector(ownNotAllowedProducts);
 
   const { kcalLeft, kcalConsumed, dailyRate, percentsOfDailyRate } = summary;

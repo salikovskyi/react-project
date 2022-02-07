@@ -9,6 +9,7 @@ import {
 } from "../../redux/userData/userDataOperations";
 import { getIsLoggedIn, getUserId } from "../../redux/auth/authSelectors";
 import convertFormValuesToNumbers from "../../utils/helpers/convertFormValuesToNumbers";
+import { isModalOpen } from "../../redux/userData/userDataSelectors";
 
 const validationSchema = Yup.object().shape({
   height: Yup.number()
@@ -48,6 +49,7 @@ export default function CalorieForm() {
   const dispatch = useDispatch();
   const isLoggedIn = useSelector(getIsLoggedIn);
   const id = useSelector(getUserId);
+  const modalOpen = useSelector(isModalOpen);
   const onSubmitForm = (values) => {
     if (isLoggedIn) {
       dispatch(userDaily(convertFormValuesToNumbers({ id, values })));
@@ -61,12 +63,13 @@ export default function CalorieForm() {
     validationSchema,
     onSubmit: (values) => {
       onSubmitForm(values);
+      resetForm();
     },
   });
 
-  const { errors, touched, values, handleChange, handleSubmit } = formik;
+  const { errors, touched, values, handleChange, handleSubmit, resetForm } = formik;
   return (
-    <div className={css.form_section}>
+    <div className={`${css.form_section} ${modalOpen && css.hidden}`}>
       <form className={css.form} onSubmit={handleSubmit}>
         <h2 className={css.form_title}>
           Просчитай свою суточную норму калорий прямо сейчас
