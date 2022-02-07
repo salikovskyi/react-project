@@ -38,6 +38,7 @@
     border-bottom: 1px solid rgba(224, 224, 224);
     width: 100%;
     outline: 0;
+    position: absolute;
   }
   
   .input_error {
@@ -47,11 +48,12 @@
     width: 100%;
     outline: 0;
     height: 30px;
+   position: relative; 
   }
   
   .box_error_message {
     height: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 20px; 
   }
   
   .error_message_text {

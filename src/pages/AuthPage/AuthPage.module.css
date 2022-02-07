@@ -22,6 +22,7 @@
       background-image: url(../../assets/images/desctop/descktop.fruites.register.png),url(../../assets/images/desctop/desctopBg1x.png);
       height: 850px;
       background-position: bottom right;
+      background-position: absolute;
       background-size: 941px 850px, 603px 816px;
     }
     

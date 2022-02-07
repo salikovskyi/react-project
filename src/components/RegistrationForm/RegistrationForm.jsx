@@ -43,7 +43,7 @@ const RegistrationForm = () => {
       >
         <Form>
           <FormControl label="Имя *" type="text" name="username" />
-          <FormControl label="Почта *" name="email" type="email" />
+          <FormControl label="Логин *" name="email" type="email" />
           <FormControl label="Пароль *" type="password" name="password" />
           <div className={css.btn_container}>
             <Link to='/login'>
